@@ -32,6 +32,10 @@ export type Product = {
   lowStockThreshold: number;
   tags: ProductTag[];
   active: boolean;
+  /** Higher sells more; drives the "popular" sort. */
+  popularity: number;
+  /** ISO date; drives the "newest" sort. */
+  createdAt: string;
 };
 
 export const products: Product[] = [
@@ -52,6 +56,8 @@ export const products: Product[] = [
     lowStockThreshold: 6,
     tags: ["bestseller"],
     active: true,
+    popularity: 893,
+    createdAt: "2026-02-02",
   },
   {
     slug: "morning-fresh-dishwashing-liquid",
@@ -67,6 +73,8 @@ export const products: Product[] = [
     lowStockThreshold: 8,
     tags: ["bestseller"],
     active: true,
+    popularity: 886,
+    createdAt: "2026-03-03",
   },
   {
     slug: "hypo-bleach",
@@ -77,11 +85,13 @@ export const products: Product[] = [
     images: [],
     variants: [
       { sku: "HYP-BLC-500", label: "500ml", priceKobo: 95000, stockQty: 50 },
-      { sku: "HYP-BLC-1L", label: "1L", priceKobo: 170000, stockQty: 30 },
+      { sku: "HYP-BLC-1L", label: "1L", priceKobo: 170000, stockQty: 4 },
     ],
     lowStockThreshold: 8,
     tags: [],
     active: true,
+    popularity: 179,
+    createdAt: "2026-04-04",
   },
   {
     slug: "harpic-toilet-cleaner",
@@ -97,6 +107,8 @@ export const products: Product[] = [
     lowStockThreshold: 6,
     tags: ["bestseller"],
     active: true,
+    popularity: 872,
+    createdAt: "2026-05-05",
   },
   {
     slug: "dettol-antiseptic-liquid",
@@ -112,6 +124,8 @@ export const products: Product[] = [
     lowStockThreshold: 5,
     tags: [],
     active: true,
+    popularity: 165,
+    createdAt: "2026-06-06",
   },
   {
     slug: "sunlight-bar-soap",
@@ -124,6 +138,8 @@ export const products: Product[] = [
     lowStockThreshold: 12,
     tags: [],
     active: true,
+    popularity: 158,
+    createdAt: "2026-07-07",
   },
   {
     slug: "raid-mosquito-spray",
@@ -136,6 +152,8 @@ export const products: Product[] = [
     lowStockThreshold: 5,
     tags: ["new"],
     active: true,
+    popularity: 351,
+    createdAt: "2026-10-08",
   },
   {
     slug: "downy-fabric-softener",
@@ -151,6 +169,8 @@ export const products: Product[] = [
     lowStockThreshold: 5,
     tags: ["new"],
     active: true,
+    popularity: 344,
+    createdAt: "2026-10-09",
   },
   {
     slug: "plastic-clothes-pegs",
@@ -163,6 +183,8 @@ export const products: Product[] = [
     lowStockThreshold: 6,
     tags: [],
     active: true,
+    popularity: 137,
+    createdAt: "2026-01-10",
   },
   {
     slug: "rose-soft-toilet-paper",
@@ -178,6 +200,8 @@ export const products: Product[] = [
     lowStockThreshold: 8,
     tags: ["bestseller"],
     active: true,
+    popularity: 830,
+    createdAt: "2026-02-11",
   },
   {
     slug: "dettol-liquid-handwash",
@@ -193,6 +217,8 @@ export const products: Product[] = [
     lowStockThreshold: 6,
     tags: [],
     active: true,
+    popularity: 123,
+    createdAt: "2026-03-12",
   },
   {
     slug: "aluminium-foil-roll",
@@ -205,6 +231,8 @@ export const products: Product[] = [
     lowStockThreshold: 4,
     tags: ["new"],
     active: true,
+    popularity: 316,
+    createdAt: "2026-10-13",
   },
   {
     slug: "cling-film-roll",
@@ -213,10 +241,12 @@ export const products: Product[] = [
     categories: [{ category: "kitchen-and-food-storage", subcategory: "cling-film" }],
     description: "Food-safe wrap that seals bowls and leftovers tight.",
     images: [],
-    variants: [{ sku: "BKW-CLNG-30", label: "30cm x 30m", priceKobo: 220000, stockQty: 21 }],
+    variants: [{ sku: "BKW-CLNG-30", label: "30cm x 30m", priceKobo: 220000, stockQty: 0 }],
     lowStockThreshold: 4,
     tags: [],
     active: true,
+    popularity: 109,
+    createdAt: "2026-05-14",
   },
   {
     slug: "vaseline-petroleum-jelly",
@@ -232,6 +262,8 @@ export const products: Product[] = [
     lowStockThreshold: 8,
     tags: ["bestseller"],
     active: true,
+    popularity: 802,
+    createdAt: "2026-06-15",
   },
   {
     slug: "nivea-body-lotion",
@@ -242,11 +274,13 @@ export const products: Product[] = [
     images: [],
     variants: [
       { sku: "NIV-LTN-250", label: "250ml", priceKobo: 420000, stockQty: 26 },
-      { sku: "NIV-LTN-400", label: "400ml", priceKobo: 650000, compareAtKobo: 720000, stockQty: 17 },
+      { sku: "NIV-LTN-400", label: "400ml", priceKobo: 650000, compareAtKobo: 720000, stockQty: 0 },
     ],
     lowStockThreshold: 5,
     tags: ["bestseller"],
     active: true,
+    popularity: 795,
+    createdAt: "2026-07-16",
   },
   {
     slug: "garnier-micellar-water",
@@ -259,6 +293,8 @@ export const products: Product[] = [
     lowStockThreshold: 3,
     tags: ["new"],
     active: true,
+    popularity: 288,
+    createdAt: "2026-10-17",
   },
   {
     slug: "nivea-lip-balm",
@@ -271,6 +307,8 @@ export const products: Product[] = [
     lowStockThreshold: 6,
     tags: [],
     active: true,
+    popularity: 81,
+    createdAt: "2026-09-18",
   },
   {
     slug: "rexona-roll-on",
@@ -283,6 +321,8 @@ export const products: Product[] = [
     lowStockThreshold: 8,
     tags: ["bestseller"],
     active: true,
+    popularity: 774,
+    createdAt: "2026-01-19",
   },
   {
     slug: "always-ultra-sanitary-pads",
@@ -298,6 +338,8 @@ export const products: Product[] = [
     lowStockThreshold: 8,
     tags: [],
     active: true,
+    popularity: 67,
+    createdAt: "2026-02-20",
   },
   {
     slug: "cotton-buds",
@@ -310,6 +352,8 @@ export const products: Product[] = [
     lowStockThreshold: 6,
     tags: ["new"],
     active: true,
+    popularity: 260,
+    createdAt: "2026-10-21",
   },
   {
     slug: "molfix-baby-diapers",
@@ -325,6 +369,8 @@ export const products: Product[] = [
     lowStockThreshold: 5,
     tags: ["bestseller"],
     active: true,
+    popularity: 753,
+    createdAt: "2026-04-22",
   },
   {
     slug: "pampers-baby-wipes",
@@ -337,6 +383,8 @@ export const products: Product[] = [
     lowStockThreshold: 6,
     tags: ["new"],
     active: true,
+    popularity: 246,
+    createdAt: "2026-10-23",
   },
   {
     slug: "xpression-braiding-attachment",
@@ -349,6 +397,8 @@ export const products: Product[] = [
     lowStockThreshold: 8,
     tags: ["new"],
     active: true,
+    popularity: 239,
+    createdAt: "2026-10-24",
   },
   {
     slug: "dark-and-lovely-hair-cream",
@@ -361,6 +411,8 @@ export const products: Product[] = [
     lowStockThreshold: 4,
     tags: ["new"],
     active: true,
+    popularity: 232,
+    createdAt: "2026-10-25",
   },
 ];
 

@@ -57,8 +57,8 @@ function ProductRow({ label, title, items }: { label: string; title: string; ite
         <div className="px-4">
           <SectionHeading label={label} title={title} />
         </div>
-        {/* Swipeable on mobile; a single row of four on desktop. */}
-        <ul className="mt-8 flex snap-x gap-3 overflow-x-auto scroll-smooth px-4 pb-2 sm:gap-4 lg:grid lg:grid-cols-4 lg:overflow-visible lg:[&>li:nth-child(n+5)]:hidden">
+        {/* Swipeable on mobile; a single row of four on desktop. Do not add scroll-smooth here: on a snap container it stops Chrome recording LCP. */}
+        <ul className="mt-8 flex snap-x gap-3 overflow-x-auto px-4 pb-2 sm:gap-4 lg:grid lg:grid-cols-4 lg:overflow-visible lg:[&>li:nth-child(n+5)]:hidden">
           {items.map((product) => (
             <li key={product.slug} className="w-44 shrink-0 snap-start sm:w-56 lg:w-auto">
               <ProductCard product={product} />

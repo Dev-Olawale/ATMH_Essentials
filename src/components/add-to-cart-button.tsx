@@ -1,17 +1,21 @@
 "use client";
 
-import { useCart } from "@/components/cart-provider";
 import { Button } from "@/components/ui/button";
+import type { CartLine } from "@/lib/cart";
+import { setCartDrawerOpen, useCart } from "@/lib/cart-store";
 
-export function AddToCartButton({ productName }: { productName: string }) {
-  const { addItem } = useCart();
+export function AddToCartButton({ line }: { line: CartLine }) {
+  const { add } = useCart();
 
   return (
     <Button
       size="sm"
       className="w-full"
-      aria-label={`Add ${productName} to cart`}
-      onClick={addItem}
+      aria-label={`Add ${line.name} to cart`}
+      onClick={() => {
+        add(line);
+        setCartDrawerOpen(true);
+      }}
     >
       Add to cart
     </Button>
