@@ -31,6 +31,12 @@ describe("sample data", () => {
     expect(new Set(products.map((product) => product.slug)).size).toBe(products.length);
   });
 
+  it("has at least one product in every top-level category", () => {
+    for (const category of categories) {
+      expect(productsInCategory(category).length, category.slug).toBeGreaterThan(0);
+    }
+  });
+
   it("has unique subcategory slugs within each category", () => {
     for (const category of categories) {
       const slugs = allSubcategorySlugs(category);
