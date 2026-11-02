@@ -13,9 +13,24 @@ export const siteConfig = {
 
 export const whatsappHref = `https://wa.me/${siteConfig.whatsappNumber}`;
 
+/** A page's openGraph replaces the root one entirely, so shared fields are repeated here. */
+export function pageOpenGraph(title: string, description: string, url: string, images: string[] = []) {
+  return {
+    title,
+    description,
+    url,
+    siteName: siteConfig.name,
+    type: "website" as const,
+    locale: "en_NG",
+    images: images.length > 0 ? images : ["/opengraph-image"],
+  };
+}
+
 export const infoLinks = [
   { label: "About", href: "/about" },
   { label: "Delivery & Returns", href: "/delivery-returns" },
   { label: "Contact", href: "/contact" },
   { label: "FAQ", href: "/faq" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
 ] as const;

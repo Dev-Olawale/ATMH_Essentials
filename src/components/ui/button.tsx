@@ -2,14 +2,15 @@ import { Button as ButtonPrimitive } from "@base-ui/react/button"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "cn"
 
-const buttonVariants = cva(
+const variants = cva(
   "group/button inline-flex shrink-0 items-center justify-center rounded-full border border-transparent bg-clip-padding text-xs font-medium tracking-[0.18em] whitespace-nowrap uppercase transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
-        ink: "bg-ink text-white hover:bg-rose-dark",
+        ink: "bg-ink text-white hover:bg-ink/80",
         // Ink label on rose: white on --rose falls below the WCAG AA contrast ratio.
-        rose: "bg-rose text-ink hover:bg-rose-dark hover:text-white",
+        rose: "bg-rose text-ink hover:bg-ink hover:text-white",
+        outline: "border-ink bg-transparent text-ink hover:bg-ink hover:text-white",
         ghost: "text-ink hover:bg-blush-deep aria-expanded:bg-blush-deep",
       },
       size: {
@@ -27,16 +28,21 @@ const buttonVariants = cva(
   }
 )
 
+// Merged here so links styled as buttons resolve conflicts like border-transparent/border-ink.
+function buttonVariants(props?: Parameters<typeof variants>[0]) {
+  return cn(variants(props))
+}
+
 function Button({
   className,
   variant = "ink",
   size = "default",
   ...props
-}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+}: ButtonPrimitive.Props & VariantProps<typeof variants>) {
   return (
     <ButtonPrimitive
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={buttonVariants({ variant, size, className })}
       {...props}
     />
   )

@@ -3,9 +3,12 @@ import Link from "next/link";
 
 import { AddToCartButton } from "@/components/add-to-cart-button";
 import { CategoryIcon } from "@/components/category-icon";
+import { buttonVariants } from "@/components/ui/button";
 import { getCategory } from "@/data/categories";
 import type { Product } from "@/data/products";
+import { toCartLine } from "@/lib/cart";
 import { formatNaira } from "@/lib/format";
+import { productInStock } from "@/lib/listing";
 
 const tagLabels = { bestseller: "Bestseller", new: "New" } as const;
 
@@ -16,11 +19,12 @@ export function ProductCard({ product }: { product: Product }) {
   const hasRange = product.variants.some((variant) => variant.priceKobo !== cheapest.priceKobo);
   const icon = getCategory(product.categories[0].category)?.icon ?? "PackageOpen";
   const tag = product.tags[0];
+  const href = `/product/${product.slug}`;
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl bg-white">
       <Link
-        href={`/products/${product.slug}`}
+        href={href}
         className="group flex flex-1 flex-col focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none focus-visible:ring-inset"
       >
         <div className="relative aspect-square bg-blush-deep">
@@ -60,7 +64,21 @@ export function ProductCard({ product }: { product: Product }) {
         </div>
       </Link>
       <div className="px-3 pb-3 sm:px-4 sm:pb-4">
-        <AddToCartButton productName={product.name} />
+        {!productInStock(product) ? (
+          <p className="flex h-10 items-center justify-center rounded-full bg-blush text-[0.6875rem] font-medium tracking-[0.12em] text-muted uppercase">
+            Out of stock
+          </p>
+        ) : product.variants.length > 1 ? (
+          <Link
+            href={href}
+            aria-label={`Select options for ${product.name}`}
+            className={buttonVariants({ variant: "outline", size: "sm", className: "w-full" })}
+          >
+            Select options
+          </Link>
+        ) : (
+          <AddToCartButton line={toCartLine(product, product.variants[0], icon)} />
+        )}
       </div>
     </article>
   );

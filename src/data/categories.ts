@@ -168,7 +168,7 @@ export const categories: Category[] = [
 ];
 
 export function categoryHref(slug: string): string {
-  return `/categories/${slug}`;
+  return `/category/${slug}`;
 }
 
 export function getCategory(slug: string): Category | undefined {
