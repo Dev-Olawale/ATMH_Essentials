@@ -19,12 +19,12 @@ export function SiteHeader() {
         <MobileMenu />
         <Link href="/" className="mr-auto shrink-0 lg:mr-0">
           <Image
-            src="/brand/atmh-logo.png"
+            src="/brand/atmh-wordmark.png"
             alt={siteConfig.name}
-            width={480}
-            height={160}
+            width={363}
+            height={256}
             preload
-            className="h-10 w-auto lg:h-12"
+            className="h-12 w-auto lg:h-16"
           />
         </Link>
         <SearchBox className="hidden min-w-0 flex-1 lg:block" />
