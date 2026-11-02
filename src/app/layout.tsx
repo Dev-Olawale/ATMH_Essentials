@@ -44,7 +44,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${cormorant.variable} ${jost.variable} ${greatVibes.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">
+      {/* overflow-x-clip is a safety net against sideways page scroll; unlike hidden it keeps the sticky header working. */}
+      <body className="flex min-h-full flex-col overflow-x-clip">
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

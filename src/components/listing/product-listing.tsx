@@ -82,12 +82,26 @@ export function ProductListing({
   );
 }
 
+/** Mirrors ListingShell: filter sidebar on desktop, a count/sort toolbar, then the product grid. */
 export function ListingSkeleton() {
   return (
-    <div aria-hidden="true" className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
-      {Array.from({ length: 8 }, (_, index) => (
-        <div key={index} className="aspect-[3/5] animate-pulse rounded-2xl bg-blush-deep" />
-      ))}
+    <div aria-hidden="true" className="grid gap-6 lg:grid-cols-[15rem_1fr] lg:gap-10">
+      <div className="hidden flex-col gap-4 lg:flex">
+        {Array.from({ length: 4 }, (_, index) => (
+          <div key={index} className="h-20 animate-pulse rounded-xl bg-blush-deep" />
+        ))}
+      </div>
+      <div className="min-w-0">
+        <div className="mb-4 flex items-center justify-between gap-3">
+          <div className="h-5 w-24 animate-pulse rounded bg-blush-deep" />
+          <div className="h-10 w-40 animate-pulse rounded-lg bg-blush-deep" />
+        </div>
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 xl:grid-cols-4">
+          {Array.from({ length: 8 }, (_, index) => (
+            <div key={index} className="aspect-[3/5] animate-pulse rounded-2xl bg-blush-deep" />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

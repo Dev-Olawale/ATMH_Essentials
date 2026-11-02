@@ -156,7 +156,19 @@ export const categories: Category[] = [
     icon: "Scissors",
     children: subs(["Attachments", "Wools", "Hair creams", "Sprays", "Oils", "Accessories"]),
   },
-  { slug: "fragrances", name: "Fragrances", icon: "FlaskRound", needsConfirmation: true },
+  {
+    slug: "fragrances",
+    name: "Fragrances",
+    icon: "FlaskRound",
+    needsConfirmation: true,
+    children: subs([
+      "Perfumes",
+      "Perfume oils",
+      "Body mists & sprays",
+      "Gift sets",
+      "Home fragrance",
+    ]),
+  },
   { slug: "grooming", name: "Grooming", icon: "Smile", needsConfirmation: true },
   { slug: "feminine-care", name: "Feminine Care", icon: "Flower2", needsConfirmation: true },
   {

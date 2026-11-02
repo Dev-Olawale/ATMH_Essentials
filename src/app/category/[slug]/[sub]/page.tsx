@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
-import { CategoryView } from "@/components/listing/category-view";
+import { CategoryPageSkeleton, CategoryView } from "@/components/listing/category-view";
 import { pageOpenGraph, siteConfig } from "@/config/site";
 import { categories, categoryHref, getCategory } from "@/data/categories";
 import { allSubcategorySlugs, findSubcategoryPath } from "@/lib/catalog";
@@ -36,13 +37,19 @@ export async function generateMetadata({
   };
 }
 
-export default async function SubcategoryPage({
-  params,
-  searchParams,
-}: PageProps<"/category/[slug]/[sub]">) {
+async function SubcategoryContent({ params, searchParams }: PageProps<"/category/[slug]/[sub]">) {
   const { slug, sub } = await params;
   const match = resolve(slug, sub);
   if (!match) notFound();
 
   return <CategoryView category={match.category} path={match.path} searchParams={searchParams} />;
+}
+
+// URL data is awaited inside Suspense so navigations show the skeleton instantly.
+export default function SubcategoryPage(props: PageProps<"/category/[slug]/[sub]">) {
+  return (
+    <Suspense fallback={<CategoryPageSkeleton />}>
+      <SubcategoryContent {...props} />
+    </Suspense>
+  );
 }
