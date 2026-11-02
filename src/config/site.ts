@@ -1,0 +1,36 @@
+export const siteConfig = {
+  name: "ATMH Essentials",
+  title: "ATMH Essentials | Home. Beauty. Everyday Living.",
+  description:
+    "Household, cleaning, personal care, beauty and baby essentials, delivered across Nigeria. Everything you need, all in one place.",
+  tagline: "Everything you need, all in one place.",
+  // PLACEHOLDER: replace once the domain is confirmed (CLAUDE.md §7).
+  url: "http://localhost:3000",
+  // PLACEHOLDER: replace with the business number, digits only with country code.
+  whatsappNumber: "2340000000000",
+  announcement: "Fast delivery across Lagos",
+} as const;
+
+export const whatsappHref = `https://wa.me/${siteConfig.whatsappNumber}`;
+
+/** A page's openGraph replaces the root one entirely, so shared fields are repeated here. */
+export function pageOpenGraph(title: string, description: string, url: string, images: string[] = []) {
+  return {
+    title,
+    description,
+    url,
+    siteName: siteConfig.name,
+    type: "website" as const,
+    locale: "en_NG",
+    images: images.length > 0 ? images : ["/opengraph-image"],
+  };
+}
+
+export const infoLinks = [
+  { label: "About", href: "/about" },
+  { label: "Delivery & Returns", href: "/delivery-returns" },
+  { label: "Contact", href: "/contact" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
+] as const;
