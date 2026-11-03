@@ -9,6 +9,7 @@ import {
 } from "@/components/listing/product-listing";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { searchProducts } from "@/lib/catalog";
+import { getCatalog } from "@/lib/catalog-db";
 
 export const metadata: Metadata = {
   title: "Search",
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 async function SearchResults({ searchParams }: { searchParams: PageProps<"/search">["searchParams"] }) {
   const params = await searchParams;
   const q = (Array.isArray(params.q) ? params.q[0] : params.q)?.slice(0, 100).trim() ?? "";
-  const products = searchProducts(q);
+  const products = searchProducts(await getCatalog(), q);
 
   return (
     <>

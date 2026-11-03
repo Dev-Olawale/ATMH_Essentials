@@ -1,5 +1,5 @@
 import { siteConfig } from "@/config/site";
-import type { Product } from "@/data/products";
+import type { Product } from "@/lib/catalog-types";
 
 export function productJsonLd(product: Product) {
   const url = new URL(`/product/${product.slug}`, siteConfig.url).toString();
@@ -11,7 +11,7 @@ export function productJsonLd(product: Product) {
     brand: { "@type": "Brand", name: product.brand },
     sku: product.variants[0].sku,
     ...(product.images.length > 0 && {
-      image: product.images.map((image) => new URL(image, siteConfig.url).toString()),
+      image: product.images.map((image) => new URL(image.url, siteConfig.url).toString()),
     }),
     offers: product.variants.map((variant) => ({
       "@type": "Offer",

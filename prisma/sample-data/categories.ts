@@ -1,24 +1,8 @@
-import type { CategoryIconName } from "@/components/category-icon";
-
-export type Subcategory = {
-  slug: string;
-  name: string;
-  children?: Subcategory[];
-};
-
-export type Category = Subcategory & {
-  icon: CategoryIconName;
-  /** From the poster only; the owner has not yet confirmed it for launch (CLAUDE.md §4). */
-  needsConfirmation?: boolean;
-};
-
-function slugify(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/&/g, "and")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-}
+/**
+ * SAMPLE DATA: the category tree from CLAUDE.md §4, loaded by prisma/seed.ts.
+ * The storefront reads categories from the database, not from this file.
+ */
+import { slugify, type Category, type Subcategory } from "../../src/lib/catalog-types";
 
 function subs(names: string[], slugPrefix = ""): Subcategory[] {
   return names.map((name) => ({ name, slug: slugify(`${slugPrefix} ${name}`) }));
@@ -178,11 +162,3 @@ export const categories: Category[] = [
     needsConfirmation: true,
   },
 ];
-
-export function categoryHref(slug: string): string {
-  return `/category/${slug}`;
-}
-
-export function getCategory(slug: string): Category | undefined {
-  return categories.find((category) => category.slug === slug);
-}

@@ -9,26 +9,33 @@ import { ProductPurchase } from "@/components/product/product-purchase";
 import { ProductCard } from "@/components/product-card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { pageOpenGraph } from "@/config/site";
-import { categoryHref, getCategory } from "@/data/categories";
-import { getAllProducts, getProduct, relatedProducts } from "@/lib/catalog";
+import { getCategory, getProduct, relatedProducts } from "@/lib/catalog";
+import { getCatalog } from "@/lib/catalog-db";
+import { categoryHref } from "@/lib/catalog-types";
 import { productJsonLd, serializeJsonLd } from "@/lib/product-json-ld";
 
-export function generateStaticParams() {
-  return getAllProducts().map((product) => ({ slug: product.slug }));
+export async function generateStaticParams() {
+  const { products } = await getCatalog();
+  return products.map((product) => ({ slug: product.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: PageProps<"/product/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = getProduct((await getCatalog()).products, slug);
   if (!product) return {};
   const url = `/product/${slug}`;
   return {
     title: product.name,
     description: product.description,
     alternates: { canonical: url },
-    openGraph: pageOpenGraph(product.name, product.description, url, product.images),
+    openGraph: pageOpenGraph(
+      product.name,
+      product.description,
+      url,
+      product.images.map((image) => image.url),
+    ),
   };
 }
 
@@ -68,12 +75,14 @@ export default function ProductPage(props: PageProps<"/product/[slug]">) {
 
 async function ProductContent({ params }: PageProps<"/product/[slug]">) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const { categories, products } = await getCatalog();
+  const product = getProduct(products, slug);
   if (!product) notFound();
 
-  const category = getCategory(product.categories[0].category);
-  const icon = category?.icon ?? "PackageOpen";
-  const related = relatedProducts(product);
+  const primary = product.categories[0];
+  const category = primary && getCategory(categories, primary.category);
+  const icon = product.icon;
+  const related = relatedProducts(products, product);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-6 lg:py-8">

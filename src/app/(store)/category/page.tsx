@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CategoryTile } from "@/components/category-tile";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { categories } from "@/data/categories";
+import { getCatalog } from "@/lib/catalog-db";
 
 export const metadata: Metadata = {
   title: "All Categories",
@@ -12,7 +12,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/category" },
 };
 
-export default function CategoriesPage() {
+export default async function CategoriesPage() {
+  const { categories } = await getCatalog();
   return (
     <div className="mx-auto max-w-7xl px-4 py-6 lg:py-8">
       <Breadcrumbs items={[{ label: "Categories" }]} />

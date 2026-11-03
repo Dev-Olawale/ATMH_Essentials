@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import { products } from "@/data/products";
 import { productJsonLd, serializeJsonLd } from "@/lib/product-json-ld";
+import { sampleCatalog } from "@/test/sample-catalog";
+
+const { products } = sampleCatalog();
 
 describe("productJsonLd", () => {
   it("describes every variant in naira with availability", () => {
@@ -14,6 +16,12 @@ describe("productJsonLd", () => {
       availability: "https://schema.org/InStock",
     });
     expect(data.offers[1].availability).toBe("https://schema.org/OutOfStock");
+    expect(data).not.toHaveProperty("image");
+  });
+
+  it("lists photos as absolute URLs", () => {
+    const product = { ...products[0], images: [{ url: "https://cdn.example/a.webp", alt: "A" }] };
+    expect(productJsonLd(product).image).toEqual(["https://cdn.example/a.webp"]);
   });
 });
 

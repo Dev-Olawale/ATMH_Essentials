@@ -3,10 +3,13 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 import { CategoryPageSkeleton, CategoryView } from "@/components/listing/category-view";
-import { categories, categoryHref, getCategory } from "@/data/categories";
+import { getCategory } from "@/lib/catalog";
+import { getCatalog } from "@/lib/catalog-db";
+import { categoryHref } from "@/lib/catalog-types";
 import { pageOpenGraph, siteConfig } from "@/config/site";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const { categories } = await getCatalog();
   return categories.map((category) => ({ slug: category.slug }));
 }
 
@@ -14,7 +17,7 @@ export async function generateMetadata({
   params,
 }: PageProps<"/category/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const category = getCategory(slug);
+  const category = getCategory((await getCatalog()).categories, slug);
   if (!category) return {};
   const description = `Shop ${category.name} at ${siteConfig.name}, with fast delivery across Lagos.`;
   return {
@@ -27,10 +30,13 @@ export async function generateMetadata({
 
 async function CategoryContent({ params, searchParams }: PageProps<"/category/[slug]">) {
   const { slug } = await params;
-  const category = getCategory(slug);
+  const { categories, products } = await getCatalog();
+  const category = getCategory(categories, slug);
   if (!category) notFound();
 
-  return <CategoryView category={category} path={[]} searchParams={searchParams} />;
+  return (
+    <CategoryView category={category} path={[]} products={products} searchParams={searchParams} />
+  );
 }
 
 // URL data is awaited inside Suspense so navigations show the skeleton instantly.

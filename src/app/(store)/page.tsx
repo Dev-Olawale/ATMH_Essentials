@@ -7,8 +7,9 @@ import { ProductCard } from "@/components/product-card";
 import { buttonVariants } from "@/components/ui/button";
 import { Divider } from "@/components/ui/divider";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { categories, categoryHref } from "@/data/categories";
-import { getProductsByTag, type Product } from "@/data/products";
+import { bestSellers, newArrivals } from "@/lib/catalog";
+import { getCatalog } from "@/lib/catalog-db";
+import { categoryHref, type Category, type Product } from "@/lib/catalog-types";
 
 const trustItems = [
   { label: "Quality Products", Icon: BadgeCheck },
@@ -17,7 +18,7 @@ const trustItems = [
   { label: "Your Satisfaction Our Priority", Icon: HeartHandshake },
 ];
 
-function Hero() {
+function Hero({ categories }: { categories: Category[] }) {
   return (
     <section className="px-4 py-14 sm:py-20">
       <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
@@ -51,6 +52,7 @@ function Hero() {
 }
 
 function ProductRow({ label, title, items }: { label: string; title: string; items: Product[] }) {
+  if (items.length === 0) return null;
   return (
     <section className="py-12">
       <div className="mx-auto max-w-7xl">
@@ -70,10 +72,11 @@ function ProductRow({ label, title, items }: { label: string; title: string; ite
   );
 }
 
-export default function Home() {
+export default async function Home() {
+  const { categories, products } = await getCatalog();
   return (
     <>
-      <Hero />
+      <Hero categories={categories} />
       <Divider />
       <section id="categories" className="px-4 py-12">
         <div className="mx-auto max-w-7xl">
@@ -90,7 +93,7 @@ export default function Home() {
       <ProductRow
         label="Customer favourites"
         title="Best Sellers"
-        items={getProductsByTag("bestseller", 8)}
+        items={bestSellers(products)}
       />
       <section className="bg-rose px-4 py-12 text-center">
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-4">
@@ -107,7 +110,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      <ProductRow label="Just arrived" title="New In" items={getProductsByTag("new", 8)} />
+      <ProductRow label="Just arrived" title="New In" items={newArrivals(products)} />
       <section aria-label="Why shop with us" className="bg-white px-4 py-8">
         <ul className="mx-auto grid max-w-7xl grid-cols-2 gap-6 lg:grid-cols-4">
           {trustItems.map(({ label, Icon }) => (

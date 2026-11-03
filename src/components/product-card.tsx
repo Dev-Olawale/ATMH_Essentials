@@ -4,8 +4,7 @@ import Link from "next/link";
 import { AddToCartButton } from "@/components/add-to-cart-button";
 import { CategoryIcon } from "@/components/category-icon";
 import { buttonVariants } from "@/components/ui/button";
-import { getCategory } from "@/data/categories";
-import type { Product } from "@/data/products";
+import type { Product } from "@/lib/catalog-types";
 import { toCartLine } from "@/lib/cart";
 import { formatNaira } from "@/lib/format";
 import { productInStock } from "@/lib/listing";
@@ -17,8 +16,9 @@ export function ProductCard({ product }: { product: Product }) {
     variant.priceKobo < lowest.priceKobo ? variant : lowest,
   );
   const hasRange = product.variants.some((variant) => variant.priceKobo !== cheapest.priceKobo);
-  const icon = getCategory(product.categories[0].category)?.icon ?? "PackageOpen";
-  const tag = product.tags[0];
+  const icon = product.icon;
+  // Only these tags get a badge; any other admin tags are for filtering and search.
+  const tag = (["bestseller", "new"] as const).find((name) => product.tags.includes(name));
   const href = `/product/${product.slug}`;
 
   return (
@@ -30,8 +30,8 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="relative aspect-square bg-blush-deep">
           {product.images[0] ? (
             <Image
-              src={product.images[0]}
-              alt={product.name}
+              src={product.images[0].url}
+              alt={product.images[0].alt}
               fill
               sizes="(min-width: 1024px) 25vw, 11rem"
               className="object-cover"

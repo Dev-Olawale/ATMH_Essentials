@@ -4,17 +4,19 @@ import { Suspense } from "react";
 
 import { CategoryPageSkeleton, CategoryView } from "@/components/listing/category-view";
 import { pageOpenGraph, siteConfig } from "@/config/site";
-import { categories, categoryHref, getCategory } from "@/data/categories";
-import { allSubcategorySlugs, findSubcategoryPath } from "@/lib/catalog";
+import { allSubcategorySlugs, findSubcategoryPath, getCategory } from "@/lib/catalog";
+import { getCatalog } from "@/lib/catalog-db";
+import { categoryHref, type Category } from "@/lib/catalog-types";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const { categories } = await getCatalog();
   return categories.flatMap((category) =>
     allSubcategorySlugs(category).map((sub) => ({ slug: category.slug, sub })),
   );
 }
 
-function resolve(slug: string, sub: string) {
-  const category = getCategory(slug);
+function resolve(categories: Category[], slug: string, sub: string) {
+  const category = getCategory(categories, slug);
   const path = category && findSubcategoryPath(category, sub);
   return category && path ? { category, path } : undefined;
 }
@@ -23,7 +25,7 @@ export async function generateMetadata({
   params,
 }: PageProps<"/category/[slug]/[sub]">): Promise<Metadata> {
   const { slug, sub } = await params;
-  const match = resolve(slug, sub);
+  const match = resolve((await getCatalog()).categories, slug, sub);
   if (!match) return {};
   const name = match.path.at(-1)!.name;
   const title = `${name} - ${match.category.name}`;
@@ -39,10 +41,18 @@ export async function generateMetadata({
 
 async function SubcategoryContent({ params, searchParams }: PageProps<"/category/[slug]/[sub]">) {
   const { slug, sub } = await params;
-  const match = resolve(slug, sub);
+  const { categories, products } = await getCatalog();
+  const match = resolve(categories, slug, sub);
   if (!match) notFound();
 
-  return <CategoryView category={match.category} path={match.path} searchParams={searchParams} />;
+  return (
+    <CategoryView
+      category={match.category}
+      path={match.path}
+      products={products}
+      searchParams={searchParams}
+    />
+  );
 }
 
 // URL data is awaited inside Suspense so navigations show the skeleton instantly.

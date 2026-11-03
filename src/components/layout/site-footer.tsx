@@ -3,7 +3,8 @@ import Link from "next/link";
 import { FacebookIcon, InstagramIcon, TikTokIcon } from "@/components/social-icons";
 import { Divider } from "@/components/ui/divider";
 import { infoLinks, siteConfig } from "@/config/site";
-import { categories, categoryHref } from "@/data/categories";
+import { getCatalog } from "@/lib/catalog-db";
+import { categoryHref } from "@/lib/catalog-types";
 
 // PLACEHOLDER: handles are still to be confirmed (CLAUDE.md §7).
 const socials = [
@@ -17,7 +18,8 @@ async function CopyrightYear() {
   return <>{new Date().getFullYear()}</>;
 }
 
-export function SiteFooter() {
+export async function SiteFooter() {
+  const { categories } = await getCatalog();
   return (
     <footer className="bg-blush-deep px-4 pt-12 pb-24 lg:pb-12">
       <div className="mx-auto max-w-7xl">

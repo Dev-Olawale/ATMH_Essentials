@@ -1,19 +1,33 @@
 import { describe, expect, it } from "vitest";
 
-import { categories, getCategory } from "@/data/categories";
-import { products } from "@/data/products";
+import { products as sampleProducts } from "../../prisma/sample-data/products";
 import {
   allSubcategorySlugs,
+  bestSellers,
   findSubcategoryPath,
-  productsInCategory,
-  relatedProducts,
-  searchCategories,
-  searchProducts,
+  getCategory as findCategory,
+  newArrivals,
+  productsInCategory as inCategory,
+  relatedProducts as relatedIn,
+  searchCategories as findCategories,
+  searchProducts as find,
 } from "@/lib/catalog";
+import { buildCatalog } from "@/lib/catalog-build";
+import type { Category, Product, Subcategory } from "@/lib/catalog-types";
+import { sampleCatalog, sampleRows } from "@/test/sample-catalog";
+
+const catalog = sampleCatalog();
+const { categories, products } = catalog;
+const getCategory = (slug: string) => findCategory(categories, slug);
+const productsInCategory = (category: Category, sub?: Subcategory) =>
+  inCategory(products, category, sub);
+const relatedProducts = (product: Product) => relatedIn(products, product);
+const searchProducts = (query: string) => find(catalog, query);
+const searchCategories = (query: string) => findCategories(categories, query);
 
 describe("sample data", () => {
   it("only references categories and subcategories that exist", () => {
-    for (const product of products) {
+    for (const product of sampleProducts) {
       for (const ref of product.categories) {
         const category = getCategory(ref.category);
         expect(category, `${product.slug} -> ${ref.category}`).toBeDefined();
@@ -25,10 +39,15 @@ describe("sample data", () => {
   });
 
   it("stores whole-kobo prices and unique identifiers", () => {
-    const variants = products.flatMap((product) => product.variants);
+    const variants = sampleProducts.flatMap((product) => product.variants);
     expect(variants.every((variant) => Number.isSafeInteger(variant.priceKobo))).toBe(true);
     expect(new Set(variants.map((variant) => variant.sku)).size).toBe(variants.length);
-    expect(new Set(products.map((product) => product.slug)).size).toBe(products.length);
+    expect(new Set(sampleProducts.map((product) => product.slug)).size).toBe(sampleProducts.length);
+  });
+
+  it("keeps every sample product through buildCatalog", () => {
+    expect(products).toHaveLength(sampleProducts.filter((product) => product.active).length);
+    expect(products.every((product) => product.categories.length > 0)).toBe(true);
   });
 
   it("has at least one product in every top-level category", () => {
@@ -82,6 +101,56 @@ describe("relatedProducts", () => {
         item.categories.some((ref) => ref.category === product.categories[0].category),
       ),
     ).toBe(true);
+  });
+});
+
+describe("buildCatalog", () => {
+  it("hides an inactive category, its subtree and the links to it", () => {
+    const { categoryRows, productRows } = sampleRows();
+    const rows = categoryRows.map((row) =>
+      row.id.startsWith("fragrances") ? { ...row, active: false } : row,
+    );
+    const built = buildCatalog(rows, productRows);
+    expect(built.categories.map((category) => category.slug)).not.toContain("fragrances");
+    const reed = built.products.find((product) => product.slug === "reed-diffuser")!;
+    expect(reed.categories).toEqual([
+      { category: "cleaning-and-household", subcategory: "air-fresheners" },
+    ]);
+    expect(reed.icon).toBe("SprayCan");
+  });
+
+  it("orders categories by sortOrder and drops products with no variants", () => {
+    const { categoryRows, productRows } = sampleRows();
+    const rows = categoryRows.map((row) => (row.id === "laundry" ? { ...row, sortOrder: -1 } : row));
+    const withEmpty = [...productRows, { ...productRows[0], slug: "empty", variants: [] }];
+    const built = buildCatalog(rows, withEmpty);
+    expect(built.categories[0].slug).toBe("laundry");
+    expect(built.products.some((product) => product.slug === "empty")).toBe(false);
+  });
+
+  it("falls back to the product name for missing alt text and to a default icon", () => {
+    const { productRows } = sampleRows();
+    const row = { ...productRows[0], categories: [], images: [{ url: "https://x/a.webp", alt: "" }] };
+    const [product] = buildCatalog([], [row]).products;
+    expect(product.images[0].alt).toBe(row.name);
+    expect(product.icon).toBe("PackageOpen");
+  });
+});
+
+describe("homepage rows", () => {
+  it("puts featured products first in Best Sellers, even untagged ones", () => {
+    const featured = { ...products.find((product) => product.tags.length === 0)!, featured: true };
+    const rows = bestSellers([...products.filter((p) => p.slug !== featured.slug), featured]);
+    expect(rows[0].slug).toBe(featured.slug);
+    expect(rows.slice(1).every((product) => product.tags.includes("bestseller"))).toBe(true);
+    expect(rows.length).toBeLessThanOrEqual(8);
+  });
+
+  it("lists New In newest first", () => {
+    const rows = newArrivals(products);
+    expect(rows.every((product) => product.tags.includes("new"))).toBe(true);
+    const dates = rows.map((product) => product.createdAt);
+    expect([...dates].sort().reverse()).toEqual(dates);
   });
 });
 

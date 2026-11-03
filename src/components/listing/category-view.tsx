@@ -8,7 +8,7 @@ import {
   ProductListing,
 } from "@/components/listing/product-listing";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { categoryHref, type Category, type Subcategory } from "@/data/categories";
+import { categoryHref, type Category, type Product, type Subcategory } from "@/lib/catalog-types";
 import { productsInCategory } from "@/lib/catalog";
 import type { RawParams } from "@/lib/listing";
 
@@ -50,15 +50,18 @@ export function CategoryPageSkeleton() {
 export function CategoryView({
   category,
   path,
+  products: allProducts,
   searchParams,
 }: {
   category: Category;
   path: Subcategory[];
+  /** The whole active catalog; filtered to this category here. */
+  products: Product[];
   searchParams: Promise<RawParams>;
 }) {
   const root = categoryHref(category.slug);
   const current = path.at(-1);
-  const products = productsInCategory(category, current);
+  const products = productsInCategory(allProducts, category, current);
   const heading = current?.name ?? category.name;
   const basePath = current ? `${root}/${current.slug}` : root;
 

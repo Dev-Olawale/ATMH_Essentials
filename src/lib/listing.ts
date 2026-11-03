@@ -1,4 +1,4 @@
-import type { Product } from "@/data/products";
+import type { Product } from "@/lib/catalog-types";
 
 export const PAGE_SIZE = 12;
 

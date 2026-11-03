@@ -7,9 +7,9 @@ import { useState } from "react";
 import { CategoryIcon } from "@/components/category-icon";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { categories, categoryHref } from "@/data/categories";
+import { categoryHref, type Category } from "@/lib/catalog-types";
 
-export function MobileMenu() {
+export function MobileMenu({ categories }: { categories: Category[] }) {
   const [open, setOpen] = useState(false);
 
   return (

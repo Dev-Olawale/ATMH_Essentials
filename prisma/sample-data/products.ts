@@ -1,44 +1,27 @@
 /**
- * SAMPLE DATA: for development only.
+ * SAMPLE DATA: for development only, loaded by prisma/seed.ts (every record gets isSample = true).
  * Products, prices and stock levels are illustrative, not the ATMH catalogue.
  * Replace with the owner's product list (CLAUDE.md §7) before launch.
  * All money values are integers in kobo.
  */
 
-export type ProductTag = "bestseller" | "new";
-
-export type ProductVariant = {
-  sku: string;
-  label: string;
-  priceKobo: number;
-  compareAtKobo?: number;
-  stockQty: number;
-};
-
-export type ProductCategoryRef = {
-  category: string;
-  subcategory?: string;
-};
-
-export type Product = {
+export type SampleProduct = {
   slug: string;
   name: string;
   brand: string;
-  /** Many-to-many: a product can appear in several categories. The first is its primary one. */
-  categories: ProductCategoryRef[];
+  /** Many-to-many: the first category is the primary one. */
+  categories: { category: string; subcategory?: string }[];
   description: string;
   images: string[];
-  variants: ProductVariant[];
+  variants: { sku: string; label: string; priceKobo: number; compareAtKobo?: number; stockQty: number }[];
   lowStockThreshold: number;
-  tags: ProductTag[];
+  tags: ("bestseller" | "new")[];
   active: boolean;
-  /** Higher sells more; drives the "popular" sort. */
   popularity: number;
-  /** ISO date; drives the "newest" sort. */
   createdAt: string;
 };
 
-export const products: Product[] = [
+export const products: SampleProduct[] = [
   {
     slug: "ariel-detergent-powder",
     name: "Ariel Detergent Powder",
@@ -825,8 +808,3 @@ export const products: Product[] = [
     createdAt: "2026-10-26",
   },
 ];
-
-export function getProductsByTag(tag: ProductTag, limit?: number): Product[] {
-  const tagged = products.filter((product) => product.active && product.tags.includes(tag));
-  return limit === undefined ? tagged : tagged.slice(0, limit);
-}

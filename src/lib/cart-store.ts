@@ -6,10 +6,12 @@ import {
   addLine,
   cartCount,
   cartSubtotalKobo,
+  reconcileCart,
   removeLine,
   sanitizeLines,
   setLineQty,
   type CartLine,
+  type FreshVariant,
 } from "@/lib/cart";
 
 const STORAGE_KEY = "atmh-cart-v1";
@@ -17,6 +19,8 @@ const EMPTY: CartLine[] = [];
 
 let lines: CartLine[] | null = null;
 let drawerOpen = false;
+let notice: string | null = null;
+let synced = false;
 const listeners = new Set<() => void>();
 
 function notify() {
@@ -83,6 +87,49 @@ export function useCart() {
     setQty: (sku: string, qty: number) => commit(setLineQty(getLines(), sku, qty)),
     remove: (sku: string) => commit(removeLine(getLines(), sku)),
   };
+}
+
+/**
+ * Checks the saved cart against the store once per page load, so prices, names and stock
+ * are current. Network errors leave the cart as it is.
+ */
+export async function syncCart() {
+  if (synced) return;
+  synced = true;
+  const saved = getLines();
+  if (saved.length === 0) return;
+  try {
+    const response = await fetch("/api/cart", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ skus: saved.map((line) => line.sku) }),
+    });
+    if (!response.ok) return;
+    const { items } = (await response.json()) as { items: FreshVariant[] };
+    // The shopper may have changed the cart while the request was in flight.
+    const result = reconcileCart(getLines(), new Map(items.map((item) => [item.sku, item])));
+    if (result.removed.length > 0) {
+      notice = `No longer available, so removed from your cart: ${result.removed.join(", ")}.`;
+    } else if (result.changed) {
+      notice = "Some prices or quantities in your cart have been updated.";
+    }
+    if (result.removed.length > 0 || result.changed) commit(result.lines);
+  } catch {
+    // Offline or the server is unreachable: keep the saved cart.
+  }
+}
+
+export function useCartNotice() {
+  return useSyncExternalStore(
+    subscribe,
+    () => notice,
+    () => null,
+  );
+}
+
+export function dismissCartNotice() {
+  notice = null;
+  notify();
 }
 
 export function useCartDrawer() {

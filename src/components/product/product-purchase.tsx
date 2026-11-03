@@ -7,7 +7,7 @@ import type { CategoryIconName } from "@/components/category-icon";
 import { QuantityStepper } from "@/components/quantity-stepper";
 import { WhatsAppIcon } from "@/components/social-icons";
 import { Button, buttonVariants } from "@/components/ui/button";
-import type { Product } from "@/data/products";
+import type { Product } from "@/lib/catalog-types";
 import { MAX_LINE_QTY, toCartLine } from "@/lib/cart";
 import { setCartDrawerOpen, useCart } from "@/lib/cart-store";
 import { formatNaira } from "@/lib/format";
@@ -30,7 +30,7 @@ export function ProductPurchase({
   const limit = Math.min(variant.stockQty, MAX_LINE_QTY);
   const qty = Math.max(1, Math.min(requestedQty, limit));
   const available = variant.stockQty > 0;
-  const low = available && variant.stockQty <= product.lowStockThreshold;
+  const low = available && variant.stockQty <= variant.lowStockThreshold;
 
   return (
     <div className="flex flex-col gap-5">
