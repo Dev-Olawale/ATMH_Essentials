@@ -1,0 +1,4 @@
+product_slug,product_name,brand,description,categories,tags,featured,active,variant_sku,variant_label,price_naira,compare_at_naira,stock,low_stock_threshold
+ariel-detergent-powder,Ariel Detergent Powder,Ariel,Tough-on-stains washing powder for hand and machine wash.,cleaning-and-household/detergents|laundry/laundry-detergent,bestseller,yes,yes,ARL-PWD-900,900g,2800,,40,6
+ariel-detergent-powder,Ariel Detergent Powder,Ariel,Tough-on-stains washing powder for hand and machine wash.,cleaning-and-household/detergents|laundry/laundry-detergent,bestseller,yes,yes,ARL-PWD-2K,2kg,5900,6500,25,6
+al-rehab-choco-musk,Al Rehab Choco Musk Perfume Oil,Al Rehab,"Alcohol-free roll-on oil with a sweet chocolate, vanilla and musk scent.",fragrances/perfume-oils,new,no,yes,ALR-CHM-6,6ml,2500,,60,10
