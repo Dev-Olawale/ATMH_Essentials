@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 
-import { CategoryPageSkeleton, CategoryView } from "@/components/listing/category-view";
+import { CategoryView } from "@/components/listing/category-view";
 import { getCategory } from "@/lib/catalog";
 import { getCatalog } from "@/lib/catalog-db";
 import { categoryHref } from "@/lib/catalog-types";
@@ -28,7 +27,12 @@ export async function generateMetadata({
   };
 }
 
-async function CategoryContent({ params, searchParams }: PageProps<"/category/[slug]">) {
+// The heading, breadcrumbs and chips render in the first HTML (good LCP); only the product grid,
+// which depends on the filters in the query string, streams in behind its own Suspense boundary.
+// This opts the route out of the "instant navigation" dev check for the params lookup.
+export const instant = false;
+
+export default async function CategoryPage({ params, searchParams }: PageProps<"/category/[slug]">) {
   const { slug } = await params;
   const { categories, products } = await getCatalog();
   const category = getCategory(categories, slug);
@@ -36,14 +40,5 @@ async function CategoryContent({ params, searchParams }: PageProps<"/category/[s
 
   return (
     <CategoryView category={category} path={[]} products={products} searchParams={searchParams} />
-  );
-}
-
-// URL data is awaited inside Suspense so navigations show the skeleton instantly.
-export default function CategoryPage(props: PageProps<"/category/[slug]">) {
-  return (
-    <Suspense fallback={<CategoryPageSkeleton />}>
-      <CategoryContent {...props} />
-    </Suspense>
   );
 }

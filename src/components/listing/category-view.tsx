@@ -24,28 +24,6 @@ async function ResolvedListing({
   return <ProductListing products={products} params={await searchParams} basePath={basePath} />;
 }
 
-/** Fallback while the route's params resolve; matches CategoryView's layout. */
-export function CategoryPageSkeleton() {
-  return (
-    <div aria-hidden="true" className="mx-auto max-w-7xl px-4 py-6 lg:py-8">
-      <div className="h-6 w-48 animate-pulse rounded bg-blush-deep" />
-      <div className="mt-6 flex flex-col items-center gap-2">
-        <div className="h-4 w-12 animate-pulse rounded bg-blush-deep" />
-        <div className="h-9 w-64 max-w-full animate-pulse rounded bg-blush-deep sm:h-10" />
-        <span className="mt-1 h-px w-16 bg-gold" />
-      </div>
-      <div className="mt-6 flex gap-2 overflow-hidden pb-2 lg:justify-center">
-        {Array.from({ length: 6 }, (_, index) => (
-          <div key={index} className="h-10 w-24 shrink-0 animate-pulse rounded-full bg-blush-deep" />
-        ))}
-      </div>
-      <div className="mt-6">
-        <ListingSkeleton />
-      </div>
-    </div>
-  );
-}
-
 /** Shared by the category and subcategory routes. `path` is empty on the category itself. */
 export function CategoryView({
   category,

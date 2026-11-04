@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ProductGallery } from "@/components/product/product-gallery";
@@ -39,41 +38,12 @@ export async function generateMetadata({
   };
 }
 
-/** Fallback while the route's params resolve; matches the gallery + details layout. */
-function ProductPageSkeleton() {
-  return (
-    <div aria-hidden="true" className="mx-auto max-w-7xl px-4 py-6 lg:py-8">
-      <div className="h-6 w-56 max-w-full animate-pulse rounded bg-blush-deep" />
-      <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:gap-12">
-        <div className="aspect-square animate-pulse rounded-2xl bg-blush-deep" />
-        <div className="flex flex-col gap-5">
-          <div className="flex flex-col gap-2">
-            <div className="h-4 w-20 animate-pulse rounded bg-blush-deep" />
-            <div className="h-10 w-3/4 animate-pulse rounded bg-blush-deep" />
-          </div>
-          <div className="h-8 w-32 animate-pulse rounded bg-blush-deep" />
-          <div className="flex gap-2">
-            <div className="h-10 w-20 animate-pulse rounded-full bg-blush-deep" />
-            <div className="h-10 w-20 animate-pulse rounded-full bg-blush-deep" />
-          </div>
-          <div className="h-12 w-full animate-pulse rounded-full bg-blush-deep" />
-          <div className="h-24 w-full animate-pulse rounded-xl bg-blush-deep" />
-        </div>
-      </div>
-    </div>
-  );
-}
+// Product pages are prerendered for every known slug, so letting the page wait for its params keeps
+// the heading and price in the first HTML (good LCP). Navigations to them are prefetched anyway.
+// This opts the route out of the "instant navigation" dev check that asked for a Suspense boundary.
+export const instant = false;
 
-// URL data is awaited inside Suspense so navigations show the skeleton instantly.
-export default function ProductPage(props: PageProps<"/product/[slug]">) {
-  return (
-    <Suspense fallback={<ProductPageSkeleton />}>
-      <ProductContent {...props} />
-    </Suspense>
-  );
-}
-
-async function ProductContent({ params }: PageProps<"/product/[slug]">) {
+export default async function ProductPage({ params }: PageProps<"/product/[slug]">) {
   const { slug } = await params;
   const { categories, products } = await getCatalog();
   const product = getProduct(products, slug);
