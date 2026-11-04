@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import type { Product } from "@/data/products";
+import type { Product } from "@/lib/catalog-types";
 import {
   activeFilterCount,
   applyListing,
@@ -15,6 +15,7 @@ function product(slug: string, overrides: Partial<Product>, prices: [number, num
     name: slug,
     brand: "A",
     categories: [],
+    icon: "PackageOpen",
     description: "",
     images: [],
     variants: prices.map(([priceKobo, stockQty], index) => ({
@@ -22,10 +23,10 @@ function product(slug: string, overrides: Partial<Product>, prices: [number, num
       label: String(index),
       priceKobo,
       stockQty,
+      lowStockThreshold: 1,
     })),
-    lowStockThreshold: 1,
     tags: [],
-    active: true,
+    featured: false,
     popularity: 0,
     createdAt: "2026-01-01",
     ...overrides,

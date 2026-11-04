@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 import { searchCategories, searchProducts, type CategoryMatch } from "@/lib/catalog";
+import { getCatalog } from "@/lib/catalog-db";
 import { lowestPriceKobo } from "@/lib/listing";
 
 export type SearchSuggestions = {
@@ -8,18 +9,19 @@ export type SearchSuggestions = {
   categories: CategoryMatch[];
 };
 
-export function GET(request: NextRequest) {
+export async function GET(request: NextRequest) {
   const query = (request.nextUrl.searchParams.get("q") ?? "").slice(0, 100).trim();
-  const body: SearchSuggestions = query
+  const catalog = query ? await getCatalog() : undefined;
+  const body: SearchSuggestions = catalog
     ? {
-        products: searchProducts(query)
+        products: searchProducts(catalog, query)
           .slice(0, 5)
           .map((product) => ({
             slug: product.slug,
             name: product.name,
             priceKobo: lowestPriceKobo(product),
           })),
-        categories: searchCategories(query).slice(0, 3),
+        categories: searchCategories(catalog.categories, query).slice(0, 3),
       }
     : { products: [], categories: [] };
   return NextResponse.json(body);

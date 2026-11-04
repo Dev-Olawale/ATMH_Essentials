@@ -1,15 +1,21 @@
 "use client";
 
 import { ShoppingBag } from "lucide-react";
+import { useEffect } from "react";
 
 import { CartDrawerContents } from "@/components/cart/cart-contents";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { setCartDrawerOpen, useCart, useCartDrawer } from "@/lib/cart-store";
+import { setCartDrawerOpen, syncCart, useCart, useCartDrawer } from "@/lib/cart-store";
 
 export function CartLink() {
   const { count } = useCart();
   const open = useCartDrawer();
+
+  // The header is on every store page, so this keeps the saved cart current.
+  useEffect(() => {
+    void syncCart();
+  }, []);
 
   return (
     <>

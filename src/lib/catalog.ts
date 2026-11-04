@@ -1,14 +1,19 @@
-import { categories, categoryHref, type Category, type Subcategory } from "@/data/categories";
-import { products, type Product } from "@/data/products";
+import {
+  categoryHref,
+  type Catalog,
+  type Category,
+  type Product,
+  type Subcategory,
+} from "@/lib/catalog-types";
 
-const activeProducts = products.filter((product) => product.active);
+/** Pure helpers over a catalog loaded by getCatalog() (src/lib/catalog-db.ts). */
 
-export function getAllProducts(): Product[] {
-  return activeProducts;
+export function getCategory(categories: Category[], slug: string): Category | undefined {
+  return categories.find((category) => category.slug === slug);
 }
 
-export function getProduct(slug: string): Product | undefined {
-  return activeProducts.find((product) => product.slug === slug);
+export function getProduct(products: Product[], slug: string): Product | undefined {
+  return products.find((product) => product.slug === slug);
 }
 
 /** The route from a category down to a subcategory slug, excluding the category itself. */
@@ -30,9 +35,13 @@ export function allSubcategorySlugs(category: Category): string[] {
 }
 
 /** Products in a category, or in a subcategory and everything beneath it. */
-export function productsInCategory(category: Category, subcategory?: Subcategory): Product[] {
+export function productsInCategory(
+  products: Product[],
+  category: Category,
+  subcategory?: Subcategory,
+): Product[] {
   const allowed = subcategory ? new Set(descendantSlugs(subcategory)) : undefined;
-  return activeProducts.filter((product) =>
+  return products.filter((product) =>
     product.categories.some(
       (ref) =>
         ref.category === category.slug &&
@@ -41,9 +50,10 @@ export function productsInCategory(category: Category, subcategory?: Subcategory
   );
 }
 
-export function relatedProducts(product: Product, limit = 4): Product[] {
+export function relatedProducts(products: Product[], product: Product, limit = 4): Product[] {
   const primary = product.categories[0]?.category;
-  return activeProducts
+  if (!primary) return [];
+  return products
     .filter(
       (other) =>
         other.slug !== product.slug && other.categories.some((ref) => ref.category === primary),
@@ -52,9 +62,25 @@ export function relatedProducts(product: Product, limit = 4): Product[] {
     .slice(0, limit);
 }
 
-function categoryNames(product: Product): string[] {
+/** Homepage Best Sellers: featured products first, then products tagged "bestseller". */
+export function bestSellers(products: Product[], limit = 8): Product[] {
+  return products
+    .filter((product) => product.featured || product.tags.includes("bestseller"))
+    .sort((a, b) => Number(b.featured) - Number(a.featured) || b.popularity - a.popularity)
+    .slice(0, limit);
+}
+
+/** Homepage New In: products tagged "new", newest first. */
+export function newArrivals(products: Product[], limit = 8): Product[] {
+  return products
+    .filter((product) => product.tags.includes("new"))
+    .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+    .slice(0, limit);
+}
+
+function categoryNames(categories: Category[], product: Product): string[] {
   return product.categories.flatMap((ref) => {
-    const category = categories.find((candidate) => candidate.slug === ref.category);
+    const category = getCategory(categories, ref.category);
     if (!category) return [];
     const path = ref.subcategory ? findSubcategoryPath(category, ref.subcategory) : undefined;
     return [category.name, ...(path ?? []).map((node) => node.name)];
@@ -66,11 +92,13 @@ function tokens(query: string): string[] {
 }
 
 /** Every word in the query must appear in the product's name, brand or categories. */
-export function searchProducts(query: string): Product[] {
+export function searchProducts({ categories, products }: Catalog, query: string): Product[] {
   const words = tokens(query);
-  if (words.length === 0) return activeProducts;
-  return activeProducts.filter((product) => {
-    const haystack = [product.name, product.brand, ...categoryNames(product)].join(" ").toLowerCase();
+  if (words.length === 0) return products;
+  return products.filter((product) => {
+    const haystack = [product.name, product.brand, ...categoryNames(categories, product)]
+      .join(" ")
+      .toLowerCase();
     return words.every((word) => haystack.includes(word));
   });
 }
@@ -90,7 +118,7 @@ function flatten(category: Category): CategoryMatch[] {
   return [{ name: category.name, href: categoryHref(category.slug) }, ...walk(category)];
 }
 
-export function searchCategories(query: string): CategoryMatch[] {
+export function searchCategories(categories: Category[], query: string): CategoryMatch[] {
   const words = tokens(query);
   if (words.length === 0) return [];
   return categories

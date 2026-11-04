@@ -119,7 +119,10 @@ Products may share an entry across categories (e.g. handwash appears in Bathroom
 
 ## 6. Working rules for Claude Code
 
-- Work in small, reviewable steps; one feature per branch/PR.
+- Work in small, reviewable steps.
+- Branching: all work is committed to the `dev` branch. Never commit, push or merge to `main`. Do not create other branches unless I ask.
+- Before starting any task: confirm the current branch is `dev` and up to date with origin (`git pull`). If not on `dev`, stop and tell me.
+- After finishing: commit to `dev` with a clear message and push. I test on dev, then open the PR to main myself.
 - Use brand tokens from §3 via Tailwind config, never hard-coded hex values in components.
 - All prices stored as integers in **kobo**; display in naira.
 - Never commit secrets. Use `.env.local` with an `.env.example` listing every variable.

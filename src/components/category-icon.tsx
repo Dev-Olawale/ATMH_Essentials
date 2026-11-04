@@ -32,6 +32,8 @@ const icons = {
 
 export type CategoryIconName = keyof typeof icons;
 
+export const categoryIconNames = Object.keys(icons) as CategoryIconName[];
+
 export function CategoryIcon({ name, ...props }: { name: CategoryIconName } & LucideProps) {
   const Icon = icons[name];
   return <Icon aria-hidden="true" {...props} />;

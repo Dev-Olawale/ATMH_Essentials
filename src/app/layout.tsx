@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Great_Vibes, Jost } from "next/font/google";
 
-import { SiteFooter } from "@/components/layout/site-footer";
-import { SiteHeader } from "@/components/layout/site-header";
-import { WhatsAppButton } from "@/components/layout/whatsapp-button";
 import { siteConfig } from "@/config/site";
+import { isSiteIndexable } from "@/lib/site-url";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -28,6 +26,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: { default: siteConfig.title, template: `%s | ${siteConfig.name}` },
   description: siteConfig.description,
+  // Until launch (SITE_INDEXABLE !== "true") every page asks search engines not to index it.
+  ...(!isSiteIndexable() && { robots: { index: false, follow: false } }),
   openGraph: {
     title: siteConfig.title,
     description: siteConfig.description,
@@ -45,12 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${cormorant.variable} ${jost.variable} ${greatVibes.variable} h-full antialiased`}
     >
       {/* overflow-x-clip is a safety net against sideways page scroll; unlike hidden it keeps the sticky header working. */}
-      <body className="flex min-h-full flex-col overflow-x-clip">
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
-        <WhatsAppButton />
-      </body>
+      <body className="flex min-h-full flex-col overflow-x-clip">{children}</body>
     </html>
   );
 }

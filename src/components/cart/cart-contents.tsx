@@ -7,7 +7,7 @@ import { CategoryIcon, type CategoryIconName } from "@/components/category-icon"
 import { QuantityStepper } from "@/components/quantity-stepper";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { lineTotalKobo, MAX_LINE_QTY, type CartLine } from "@/lib/cart";
-import { useCart, useHydrated } from "@/lib/cart-store";
+import { dismissCartNotice, useCart, useCartNotice, useHydrated } from "@/lib/cart-store";
 import { formatNaira } from "@/lib/format";
 
 function CartLineItem({ line, onNavigate }: { line: CartLine; onNavigate?: () => void }) {
@@ -88,6 +88,22 @@ function CartSummary({ onNavigate, showCartLink }: { onNavigate?: () => void; sh
   );
 }
 
+function CartNotice() {
+  const notice = useCartNotice();
+  if (!notice) return null;
+  return (
+    <div
+      role="status"
+      className="mb-4 flex items-start justify-between gap-3 rounded-xl bg-blush-deep p-3 text-sm text-ink"
+    >
+      <p>{notice}</p>
+      <button type="button" onClick={dismissCartNotice} className="shrink-0 text-xs underline">
+        Dismiss
+      </button>
+    </div>
+  );
+}
+
 function CartEmpty({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <div className="flex flex-col items-center gap-4 py-12 text-center">
@@ -110,12 +126,16 @@ export function CartDrawerContents({ onNavigate }: { onNavigate: () => void }) {
   if (lines.length === 0) {
     return (
       <div className="px-4">
+        <CartNotice />
         <CartEmpty onNavigate={onNavigate} />
       </div>
     );
   }
   return (
     <>
+      <div className="px-4 pt-2">
+        <CartNotice />
+      </div>
       <ul className="min-h-0 flex-1 overflow-y-auto px-4">
         {lines.map((line) => (
           <CartLineItem key={line.sku} line={line} onNavigate={onNavigate} />
@@ -136,18 +156,28 @@ export function CartPageContents() {
   if (!hydrated) {
     return <div aria-hidden="true" className="h-64 animate-pulse rounded-2xl bg-blush-deep" />;
   }
-  if (lines.length === 0) return <CartEmpty />;
+  if (lines.length === 0) {
+    return (
+      <>
+        <CartNotice />
+        <CartEmpty />
+      </>
+    );
+  }
 
   return (
-    <div className="grid items-start gap-8 lg:grid-cols-[2fr_1fr]">
-      <ul className="rounded-2xl bg-white px-4">
-        {lines.map((line) => (
-          <CartLineItem key={line.sku} line={line} />
-        ))}
-      </ul>
-      <div className="rounded-2xl bg-white p-4">
-        <CartSummary />
+    <>
+      <CartNotice />
+      <div className="grid items-start gap-8 lg:grid-cols-[2fr_1fr]">
+        <ul className="rounded-2xl bg-white px-4">
+          {lines.map((line) => (
+            <CartLineItem key={line.sku} line={line} />
+          ))}
+        </ul>
+        <div className="rounded-2xl bg-white p-4">
+          <CartSummary />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

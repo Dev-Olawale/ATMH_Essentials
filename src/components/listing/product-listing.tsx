@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ListingShell } from "@/components/listing/listing-shell";
 import { ProductCard } from "@/components/product-card";
 import { buttonVariants } from "@/components/ui/button";
-import type { Product } from "@/data/products";
+import type { Product } from "@/lib/catalog-types";
 import {
   applyListing,
   listingQuery,

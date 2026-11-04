@@ -7,24 +7,26 @@ import { MobileMenu } from "@/components/layout/mobile-menu";
 import { SearchBox } from "@/components/layout/search-box";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { categories, categoryHref } from "@/data/categories";
+import { getCatalog } from "@/lib/catalog-db";
+import { categoryHref } from "@/lib/catalog-types";
 
-export function SiteHeader() {
+export async function SiteHeader() {
+  const { categories } = await getCatalog();
   return (
     <header className="sticky top-0 z-40 bg-white shadow-xs">
       <p className="bg-ink px-4 py-1.5 text-center text-[0.6875rem] tracking-[0.2em] text-white uppercase">
         {siteConfig.announcement}
       </p>
       <div className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-2 lg:gap-8 lg:py-3">
-        <MobileMenu />
+        <MobileMenu categories={categories} />
         <Link href="/" className="mr-auto shrink-0 lg:mr-0">
           <Image
-            src="/brand/atmh-logo.png"
+            src="/brand/atmh-wordmark.png"
             alt={siteConfig.name}
-            width={480}
-            height={160}
+            width={363}
+            height={256}
             preload
-            className="h-10 w-auto lg:h-12"
+            className="h-12 w-auto lg:h-16"
           />
         </Link>
         <SearchBox className="hidden min-w-0 flex-1 lg:block" />

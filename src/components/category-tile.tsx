@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { CategoryIcon } from "@/components/category-icon";
-import { categoryHref, type Category } from "@/data/categories";
+import { categoryHref, type Category } from "@/lib/catalog-types";
 
 export function CategoryTile({ category }: { category: Category }) {
   return (

@@ -4,13 +4,14 @@ import Image from "next/image";
 import { useState } from "react";
 
 import { CategoryIcon, type CategoryIconName } from "@/components/category-icon";
+import type { ProductImage } from "@/lib/catalog-types";
 
 export function ProductGallery({
   images,
   name,
   icon,
 }: {
-  images: string[];
+  images: ProductImage[];
   name: string;
   icon: CategoryIconName;
 }) {
@@ -22,8 +23,8 @@ export function ProductGallery({
       <div className="relative aspect-square overflow-hidden rounded-2xl bg-blush-deep">
         {current ? (
           <Image
-            src={current}
-            alt={name}
+            src={current.url}
+            alt={current.alt || name}
             fill
             preload
             sizes="(min-width: 1024px) 50vw, 100vw"
@@ -38,7 +39,7 @@ export function ProductGallery({
       {images.length > 1 && (
         <ul className="flex gap-2 overflow-x-auto pb-1">
           {images.map((image, index) => (
-            <li key={image} className="shrink-0">
+            <li key={image.url} className="shrink-0">
               <button
                 type="button"
                 aria-label={`Show image ${index + 1} of ${images.length}`}
@@ -48,7 +49,7 @@ export function ProductGallery({
                   index === selected ? "border-ink" : "border-transparent"
                 }`}
               >
-                <Image src={image} alt="" fill sizes="4rem" className="object-cover" />
+                <Image src={image.url} alt="" fill sizes="4rem" className="object-cover" />
               </button>
             </li>
           ))}

@@ -1,11 +1,13 @@
+import { resolveSiteUrl } from "@/lib/site-url";
+
 export const siteConfig = {
   name: "ATMH Essentials",
   title: "ATMH Essentials | Home. Beauty. Everyday Living.",
   description:
     "Household, cleaning, personal care, beauty and baby essentials, delivered across Nigeria. Everything you need, all in one place.",
   tagline: "Everything you need, all in one place.",
-  // PLACEHOLDER: replace once the domain is confirmed (CLAUDE.md §7).
-  url: "http://localhost:3000",
+  /** From NEXT_PUBLIC_SITE_URL, else Vercel's URL; see src/lib/site-url.ts. Server-side use only. */
+  url: resolveSiteUrl(),
   // PLACEHOLDER: replace with the business number, digits only with country code.
   whatsappNumber: "2340000000000",
   announcement: "Fast delivery across Lagos",

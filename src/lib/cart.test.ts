@@ -6,10 +6,12 @@ import {
   cartSubtotalKobo,
   lineTotalKobo,
   MAX_LINE_QTY,
+  reconcileCart,
   removeLine,
   sanitizeLines,
   setLineQty,
   type CartLine,
+  type FreshVariant,
 } from "@/lib/cart";
 
 const soap: CartLine = {
@@ -143,5 +145,41 @@ describe("sanitizeLines", () => {
     const lines = sanitizeLines([{ ...soap, qty: 8 }, { ...soap, qty: 8 }, { ...foil, qty: -1 }]);
     expect(lines).toHaveLength(1);
     expect(lines[0].qty).toBe(10);
+  });
+});
+
+describe("reconcileCart", () => {
+  const fresh = (overrides: Partial<FreshVariant> = {}): FreshVariant => ({
+    sku: soap.sku,
+    slug: soap.slug,
+    name: soap.name,
+    variantLabel: soap.variantLabel,
+    priceKobo: soap.priceKobo,
+    icon: soap.icon,
+    stockQty: 10,
+    ...overrides,
+  });
+
+  it("leaves an up-to-date cart unchanged", () => {
+    const result = reconcileCart([soap], new Map([["SOAP", fresh()]]));
+    expect(result).toEqual({ lines: [soap], removed: [], changed: false });
+  });
+
+  it("drops items that were removed from the store or sold out", () => {
+    const result = reconcileCart(
+      [soap, foil],
+      new Map([["FOIL", { ...fresh(), sku: "FOIL", name: "Foil", stockQty: 0 }]]),
+    );
+    expect(result.lines).toEqual([]);
+    expect(result.removed).toEqual(["Soap", "Foil"]);
+  });
+
+  it("updates the price and caps the quantity at current stock", () => {
+    const result = reconcileCart(
+      [{ ...soap, qty: 8 }],
+      new Map([["SOAP", fresh({ priceKobo: 65_000, stockQty: 3 })]]),
+    );
+    expect(result.changed).toBe(true);
+    expect(result.lines[0]).toMatchObject({ priceKobo: 65_000, qty: 3, maxQty: 3 });
   });
 });

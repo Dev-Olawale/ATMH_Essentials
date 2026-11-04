@@ -1,0 +1,191 @@
+// Prisma 7: the connection URL lives in prisma.config.ts (migrations) and src/lib/db.ts (app).
+// All money is integer kobo (CLAUDE.md §6). Row Level Security is set up in the migrations.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Category {
+  id                String            @id @default(cuid())
+  slug              String
+  name              String
+  /// Name of an icon in src/components/category-icon.tsx.
+  icon              String            @default("PackageOpen")
+  parentId          String?
+  parent            Category?         @relation("CategoryTree", fields: [parentId], references: [id], onDelete: Restrict)
+  children          Category[]        @relation("CategoryTree")
+  sortOrder         Int               @default(0)
+  active            Boolean           @default(true)
+  /// From the poster only; the owner has not confirmed it for launch (CLAUDE.md §4).
+  needsConfirmation Boolean           @default(false)
+  isSample          Boolean           @default(false)
+  products          ProductCategory[]
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+
+  @@unique([parentId, slug])
+  @@index([parentId, sortOrder])
+  @@map("categories")
+}
+
+model Product {
+  id          String            @id @default(cuid())
+  slug        String            @unique
+  name        String
+  brand       String            @default("")
+  description String            @default("")
+  /// Pinned to the front of the homepage Best Sellers row.
+  featured    Boolean           @default(false)
+  /// False = archived: hidden from the store but kept for order history.
+  active      Boolean           @default(true)
+  /// Higher sells more; drives the "popular" sort until real sales data exists.
+  popularity  Int               @default(0)
+  isSample    Boolean           @default(false)
+  variants    ProductVariant[]
+  images      ProductImage[]
+  categories  ProductCategory[]
+  tags        ProductTag[]
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  @@index([active])
+  @@map("products")
+}
+
+model ProductVariant {
+  id                String      @id @default(cuid())
+  productId         String
+  product           Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  sku               String      @unique
+  /// Size, scent or pack, e.g. "500ml", "Lavender", "Pack of 3".
+  label             String
+  priceKobo         Int
+  compareAtKobo     Int?
+  stockQty          Int         @default(0)
+  lowStockThreshold Int         @default(5)
+  sortOrder         Int         @default(0)
+  isSample          Boolean     @default(false)
+  orderItems        OrderItem[]
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+
+  @@index([productId, sortOrder])
+  @@map("product_variants")
+}
+
+model ProductImage {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url       String
+  /// Object path inside the product-images bucket, used to delete the file.
+  path      String
+  alt       String   @default("")
+  width     Int?
+  height    Int?
+  sortOrder Int      @default(0)
+  isSample  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([productId, sortOrder])
+  @@map("product_images")
+}
+
+model ProductCategory {
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  /// The lowest sortOrder is the product's primary category.
+  sortOrder  Int      @default(0)
+
+  @@id([productId, categoryId])
+  @@index([categoryId])
+  @@map("product_categories")
+}
+
+model Tag {
+  id       String       @id @default(cuid())
+  /// Lowercase, e.g. "bestseller", "new".
+  name     String       @unique
+  isSample Boolean      @default(false)
+  products ProductTag[]
+
+  @@map("tags")
+}
+
+model ProductTag {
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  tagId     String
+  tag       Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([productId, tagId])
+  @@index([tagId])
+  @@map("product_tags")
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  PACKED
+  OUT_FOR_DELIVERY
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  PAYSTACK
+  PAY_ON_DELIVERY
+  BANK_TRANSFER
+}
+
+/// Step 4 (checkout) fills these in; no logic uses them yet.
+model Order {
+  id               String        @id @default(cuid())
+  number           Int           @unique @default(autoincrement())
+  status           OrderStatus   @default(PENDING)
+  paymentMethod    PaymentMethod
+  /// Paystack reference; unique so a webhook can never mark two orders paid.
+  paymentReference String?       @unique
+  customerName     String
+  email            String
+  phone            String
+  addressLine      String
+  city             String
+  state            String
+  deliveryZone     String?
+  notes            String?
+  subtotalKobo     Int
+  deliveryFeeKobo  Int
+  totalKobo        Int
+  paidAt           DateTime?
+  items            OrderItem[]
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  @@index([status, createdAt])
+  @@map("orders")
+}
+
+/// Name, label and price are copied at order time so history survives product edits.
+model OrderItem {
+  id            String          @id @default(cuid())
+  orderId       String
+  order         Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  variantId     String?
+  variant       ProductVariant? @relation(fields: [variantId], references: [id], onDelete: SetNull)
+  productName   String
+  variantLabel  String
+  sku           String
+  unitPriceKobo Int
+  quantity      Int
+
+  @@index([orderId])
+  @@map("order_items")
+}
