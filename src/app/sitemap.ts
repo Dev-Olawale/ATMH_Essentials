@@ -25,7 +25,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly" as const,
       priority: 0.7,
     })),
-    ...infoLinks.map((link) => ({
+    // /track is a utility page (noindex), not content.
+    ...infoLinks.filter((link) => link.href !== "/track").map((link) => ({
       url: url(link.href),
       changeFrequency: "monthly" as const,
       priority: 0.3,
