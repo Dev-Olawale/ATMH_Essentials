@@ -18,7 +18,7 @@ export async function removeSampleData(
   _state: SampleRemovalState,
   formData: FormData,
 ): Promise<SampleRemovalState> {
-  await requireAdmin();
+  await requireAdmin("OWNER");
   if (formData.get("confirm") !== "REMOVE") {
     return { status: "error", message: 'Type REMOVE in capitals to confirm.' };
   }

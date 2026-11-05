@@ -165,7 +165,7 @@ export function ProductImages({
             <li key={upload.key} className="text-sm">
               <div className="flex justify-between gap-2">
                 <span className="truncate">{upload.name}</span>
-                <span className={upload.error ? "text-rose-dark" : "text-muted"}>
+                <span className={upload.error ? "font-medium text-ink" : "text-muted"}>
                   {upload.error ?? (upload.done ? "Done" : `${upload.progress}%`)}
                 </span>
               </div>

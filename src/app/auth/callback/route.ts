@@ -3,9 +3,12 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-/** Only send people back into the admin, never to another site. */
+/** Only send people back into the admin, their account or checkout; never to another site. */
 function safeNext(value: string | null): string {
-  return value && value.startsWith("/admin") && !value.startsWith("//") ? value : "/admin";
+  if (!value || value.startsWith("//") || value.includes("\\")) return "/account";
+  return ["/admin", "/account", "/checkout", "/order/"].some((path) => value.startsWith(path))
+    ? value
+    : "/account";
 }
 
 /**
@@ -27,6 +30,9 @@ export async function GET(request: NextRequest) {
       ? await supabase.auth.verifyOtp({ token_hash: tokenHash, type })
       : { error: new Error("Missing code") };
 
-  if (error) return NextResponse.redirect(`${origin}/admin/login?error=link`);
+  if (error) {
+    const login = next.startsWith("/admin") ? "/admin/login" : "/account/login";
+    return NextResponse.redirect(`${origin}${login}?error=link`);
+  }
   return NextResponse.redirect(`${origin}${next}`);
 }

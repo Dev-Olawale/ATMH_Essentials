@@ -93,8 +93,8 @@ export function useCart() {
  * Checks the saved cart against the store once per page load, so prices, names and stock
  * are current. Network errors leave the cart as it is.
  */
-export async function syncCart() {
-  if (synced) return;
+export async function syncCart({ force = false } = {}) {
+  if (synced && !force) return;
   synced = true;
   const saved = getLines();
   if (saved.length === 0) return;
@@ -130,6 +130,16 @@ export function useCartNotice() {
 export function dismissCartNotice() {
   notice = null;
   notify();
+}
+
+/** Empties the cart after an order is placed. */
+export function clearCart() {
+  commit([]);
+}
+
+/** Adds several lines at once (reorder). */
+export function addLines(next: CartLine[]) {
+  commit(next.reduce((current, line) => addLine(current, line, line.qty), getLines()));
 }
 
 export function useCartDrawer() {

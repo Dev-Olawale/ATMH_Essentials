@@ -1,11 +1,9 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-import { isAdminEmail } from "@/lib/auth/admin-emails";
-
 /**
- * Keeps the Supabase session cookie fresh on admin and auth routes, and sends signed-out
- * visitors to the sign-in page early. This is a convenience, not the security boundary:
+ * Keeps the Supabase session cookie fresh on admin, account, checkout and order pages, and sends
+ * signed-out visitors away from /admin early. This is a convenience, not the security boundary:
  * every admin page, Server Action and Route Handler checks access itself (src/lib/auth/admin.ts).
  */
 export async function proxy(request: NextRequest) {
@@ -35,18 +33,17 @@ export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   if (!pathname.startsWith("/admin") || pathname === "/admin/login") return response;
 
-  const reason = !data?.claims ? "signed-out" : !isAdminEmail(data.claims.email) ? "not-allowed" : null;
-  if (!reason) return response;
+  // Roles live in the database and are checked by every admin page, action and route.
+  if (data?.claims) return response;
   if (pathname.startsWith("/admin/api/")) {
-    const status = reason === "signed-out" ? 401 : 403;
-    return NextResponse.json({ error: "No admin access." }, { status });
+    return NextResponse.json({ error: "Sign in to continue." }, { status: 401 });
   }
   const url = request.nextUrl.clone();
   url.pathname = "/admin/login";
-  url.search = `?error=${reason}`;
+  url.search = "?error=signed-out";
   return NextResponse.redirect(url);
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/auth/:path*"],
+  matcher: ["/admin/:path*", "/auth/:path*", "/account/:path*", "/checkout", "/order/:path*"],
 };

@@ -43,7 +43,7 @@ export function SampleDataForm({ products, categories }: { products: number; cat
         <input id="confirm" name="confirm" autoComplete="off" autoCapitalize="characters" className={inputClass} />
       </Field>
       {state.status === "error" && (
-        <p role="alert" className="text-sm text-rose-dark">
+        <p role="alert" className="border-l-2 border-rose-dark pl-2 text-ink text-sm">
           {state.message}
         </p>
       )}

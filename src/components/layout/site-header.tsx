@@ -8,14 +8,15 @@ import { SearchBox } from "@/components/layout/search-box";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { getCatalog } from "@/lib/catalog-db";
+import { getPublicSettings } from "@/lib/settings";
 import { categoryHref } from "@/lib/catalog-types";
 
 export async function SiteHeader() {
-  const { categories } = await getCatalog();
+  const [{ categories }, { announcement }] = await Promise.all([getCatalog(), getPublicSettings()]);
   return (
     <header className="sticky top-0 z-40 bg-white shadow-xs">
       <p className="bg-ink px-4 py-1.5 text-center text-[0.6875rem] tracking-[0.2em] text-white uppercase">
-        {siteConfig.announcement}
+        {announcement}
       </p>
       <div className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-2 lg:gap-8 lg:py-3">
         <MobileMenu categories={categories} />

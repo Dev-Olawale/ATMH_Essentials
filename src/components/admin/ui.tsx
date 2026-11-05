@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useTransition, type FormEvent } from "react";
 import { useFormStatus } from "react-dom";
 
 import { Button } from "@/components/ui/button";
@@ -68,27 +67,7 @@ export function FormErrors({ errors }: { errors?: string[] }) {
   );
 }
 
-/**
- * Submits a form to a Server Action without React's automatic form reset, which would wipe
- * what the owner typed whenever validation fails. Successful saves redirect, which reloads
- * the form with the saved values.
- */
-export function useFormAction<State>(
-  action: (state: State, formData: FormData) => Promise<State>,
-  initial: State,
-) {
-  const [state, setState] = useState(initial);
-  const [pending, startTransition] = useTransition();
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    startTransition(async () => {
-      const next = await action(state, formData);
-      setState(next);
-    });
-  };
-  return { state, pending, onSubmit };
-}
+export { useFormAction } from "@/lib/use-form-action";
 
 export function SubmitButton({
   children,
