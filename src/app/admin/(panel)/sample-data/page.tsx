@@ -9,7 +9,7 @@ import { prisma } from "@/lib/db";
 export const metadata: Metadata = { title: "Sample data" };
 
 async function SampleData() {
-  await requireAdminPage();
+  await requireAdminPage("OWNER");
   const [products, categories, images] = await Promise.all([
     prisma.product.count({ where: { isSample: true } }),
     prisma.category.count({ where: { isSample: true } }),

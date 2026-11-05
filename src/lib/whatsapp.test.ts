@@ -5,8 +5,9 @@ import { whatsappOrderHref } from "@/lib/whatsapp";
 
 describe("whatsappOrderHref", () => {
   it("pre-fills the name, variant and quantity, safely encoded", () => {
-    const url = new URL(whatsappOrderHref("Dark & Lovely Cream", "250ml", 2));
+    const url = new URL(whatsappOrderHref("234 811 633 6407", "Dark & Lovely Cream", "250ml", 2));
     expect(url.hostname).toBe("wa.me");
+    expect(url.pathname).toBe("/2348116336407");
     expect(url.searchParams.get("text")).toContain("2 x Dark & Lovely Cream (250ml)");
   });
 });

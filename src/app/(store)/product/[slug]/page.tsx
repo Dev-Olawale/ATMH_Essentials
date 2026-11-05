@@ -10,6 +10,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { pageOpenGraph } from "@/config/site";
 import { getCategory, getProduct, relatedProducts } from "@/lib/catalog";
 import { getCatalog } from "@/lib/catalog-db";
+import { getPublicSettings } from "@/lib/settings";
 import { categoryHref } from "@/lib/catalog-types";
 import { productJsonLd, serializeJsonLd } from "@/lib/product-json-ld";
 
@@ -45,7 +46,7 @@ export const instant = false;
 
 export default async function ProductPage({ params }: PageProps<"/product/[slug]">) {
   const { slug } = await params;
-  const { categories, products } = await getCatalog();
+  const [{ categories, products }, { whatsappNumber }] = await Promise.all([getCatalog(), getPublicSettings()]);
   const product = getProduct(products, slug);
   if (!product) notFound();
 
@@ -73,7 +74,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[slug]
             <p className="text-xs tracking-[0.2em] text-muted uppercase">{product.brand}</p>
             <h1 className="mt-1 text-4xl leading-tight font-medium text-ink">{product.name}</h1>
           </div>
-          <ProductPurchase product={product} icon={icon} />
+          <ProductPurchase product={product} icon={icon} whatsappNumber={whatsappNumber} />
           <div className="border-t border-blush-deep pt-5">
             <h2 className="font-sans text-xs font-medium tracking-[0.2em] text-ink uppercase">
               Description

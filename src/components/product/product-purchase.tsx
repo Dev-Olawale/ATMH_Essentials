@@ -16,9 +16,12 @@ import { whatsappOrderHref } from "@/lib/whatsapp";
 export function ProductPurchase({
   product,
   icon,
+  whatsappNumber,
 }: {
   product: Product;
   icon: CategoryIconName;
+  /** The store's number from settings. */
+  whatsappNumber: string;
 }) {
   const { add } = useCart();
   const [sku, setSku] = useState(
@@ -119,7 +122,7 @@ export function ProductPurchase({
           {available ? "Add to cart" : "Out of stock"}
         </Button>
         <a
-          href={whatsappOrderHref(product.name, variant.label, qty)}
+          href={whatsappOrderHref(whatsappNumber, product.name, variant.label, qty)}
           target="_blank"
           rel="noopener noreferrer"
           className={buttonVariants({ variant: "outline", size: "lg", className: "flex-1 gap-2" })}

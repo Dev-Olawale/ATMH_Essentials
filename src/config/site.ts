@@ -8,12 +8,8 @@ export const siteConfig = {
   tagline: "Everything you need, all in one place.",
   /** From NEXT_PUBLIC_SITE_URL, else Vercel's URL; see src/lib/site-url.ts. Server-side use only. */
   url: resolveSiteUrl(),
-  // PLACEHOLDER: replace with the business number, digits only with country code.
-  whatsappNumber: "2340000000000",
-  announcement: "Fast delivery across Lagos",
+  // The WhatsApp number and announcement bar text are store settings (Admin → Settings).
 } as const;
-
-export const whatsappHref = `https://wa.me/${siteConfig.whatsappNumber}`;
 
 /** A page's openGraph replaces the root one entirely, so shared fields are repeated here. */
 export function pageOpenGraph(title: string, description: string, url: string, images: string[] = []) {
@@ -30,6 +26,7 @@ export function pageOpenGraph(title: string, description: string, url: string, i
 
 export const infoLinks = [
   { label: "About", href: "/about" },
+  { label: "Track your order", href: "/track" },
   { label: "Delivery & Returns", href: "/delivery-returns" },
   { label: "Contact", href: "/contact" },
   { label: "FAQ", href: "/faq" },
