@@ -131,7 +131,12 @@ model ProductTag {
 }
 
 enum OrderStatus {
-  PENDING
+  /// Placed; the delivery fee is being negotiated with a rider.
+  AWAITING_DELIVERY_QUOTE
+  /// Bank transfer: fee confirmed, waiting for the customer to pay.
+  AWAITING_PAYMENT
+  /// Pay on delivery: fee confirmed, ready to pack.
+  CONFIRMED
   PAID
   PACKED
   OUT_FOR_DELIVERY
@@ -139,37 +144,138 @@ enum OrderStatus {
   CANCELLED
 }
 
+/// PAYSTACK is reserved for later; checkout only offers methods enabled in store settings.
 enum PaymentMethod {
   PAYSTACK
   PAY_ON_DELIVERY
   BANK_TRANSFER
 }
 
-/// Step 4 (checkout) fills these in; no logic uses them yet.
+enum AdminRole {
+  /// Everything, including team and settings.
+  OWNER
+  /// Products, categories and orders.
+  STAFF
+}
+
+enum OrderActor {
+  CUSTOMER
+  ADMIN
+  SYSTEM
+}
+
+/// Who may use /admin. Customers never get a row here. ADMIN_EMAILS are kept as OWNER on sign-in.
+model AdminUser {
+  id          String    @id @default(cuid())
+  /// Lowercase.
+  email       String    @unique
+  /// Supabase Auth user id, once known.
+  authUserId  String?   @unique
+  role        AdminRole @default(STAFF)
+  invitedBy   String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("admin_users")
+}
+
+/// One row per signed-in shopper; id is the Supabase Auth user id.
+model Customer {
+  id        String    @id
+  email     String
+  name      String    @default("")
+  phone     String    @default("")
+  addresses Address[]
+  orders    Order[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@map("customers")
+}
+
+model Address {
+  id         String   @id @default(cuid())
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  /// One of the 36 states or FCT (src/lib/nigeria.ts).
+  state      String
+  /// City or LGA.
+  city       String
+  street     String
+  landmark   String   @default("")
+  isDefault  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([customerId])
+  @@map("addresses")
+}
+
+/// A single row (id "store"), edited by the owner in Admin → Settings.
+model StoreSettings {
+  id                    String          @id @default("store")
+  /// Digits only, with country code, e.g. 2348116336407.
+  whatsappNumber        String
+  /// Where new-order and payment-proof alerts go. Empty = all owners.
+  notificationEmails    String[]
+  bankName              String?
+  bankAccountName       String?
+  bankAccountNumber     String?
+  enabledPaymentMethods PaymentMethod[]
+  /// States where pay on delivery is offered.
+  podStates             String[]
+  announcement          String
+  deliveryNote          String
+  updatedBy             String?
+  updatedAt             DateTime        @updatedAt
+
+  @@map("store_settings")
+}
+
+/// Step 4: placed through /checkout.
 model Order {
-  id               String        @id @default(cuid())
-  number           Int           @unique @default(autoincrement())
-  status           OrderStatus   @default(PENDING)
-  paymentMethod    PaymentMethod
-  /// Paystack reference; unique so a webhook can never mark two orders paid.
-  paymentReference String?       @unique
-  customerName     String
-  email            String
-  phone            String
-  addressLine      String
-  city             String
-  state            String
-  deliveryZone     String?
-  notes            String?
-  subtotalKobo     Int
-  deliveryFeeKobo  Int
-  totalKobo        Int
-  paidAt           DateTime?
-  items            OrderItem[]
-  createdAt        DateTime      @default(now())
-  updatedAt        DateTime      @updatedAt
+  id                String               @id @default(cuid())
+  /// Shown as ATMH-<number>. The sequence starts at 10001.
+  number            Int                  @unique @default(autoincrement())
+  status            OrderStatus          @default(AWAITING_DELIVERY_QUOTE)
+  paymentMethod     PaymentMethod
+  /// Signed-in shopper; null for guest checkout.
+  customerId        String?
+  customer          Customer?            @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  customerName      String
+  email             String
+  /// As typed.
+  phone             String
+  /// Digits with country code, for tracking and WhatsApp.
+  phoneNormalized   String
+  state             String
+  city              String
+  street            String
+  landmark          String               @default("")
+  notes             String?
+  subtotalKobo      Int
+  /// Null until the admin confirms the rider's quote.
+  deliveryFeeKobo   Int?
+  totalKobo         Int?
+  /// For a future online provider (e.g. Paystack). Unique so a webhook can never mark two orders paid.
+  providerReference String?              @unique
+  /// Secret in the order link (/order/ATMH-10001?key=…) so guests can view their order.
+  accessKey         String               @unique
+  riderName         String?
+  riderPhone        String?
+  dispatchNote      String?
+  quotedAt          DateTime?
+  paidAt            DateTime?
+  cancelledAt       DateTime?
+  items             OrderItem[]
+  events            OrderStatusEvent[]
+  paymentProofs     PaymentProof[]
+  createdAt         DateTime             @default(now())
+  updatedAt         DateTime             @updatedAt
 
   @@index([status, createdAt])
+  @@index([customerId, createdAt])
+  @@index([phoneNormalized])
   @@map("orders")
 }
 
@@ -181,6 +287,7 @@ model OrderItem {
   variantId     String?
   variant       ProductVariant? @relation(fields: [variantId], references: [id], onDelete: SetNull)
   productName   String
+  productSlug   String          @default("")
   variantLabel  String
   sku           String
   unitPriceKobo Int
@@ -188,4 +295,50 @@ model OrderItem {
 
   @@index([orderId])
   @@map("order_items")
+}
+
+/// Every status change, with who made it.
+model OrderStatusEvent {
+  id         String       @id @default(cuid())
+  orderId    String
+  order      Order        @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  fromStatus OrderStatus?
+  toStatus   OrderStatus
+  actor      OrderActor
+  /// Admin email, or null for the customer / system.
+  actorEmail String?
+  note       String?
+  createdAt  DateTime     @default(now())
+
+  @@index([orderId, createdAt])
+  @@map("order_status_events")
+}
+
+/// A bank-transfer receipt (file in the private payment-proofs bucket) or a typed reference.
+model PaymentProof {
+  id         String    @id @default(cuid())
+  orderId    String
+  order      Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  /// Object path in the private bucket; null for a typed reference.
+  path       String?
+  fileName   String?
+  mimeType   String?
+  sizeBytes  Int?
+  reference  String?
+  reviewedAt DateTime?
+  reviewedBy String?
+  createdAt  DateTime  @default(now())
+
+  @@index([orderId])
+  @@map("payment_proofs")
+}
+
+/// Fixed-window counters for checkout and tracking. Keys are hashed, never raw IPs or phones.
+model RateLimitHit {
+  id        String   @id @default(cuid())
+  key       String
+  createdAt DateTime @default(now())
+
+  @@index([key, createdAt])
+  @@map("rate_limit_hits")
 }
