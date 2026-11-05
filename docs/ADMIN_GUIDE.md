@@ -17,13 +17,71 @@ There is no password. You sign in with a link sent to your email.
 
 Good to know:
 
-- Only email addresses that have been given admin access can sign in. If your email isn't set up, no link is sent. Ask the person who manages the website to add you.
+- Only email addresses that have been given admin access can sign in. If your email isn't set up, no link is sent. Ask the shop owner to add you (see **Team** below).
+- There are two roles. **Owners** can do everything. **Staff** can manage products, categories and orders, but not the team, settings or sample data.
 - Each link works once and expires after a short time. If it doesn't work, request a new one.
 - To sign out, tap **Sign out** at the top of any admin page.
 
 ---
 
-## 2. Adding a product
+## 2. Orders
+
+Every new order is emailed to you (see **Settings → Emails for new-order alerts**). The **Overview** page also shows tiles for **Orders awaiting a delivery fee**, **Payment proofs to review** and **Orders to pack**. Tap a tile to see those orders.
+
+Open **Orders** to see everything. Tap **Needs action** for the orders waiting on you. You can search by order number (e.g. `ATMH-10023`), phone number or name, and filter by status or date.
+
+### How an order moves along
+
+| Status | What it means | What you do |
+|---|---|---|
+| **Awaiting delivery fee** | The customer has ordered. Delivery isn't priced yet. | Agree the fee with a rider, then enter it (below). |
+| **Awaiting payment** | Bank transfer: the customer has their final total and our bank details. | Check your bank app. When the money is in, tap **Mark as paid**. |
+| **Confirmed** | Pay on delivery: the customer knows their final total. | Pack the order. |
+| **Paid** | The transfer has arrived. | Pack the order. |
+| **Packed** | Ready for the rider. | Enter the rider's details and send it out. |
+| **Out for delivery** | With the rider. | When it arrives, tap **Mark as delivered** (or **Delivered and paid** for pay on delivery). |
+| **Delivered** | Done. | Nothing. |
+| **Cancelled** | Stopped. The items went back into stock. | Refund the customer yourself if they had paid. |
+
+The customer gets an email at each step: order received, final total, payment received, out for delivery, delivered, cancelled.
+
+### Entering the delivery fee
+
+1. Agree the fee with your rider.
+2. Open the order. Under **Next step**, type the fee in naira (e.g. `2500`; use `0` for free delivery).
+3. Tap **Confirm fee and email customer**.
+
+The total updates and the customer is emailed their final total. Bank-transfer customers also get your bank details. If you entered the wrong fee, change it and tap **Update fee**; the customer gets a fresh email. You can do this until the order is paid or packed.
+
+### Checking a bank transfer
+
+Customers can upload a photo or PDF of their receipt, or type their transfer reference, on their order page. When they do, you get an email and the order shows **Proof to review**.
+
+1. Open the order and tap the receipt to view it (only admins can open these).
+2. **Always check your bank app.** A receipt can be faked.
+3. When the money is there, tap **Mark as paid**. The customer is emailed.
+
+### Sending it out
+
+1. Pack the items. Tap **Packing slip** to print a checklist and the delivery address (it shows no prices, so it can go in the parcel). Then tap **Mark as packed**.
+2. Enter the rider's name and phone, and optionally a note for the customer (e.g. "Arriving this afternoon").
+3. Tap **Send out for delivery**. The customer is emailed the rider's details.
+
+### Messaging a customer
+
+On any order, tap **Message customer** to open WhatsApp with their number and a short message about their order already typed.
+
+### Cancelling
+
+Tap **Cancel order…**, give a short reason (the customer sees it) and confirm. The items go back into stock automatically. A delivered order can't be cancelled.
+
+### Every change is recorded
+
+The **History** on each order shows every status change, when it happened and who did it.
+
+---
+
+## 3. Adding a product
 
 1. Tap **Products**, then **Add product**.
 2. Fill in the **Details**:
@@ -45,7 +103,7 @@ If something is missing or wrong, a message at the top tells you what to fix. No
 
 ---
 
-## 3. Uploading photos
+## 4. Uploading photos
 
 You add photos after creating the product, on the product's page.
 
@@ -63,13 +121,15 @@ Tips:
 
 ---
 
-## 4. Setting stock
+## 5. Setting stock
 
 **For one product:** open it, change **In stock** for each option, and tap **Save changes**.
 
 **When restocking several items:** tap **Low stock**. It lists every option at or below its alert level, with the out-of-stock ones first. Type the new count next to an item and tap **Update**.
 
 When an option reaches 0, the shop shows it as *Out of stock*, and shoppers can't add it to their cart.
+
+Stock goes down automatically when a customer places an order, and back up if you cancel the order.
 
 **Lots of changes at once?** Use **Import / export**:
 
@@ -82,7 +142,7 @@ If there's a problem in the file, the preview lists the line and what to fix, an
 
 ---
 
-## 5. Featuring a product on the homepage
+## 6. Featuring a product on the homepage
 
 The homepage has two product rows:
 
@@ -101,7 +161,7 @@ Changes show in the shop straight away. Each row shows up to 8 products.
 
 ---
 
-## 6. Categories
+## 7. Categories
 
 Tap **Categories** to manage the menu.
 
@@ -113,7 +173,7 @@ Tap **Categories** to manage the menu.
 
 ---
 
-## 7. Removing the sample data
+## 8. Removing the sample data
 
 The shop started with **sample products** so it didn't look empty. They have a gold **Sample** badge in the admin.
 
@@ -127,6 +187,39 @@ When your own products are in:
 This deletes only items marked Sample, with their photos. Your own products are never touched. **It cannot be undone.**
 
 To keep a sample product (for example, you sell it and have updated its price), open it, untick **Sample product**, and save before removing the sample data.
+
+---
+
+## 9. Settings (owners only)
+
+Tap **Settings**. Changes show in the shop straight away.
+
+- **Store WhatsApp number**: used for the green WhatsApp button, "Order on WhatsApp" on products, and "Send order to WhatsApp" after checkout.
+- **Emails for new-order alerts**: who gets new-order and payment-proof emails. Separate several with commas. Leave empty to alert every owner.
+- **Bank details**: bank name, account name and 10-digit account number. Customers only see these after you confirm their delivery fee. Fill in all three, or leave all three empty. **Add these before taking bank-transfer orders.** The Overview page reminds you until you do.
+- **Payment methods**: turn bank transfer and pay on delivery on or off.
+- **States where pay on delivery is offered**: tick the states where riders can collect payment. Customers in other states only see bank transfer. Lagos is ticked to start with.
+- **Announcement bar**: the thin black bar at the top of every page, e.g. "Nationwide delivery".
+- **Delivery note**: shown at checkout, next to the order total.
+
+---
+
+## 10. Team (owners only)
+
+Tap **Team** to see who can use the admin.
+
+**To add someone:**
+
+1. Type their email and choose **Staff** or **Owner**.
+2. Tap **Give access**. They get an email telling them to sign in at `/admin` with that email address.
+
+**To change someone's role**, tap **Make owner** or **Make staff**. **To remove someone**, tap **Remove access**, then **Yes, remove**. They lose access straight away. Any shopping account they have is kept.
+
+Good to know:
+
+- You can't remove or change yourself, and the shop always keeps at least one owner.
+- Owners marked **Safety owner** are set by the person who manages the website, so nobody can get locked out. They can't be changed here.
+- Customers who sign up to shop never get admin access unless an owner adds them here.
 
 ---
 
