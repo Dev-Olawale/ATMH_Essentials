@@ -1,0 +1,308 @@
+product_slug,product_name,brand,description,categories,tags,featured,active,variant_sku,variant_label,price_naira,compare_at_naira,stock,low_stock_threshold
+ariel-detergent-powder,Ariel Detergent Powder,Ariel,Washing powder that lifts tough stains in hand and machine washes.,cleaning-and-household/detergents|laundry/laundry-detergent,bestseller,no,yes,ARL-PWD-900,900g,2800,,20,5
+ariel-detergent-powder,Ariel Detergent Powder,Ariel,Washing powder that lifts tough stains in hand and machine washes.,cleaning-and-household/detergents|laundry/laundry-detergent,bestseller,no,yes,ARL-PWD-2K,2kg,5900,6500,20,5
+omo-multi-active-detergent-powder,Omo Multi-Active Detergent Powder,Omo,"Everyday washing powder for whites and colours, by hand or machine.",cleaning-and-household/detergents|laundry/laundry-detergent,bestseller,no,yes,OMO-MA-500,500g,1300,,20,5
+omo-multi-active-detergent-powder,Omo Multi-Active Detergent Powder,Omo,"Everyday washing powder for whites and colours, by hand or machine.",cleaning-and-household/detergents|laundry/laundry-detergent,bestseller,no,yes,OMO-MA-1K,1kg,2500,,20,5
+omo-multi-active-detergent-powder,Omo Multi-Active Detergent Powder,Omo,"Everyday washing powder for whites and colours, by hand or machine.",cleaning-and-household/detergents|laundry/laundry-detergent,bestseller,no,yes,OMO-MA-2K,2kg,4800,,20,5
+klin-multipurpose-detergent,Klin Multipurpose Detergent,Klin,Multipurpose detergent powder for laundry and general household cleaning.,cleaning-and-household/detergents|laundry/laundry-detergent,,no,yes,KLN-PWD-500,500g,1100,,20,5
+klin-multipurpose-detergent,Klin Multipurpose Detergent,Klin,Multipurpose detergent powder for laundry and general household cleaning.,cleaning-and-household/detergents|laundry/laundry-detergent,,no,yes,KLN-PWD-1K,1kg,2100,,20,5
+klin-multipurpose-detergent,Klin Multipurpose Detergent,Klin,Multipurpose detergent powder for laundry and general household cleaning.,cleaning-and-household/detergents|laundry/laundry-detergent,,no,yes,KLN-PWD-2K,2kg,4000,,20,5
+viva-plus-detergent-powder,Viva Plus Detergent Powder,Viva,Affordable washing powder with a fresh scent for daily laundry.,cleaning-and-household/detergents|laundry/laundry-detergent,,no,yes,VVA-PLS-500,500g,1000,,20,5
+viva-plus-detergent-powder,Viva Plus Detergent Powder,Viva,Affordable washing powder with a fresh scent for daily laundry.,cleaning-and-household/detergents|laundry/laundry-detergent,,no,yes,VVA-PLS-1K,1kg,1900,,20,5
+sunlight-2-in-1-detergent-powder,Sunlight 2-in-1 Detergent Powder,Sunlight,"Washing powder with a softening touch, for hand washing.",cleaning-and-household/detergents|laundry/laundry-detergent,,no,yes,SUN-PWD-900,900g,2400,,20,5
+sunlight-2-in-1-detergent-powder,Sunlight 2-in-1 Detergent Powder,Sunlight,"Washing powder with a softening touch, for hand washing.",cleaning-and-household/detergents|laundry/laundry-detergent,,no,yes,SUN-PWD-2K,2kg,5200,,20,5
+sunlight-bar-soap,Sunlight Laundry Bar Soap,Sunlight,Long-lasting multipurpose bar for laundry and household cleaning.,cleaning-and-household/bar-soap,,no,yes,SUN-BAR-150,150g,600,,20,5
+key-multipurpose-bar-soap,Key Multipurpose Bar Soap,Key,"Firm multipurpose bar for washing clothes, dishes and surfaces.",cleaning-and-household/bar-soap,,no,yes,KEY-BAR-200,200g,650,,20,5
+key-multipurpose-bar-soap,Key Multipurpose Bar Soap,Key,"Firm multipurpose bar for washing clothes, dishes and surfaces.",cleaning-and-household/bar-soap,,no,yes,KEY-BAR-6PK,Pack of 6,3600,,20,5
+canoe-multipurpose-soap,Canoe Multipurpose Soap,Canoe,Classic multipurpose bar soap for laundry and general cleaning.,cleaning-and-household/bar-soap,,no,yes,CNO-BAR-180,180g,600,,20,5
+hypo-bleach,Hypo Bleach,Hypo,Household bleach for whitening and disinfecting surfaces.,cleaning-and-household/bleach,,no,yes,HYP-BLC-500,500ml,950,,20,5
+hypo-bleach,Hypo Bleach,Hypo,Household bleach for whitening and disinfecting surfaces.,cleaning-and-household/bleach,,no,yes,HYP-BLC-1L,1L,1700,,20,5
+jik-bleach-regular,Jik Bleach Regular,Jik,"Bleach for whitening whites and cleaning sinks, tiles and toilets.",cleaning-and-household/bleach|laundry/stain-removers,,no,yes,JIK-REG-500,500ml,900,,20,5
+jik-bleach-regular,Jik Bleach Regular,Jik,"Bleach for whitening whites and cleaning sinks, tiles and toilets.",cleaning-and-household/bleach|laundry/stain-removers,,no,yes,JIK-REG-1L,1L,1600,,20,5
+jik-bleach-lemon-fresh,Jik Bleach Lemon Fresh,Jik,Lemon-scented bleach for kitchen and bathroom surfaces.,cleaning-and-household/bleach,,no,yes,JIK-LMN-500,500ml,950,,20,5
+jik-bleach-lemon-fresh,Jik Bleach Lemon Fresh,Jik,Lemon-scented bleach for kitchen and bathroom surfaces.,cleaning-and-household/bleach,,no,yes,JIK-LMN-1L,1L,1700,,20,5
+dettol-antiseptic-liquid,Dettol Antiseptic Liquid,Dettol,"Trusted antiseptic for first aid, laundry and household hygiene.",cleaning-and-household/disinfectants,bestseller,no,yes,DTL-ANT-250,250ml,3200,,20,5
+dettol-antiseptic-liquid,Dettol Antiseptic Liquid,Dettol,"Trusted antiseptic for first aid, laundry and household hygiene.",cleaning-and-household/disinfectants,bestseller,no,yes,DTL-ANT-500,500ml,5900,,20,5
+savlon-antiseptic-liquid,Savlon Antiseptic Liquid,Savlon,"Antiseptic liquid for cleaning cuts, bathing water and surfaces.",cleaning-and-household/disinfectants,,no,yes,SVL-ANT-250,250ml,2600,,20,5
+savlon-antiseptic-liquid,Savlon Antiseptic Liquid,Savlon,"Antiseptic liquid for cleaning cuts, bathing water and surfaces.",cleaning-and-household/disinfectants,,no,yes,SVL-ANT-500,500ml,4800,,20,5
+izal-germicide-disinfectant,Izal Germicide Disinfectant,Izal,"Strong disinfectant for drains, toilets and floors. Dilute before use.",cleaning-and-household/disinfectants,,no,yes,IZL-DIS-500,500ml,2200,,20,5
+purit-antiseptic-liquid,Purit Antiseptic Liquid,Purit,Antiseptic and disinfectant for personal and household hygiene.,cleaning-and-household/disinfectants,,no,yes,PRT-ANT-250,250ml,1800,,20,5
+purit-antiseptic-liquid,Purit Antiseptic Liquid,Purit,Antiseptic and disinfectant for personal and household hygiene.,cleaning-and-household/disinfectants,,no,yes,PRT-ANT-500,500ml,3300,,20,5
+harpic-toilet-cleaner,Harpic Power Plus Toilet Cleaner,Harpic,Thick toilet cleaner that removes stains and limescale.,cleaning-and-household/toilet-and-floor-cleaners|bathroom-and-toilet,bestseller,no,yes,HRP-TLT-500,500ml,2450,,20,5
+hypo-toilet-cleaner,Hypo Toilet Cleaner,Hypo,Toilet bowl cleaner that removes stains and kills germs.,cleaning-and-household/toilet-and-floor-cleaners,,no,yes,HYP-TLT-500,500ml,1500,,20,5
+toilet-duck-liquid-toilet-cleaner,Toilet Duck Liquid Toilet Cleaner,Toilet Duck,Angled-neck toilet cleaner that reaches under the rim.,cleaning-and-household/toilet-and-floor-cleaners,,no,yes,DCK-TLT-500,500ml,2800,,20,5
+dettol-multi-surface-cleaner,Dettol Multi-Surface Cleaner,Dettol,"Cleaner for floors, worktops and tiles. Use neat or diluted.",cleaning-and-household/toilet-and-floor-cleaners,new,no,yes,DTL-FLR-500,500ml,3100,,20,5
+morning-fresh-dishwashing-liquid,Morning Fresh Dishwashing Liquid,Morning Fresh,Concentrated lemon dish liquid that cuts through grease.,cleaning-and-household/dishwashing-liquid,bestseller,no,yes,MFR-DSH-450,450ml,1650,,20,5
+morning-fresh-dishwashing-liquid,Morning Fresh Dishwashing Liquid,Morning Fresh,Concentrated lemon dish liquid that cuts through grease.,cleaning-and-household/dishwashing-liquid,bestseller,no,yes,MFR-DSH-900,900ml,3100,,20,5
+mama-lemon-dishwashing-liquid,Mama Lemon Dishwashing Liquid,Mama Lemon,Lemon-scented dish liquid for greasy pots and plates.,cleaning-and-household/dishwashing-liquid,,no,yes,MML-DSH-500,500ml,1500,,20,5
+mama-lemon-dishwashing-liquid,Mama Lemon Dishwashing Liquid,Mama Lemon,Lemon-scented dish liquid for greasy pots and plates.,cleaning-and-household/dishwashing-liquid,,no,yes,MML-DSH-1L,1L,2700,,20,5
+sunlight-dishwashing-liquid,Sunlight Dishwashing Liquid,Sunlight,Dish liquid with lemon power for sparkling dishes.,cleaning-and-household/dishwashing-liquid,,no,yes,SUN-DSH-400,400ml,1400,,20,5
+sunlight-dishwashing-liquid,Sunlight Dishwashing Liquid,Sunlight,Dish liquid with lemon power for sparkling dishes.,cleaning-and-household/dishwashing-liquid,,no,yes,SUN-DSH-750,750ml,2400,,20,5
+scotch-brite-scrub-sponge-pack-of-3,Scotch-Brite Scrub Sponge (Pack of 3),Scotch-Brite,"Two-sided sponges: soft side for wiping, scour side for stuck-on food.",cleaning-and-household/sponges-and-scouring-pads|kitchen-and-food-storage/scrubbing-pads,,no,yes,SCB-SPG,Pack of 3,1800,,20,5
+scotch-brite-scouring-pads-pack-of-6,Scotch-Brite Scouring Pads (Pack of 6),Scotch-Brite,"Green scouring pads for pots, pans and tough kitchen grime.",cleaning-and-household/sponges-and-scouring-pads|kitchen-and-food-storage/scrubbing-pads,,no,yes,SCB-PAD,Pack of 6,1500,,20,5
+stainless-steel-scourers-pack-of-4,Stainless Steel Scourers (Pack of 4),,Steel wool scourers for burnt pots and stubborn stains.,cleaning-and-household/sponges-and-scouring-pads|kitchen-and-food-storage/scrubbing-pads,,no,yes,GEN-STW,Pack of 4,800,,20,5
+hard-bristle-scrubbing-brush,Hard Bristle Scrubbing Brush,,"Hand scrubbing brush for floors, tiles and laundry.",cleaning-and-household/brushes,,no,yes,GEN-SCB,1 piece,900,,20,5
+bottle-cleaning-brush,Bottle Cleaning Brush,,"Long-handled brush for bottles, flasks and narrow jars.",cleaning-and-household/brushes,,no,yes,GEN-BTB,1 piece,1000,,20,5
+cloth-washing-brush,Cloth Washing Brush,,Plastic brush for scrubbing collars and stained clothes.,cleaning-and-household/brushes,,no,yes,GEN-CLB,1 piece,700,,20,5
+long-handle-soft-broom,Long Handle Soft Broom,,Soft-bristle indoor broom with a long handle.,cleaning-and-household/brooms,new,no,yes,GEN-SBR,1 piece,3500,,20,5
+local-broom-palm-fibre,Local Broom (Palm Fibre),,Traditional short broom for sweeping floors and compounds.,cleaning-and-household/brooms,,no,yes,GEN-LBR,1 piece,1200,,20,5
+ceiling-and-cobweb-broom,Ceiling and Cobweb Broom,,"Extra-long broom for ceilings, corners and cobwebs.",cleaning-and-household/brooms,,no,yes,GEN-CBR,1 piece,4000,,20,5
+dustpan-with-long-handle,Dustpan with Long Handle,,Upright dustpan so you can sweep without bending.,cleaning-and-household/dustpans,,no,yes,GEN-DPL,1 piece,3500,,20,5
+plastic-dustpan,Plastic Dustpan,,Sturdy hand-held dustpan with a rubber edge.,cleaning-and-household/dustpans,,no,yes,GEN-DPN,1 piece,900,,20,5
+dustpan-and-brush-set,Dustpan and Brush Set,,Small dustpan with matching hand brush for quick clean-ups.,cleaning-and-household/dustpans,,no,yes,GEN-DPS,1 set,1800,,20,5
+cotton-floor-mop,Cotton Floor Mop,,Absorbent cotton mop head on a long handle.,cleaning-and-household/mops,,no,yes,GEN-CMP,1 piece,3500,,20,5
+flat-spray-mop,Flat Spray Mop,,Flat microfibre mop with a refillable spray bottle.,cleaning-and-household/mops,,no,yes,GEN-FMP,1 piece,9500,,20,5
+spin-mop-with-bucket,Spin Mop with Bucket,,Mop and spinning bucket that wrings the head without touching it.,cleaning-and-household/mops|cleaning-and-household/buckets,,no,yes,GEN-SPM,1 set,18000,,20,5
+plastic-bucket-with-lid,Plastic Bucket with Lid,,Durable plastic bucket with handle and lid.,cleaning-and-household/buckets,,no,yes,GEN-BKT-10L,10 litres,2500,,20,5
+plastic-bucket-with-lid,Plastic Bucket with Lid,,Durable plastic bucket with handle and lid.,cleaning-and-household/buckets,,no,yes,GEN-BKT-20L,20 litres,4000,,20,5
+plastic-washing-basin,Plastic Washing Basin,,"Wide round basin for washing clothes, dishes or bathing.",cleaning-and-household/buckets,,no,yes,GEN-BSN-M,Medium,2500,,20,5
+plastic-washing-basin,Plastic Washing Basin,,"Wide round basin for washing clothes, dishes or bathing.",cleaning-and-household/buckets,,no,yes,GEN-BSN-L,Large,3800,,20,5
+rubber-kitchen-gloves,Rubber Kitchen Gloves,,Reusable household gloves that protect hands from water and cleaners.,cleaning-and-household/gloves,,no,yes,GEN-RGL-M,Medium,1200,,20,5
+rubber-kitchen-gloves,Rubber Kitchen Gloves,,Reusable household gloves that protect hands from water and cleaners.,cleaning-and-household/gloves,,no,yes,GEN-RGL-L,Large,1200,,20,5
+disposable-nitrile-gloves-box-of-100,Disposable Nitrile Gloves (Box of 100),,Latex-free single-use gloves for cleaning and food handling.,cleaning-and-household/gloves|everyday-disposables,,no,yes,GEN-NTR-M,Medium,6500,,20,5
+disposable-nitrile-gloves-box-of-100,Disposable Nitrile Gloves (Box of 100),,Latex-free single-use gloves for cleaning and food handling.,cleaning-and-household/gloves|everyday-disposables,,no,yes,GEN-NTR-L,Large,6500,,20,5
+heavy-duty-cleaning-gloves,Heavy Duty Cleaning Gloves,,Thick long-cuff gloves for bleach and heavy cleaning jobs.,cleaning-and-household/gloves,,no,yes,GEN-HDG,1 pair,1800,,20,5
+glade-air-freshener-spray,Glade Air Freshener Spray,Glade,Room spray that freshens the air quickly.,cleaning-and-household/air-fresheners,,no,yes,GLD-AER-300,300ml,3200,,20,5
+ambi-pur-air-freshener-spray,Ambi Pur Air Freshener Spray,Ambi Pur,Air freshener spray that clears odours and leaves a light scent.,cleaning-and-household/air-fresheners,,no,yes,AMB-AER-300,300ml,3500,,20,5
+air-wick-plug-in-diffuser,Air Wick Plug-in Diffuser,Air Wick,Electric plug-in diffuser with a scented oil refill.,cleaning-and-household/air-fresheners|fragrances/home-fragrance,,no,yes,AWK-PLG,Diffuser + refill,7500,,20,5
+refuse-bags-large-10-pack,"Refuse Bags (Large, 10 Pack)",,Strong black bags for large bins and compound rubbish.,cleaning-and-household/waste-bags|everyday-disposables,,no,yes,GEN-RFB,10 bags,1500,,20,5
+kitchen-bin-liners-30-pack,Kitchen Bin Liners (30 Pack),,Medium bin liners on a roll for kitchen and office bins.,cleaning-and-household/waste-bags,,no,yes,GEN-BLN,30 bags,1800,,20,5
+heavy-duty-garbage-bags-5-pack,Heavy Duty Garbage Bags (5 Pack),,Extra-thick bags for sharp or heavy waste.,cleaning-and-household/waste-bags,,no,yes,GEN-HDB,5 bags,2000,,20,5
+safety-matches-pack-of-10-boxes,Safety Matches (Pack of 10 Boxes),,Everyday safety matches for stoves and candles.,cleaning-and-household/matches-and-lighters,,no,yes,GEN-MAT,10 boxes,700,,20,5
+bic-classic-lighter,BIC Classic Lighter,BIC,Reliable disposable pocket lighter.,cleaning-and-household/matches-and-lighters,,no,yes,BIC-LTR-1,1 lighter,800,,20,5
+bic-classic-lighter,BIC Classic Lighter,BIC,Reliable disposable pocket lighter.,cleaning-and-household/matches-and-lighters,,no,yes,BIC-LTR-5PK,Pack of 5,3800,,20,5
+electric-gas-stove-lighter,Electric Gas Stove Lighter,,Long-nose spark lighter for gas cookers. No fuel needed.,cleaning-and-household/matches-and-lighters,,no,yes,GEN-ELT,1 piece,1500,,20,5
+raid-mosquito-spray,Raid Mosquito Spray,Raid,Fast-acting aerosol for mosquitoes and flying insects.,cleaning-and-household/mosquito-repellents,new,no,yes,RAD-SPR-300,300ml,3100,,20,5
+mortein-insect-killer-spray,Mortein Insect Killer Spray,Mortein,"Aerosol for mosquitoes, flies and cockroaches.",cleaning-and-household/mosquito-repellents,bestseller,no,yes,MRT-SPR-300,300ml,2900,,20,5
+mortein-insect-killer-spray,Mortein Insect Killer Spray,Mortein,"Aerosol for mosquitoes, flies and cockroaches.",cleaning-and-household/mosquito-repellents,bestseller,no,yes,MRT-SPR-600,600ml,4800,,20,5
+rambo-insecticide-spray,Rambo Insecticide Spray,Rambo,Insecticide spray for mosquitoes and crawling insects.,cleaning-and-household/mosquito-repellents,,no,yes,RMB-SPR-300,300ml,2500,,20,5
+baygon-mosquito-coils-pack-of-10,Baygon Mosquito Coils (Pack of 10),Baygon,Slow-burning coils for keeping mosquitoes away overnight.,cleaning-and-household/mosquito-repellents,,no,yes,BYG-COL,10 coils,1200,,20,5
+downy-fabric-softener,Downy Fabric Softener,Downy,"Leaves clothes soft with a fresh, long-lasting scent.",laundry/fabric-softeners,new,no,yes,DWN-SFT-500,500ml,2800,,20,5
+downy-fabric-softener,Downy Fabric Softener,Downy,"Leaves clothes soft with a fresh, long-lasting scent.",laundry/fabric-softeners,new,no,yes,DWN-SFT-1L,1L,5200,,20,5
+comfort-fabric-conditioner,Comfort Fabric Conditioner,Comfort,Fabric conditioner for softer clothes and easier ironing.,laundry/fabric-softeners,,no,yes,CMF-SFT-400,400ml,2200,,20,5
+comfort-fabric-conditioner,Comfort Fabric Conditioner,Comfort,Fabric conditioner for softer clothes and easier ironing.,laundry/fabric-softeners,,no,yes,CMF-SFT-800,800ml,4000,,20,5
+lenor-fabric-conditioner,Lenor Fabric Conditioner,Lenor,"Concentrated conditioner for soft, fresh-smelling laundry.",laundry/fabric-softeners,,no,yes,LNR-SFT-1L,1L,5500,,20,5
+vanish-oxi-action-stain-remover-powder,Vanish Oxi Action Stain Remover Powder,Vanish,Add to your wash to lift tough stains from whites and colours.,laundry/stain-removers,new,no,yes,VNS-PWD-500,500g,4500,,20,5
+vanish-oxi-action-liquid,Vanish Oxi Action Liquid,Vanish,Liquid stain remover for pre-treating or adding to the wash.,laundry/stain-removers,,no,yes,VNS-LIQ-500,500ml,4200,,20,5
+robin-laundry-blue,Robin Laundry Blue,Robin,Traditional laundry blue that keeps white clothes bright.,laundry/laundry-blue,,no,yes,RBN-BLU-10,Pack of 10 sachets,800,,20,5
+liquid-laundry-blue,Liquid Laundry Blue,,Liquid whitener for the final rinse of white clothes.,laundry/laundry-blue,,no,yes,GEN-LBL-500,500ml,1000,,20,5
+blue-ball-laundry-whitener,Blue Ball Laundry Whitener,,Solid blue ball for brightening whites by hand washing.,laundry/laundry-blue,,no,yes,GEN-BBL,Pack of 5,600,,20,5
+plastic-clothes-pegs,Plastic Clothes Pegs,,"Strong, colourful pegs that hold up outdoors.",laundry/clothes-pegs,,no,yes,HBS-PEG-24,24 pack,1200,,20,5
+wooden-clothes-pegs,Wooden Clothes Pegs,,Classic wooden pegs with steel springs.,laundry/clothes-pegs,,no,yes,GEN-WPG-24,24 pack,1500,,20,5
+hanging-sock-dryer-with-20-pegs,Hanging Sock Dryer with 20 Pegs,,"Round hanger with pegs for drying socks, underwear and small items.",laundry/clothes-pegs,,no,yes,GEN-SKH,1 piece,2500,,20,5
+plastic-laundry-basket-with-lid,Plastic Laundry Basket with Lid,,Ventilated basket with a lid for dirty clothes.,laundry/laundry-baskets,,no,yes,GEN-LBK-M,Medium,5000,,20,5
+plastic-laundry-basket-with-lid,Plastic Laundry Basket with Lid,,Ventilated basket with a lid for dirty clothes.,laundry/laundry-baskets,,no,yes,GEN-LBK-L,Large,7000,,20,5
+foldable-laundry-hamper,Foldable Laundry Hamper,,Fabric hamper with handles that folds flat when empty.,laundry/laundry-baskets,,no,yes,GEN-HMP,1 piece,4500,,20,5
+mesh-laundry-bag,Mesh Laundry Bag,,Zip mesh bag that protects delicates in the washing machine.,laundry/laundry-baskets,,no,yes,GEN-MSH,Pack of 2,1500,,20,5
+rose-soft-toilet-paper,Rose Plus Toilet Tissue,Rose Plus,"Soft, absorbent two-ply rolls for everyday use.",bathroom-and-toilet/toilet-paper,bestseller,no,yes,RSE-TP-4,4 rolls,1800,,20,5
+rose-soft-toilet-paper,Rose Plus Toilet Tissue,Rose Plus,"Soft, absorbent two-ply rolls for everyday use.",bathroom-and-toilet/toilet-paper,bestseller,no,yes,RSE-TP-12,12 rolls,4800,5400,20,5
+velvex-toilet-tissue,Velvex Toilet Tissue,Velvex,Soft two-ply toilet rolls in a value pack.,bathroom-and-toilet/toilet-paper,bestseller,no,yes,VLX-TP-4,4 rolls,1900,,20,5
+velvex-toilet-tissue,Velvex Toilet Tissue,Velvex,Soft two-ply toilet rolls in a value pack.,bathroom-and-toilet/toilet-paper,bestseller,no,yes,VLX-TP-10,10 rolls,4500,,20,5
+toilet-rolls-value-pack,Toilet Rolls Value Pack,,Budget toilet rolls for busy homes and offices.,bathroom-and-toilet/toilet-paper,,no,yes,GEN-TPV-24,24 rolls,7500,,20,5
+velvex-kitchen-towel,Velvex Kitchen Towel,Velvex,Absorbent kitchen towel rolls for spills and drying.,bathroom-and-toilet/paper-towels|kitchen-and-food-storage/kitchen-towels,,no,yes,VLX-KTW-2,2 rolls,2200,,20,5
+velvex-facial-tissue-box,Velvex Facial Tissue Box,Velvex,Soft facial tissues in a handy box.,bathroom-and-toilet/paper-towels,,no,yes,VLX-FCL,1 box,1500,,20,5
+multi-fold-paper-hand-towels,Multi-fold Paper Hand Towels,,Folded paper towels for bathroom dispensers.,bathroom-and-toilet/paper-towels,,no,yes,GEN-HTW,Pack of 150,3000,,20,5
+toilet-brush-with-holder,Toilet Brush with Holder,,Toilet brush with a covered stand to keep it tidy.,bathroom-and-toilet/toilet-brushes,,no,yes,GEN-TBH,1 set,2500,,20,5
+angled-toilet-brush,Angled Toilet Brush,,Hockey-stick shaped brush that reaches under the rim.,bathroom-and-toilet/toilet-brushes,,no,yes,GEN-HTB,1 piece,1800,,20,5
+silicone-toilet-brush,Silicone Toilet Brush,,Quick-drying silicone brush with a wall-mount holder.,bathroom-and-toilet/toilet-brushes,new,no,yes,GEN-STB,1 set,4500,,20,5
+harpic-hygienic-toilet-rim-block,Harpic Hygienic Toilet Rim Block,Harpic,Rim block that cleans and freshens with every flush.,bathroom-and-toilet/toilet-fresheners,,no,yes,HRP-BLK,1 block,1800,,20,5
+naphthalene-balls,Naphthalene Balls,,"Deodorising balls for toilets, urinals and wardrobes. Keep away from children.",bathroom-and-toilet/toilet-fresheners,,no,yes,GEN-NPB-200,200g,1000,,20,5
+toilet-deodoriser-blocks-pack-of-4,Toilet Deodoriser Blocks (Pack of 4),,Scented blocks for cisterns and urinals.,bathroom-and-toilet/toilet-fresheners,,no,yes,GEN-TDB,Pack of 4,1500,,20,5
+natural-loofah-bath-sponge,Natural Loofah Bath Sponge,,Natural loofah for exfoliating in the bath or shower.,bathroom-and-toilet/bath-sponges,,no,yes,GEN-LOF,1 piece,1200,,20,5
+african-exfoliating-net-sponge,African Exfoliating Net Sponge,,Long net sponge that lathers well and reaches your back.,bathroom-and-toilet/bath-sponges,bestseller,no,yes,GEN-NSP,1 piece,1500,,20,5
+mesh-bath-puff,Mesh Bath Puff,,Soft mesh puff for a rich lather with less shower gel.,bathroom-and-toilet/bath-sponges,,no,yes,GEN-PUF,Pack of 2,1200,,20,5
+dettol-liquid-handwash,Dettol Liquid Handwash,Dettol,"Gentle, germ-protection handwash for the whole family.",bathroom-and-toilet/handwash|personal-care-and-hygiene/handwash,,no,yes,DTL-HWS-200,200ml,2100,,20,5
+lifebuoy-handwash,Lifebuoy Handwash,Lifebuoy,Germ-protection handwash with a pump dispenser.,bathroom-and-toilet/handwash|personal-care-and-hygiene/handwash,,no,yes,LFB-HWS-200,200ml,1900,,20,5
+lifebuoy-handwash,Lifebuoy Handwash,Lifebuoy,Germ-protection handwash with a pump dispenser.,bathroom-and-toilet/handwash|personal-care-and-hygiene/handwash,,no,yes,LFB-HWS-500,500ml refill,3500,,20,5
+carex-antibacterial-handwash,Carex Antibacterial Handwash,Carex,Antibacterial handwash that is gentle on hands.,bathroom-and-toilet/handwash|personal-care-and-hygiene/handwash,,no,yes,CRX-HWS-250,250ml,2600,,20,5
+pedal-bin,Pedal Bin,,Foot-pedal bin with a removable inner bucket.,bathroom-and-toilet/small-waste-bins,,no,yes,GEN-PDB-5L,5 litres,4500,,20,5
+pedal-bin,Pedal Bin,,Foot-pedal bin with a removable inner bucket.,bathroom-and-toilet/small-waste-bins,,no,yes,GEN-PDB-12L,12 litres,7500,,20,5
+small-plastic-waste-basket,Small Plastic Waste Basket,,Open waste basket for bathrooms and bedrooms.,bathroom-and-toilet/small-waste-bins,,no,yes,GEN-WBK,1 piece,1500,,20,5
+swing-lid-bin,Swing Lid Bin,,Bin with a swing lid that keeps rubbish out of sight.,bathroom-and-toilet/small-waste-bins,,no,yes,GEN-SWB-10L,10 litres,4000,,20,5
+aluminium-foil-roll,Aluminium Foil Roll,,"Heavy-duty foil for cooking, baking and keeping food fresh.",kitchen-and-food-storage/aluminium-foil,new,no,yes,BKW-FOIL-30,30cm x 8m,2500,,20,5
+wide-aluminium-foil-roll,Wide Aluminium Foil Roll,,Extra-wide foil for large trays and roasting.,kitchen-and-food-storage/aluminium-foil,,no,yes,GEN-ALW-45,45cm x 25m,6500,,20,5
+aluminium-foil-food-containers-with-lids-10-pack,Aluminium Foil Food Containers with Lids (10 Pack),,"Foil trays with card lids for takeaway, baking and freezing.",kitchen-and-food-storage/aluminium-foil|everyday-disposables,,no,yes,GEN-ALC,10 containers,3000,,20,5
+cling-film-roll,Cling Film Roll,,Food-safe wrap that seals bowls and leftovers tight.,kitchen-and-food-storage/cling-film,,no,yes,BKW-CLNG-30,30cm x 30m,2200,,20,5
+cling-film-with-cutter-box,Cling Film with Cutter Box,,Large cling film roll in a box with a slide cutter.,kitchen-and-food-storage/cling-film,,no,yes,GEN-CLD-45,45cm x 100m,5500,,20,5
+silicone-stretch-lids-set-of-6,Silicone Stretch Lids (Set of 6),,"Reusable stretch lids that fit bowls, cups and cut fruit.",kitchen-and-food-storage/cling-film,,no,yes,GEN-SLD,Set of 6,3500,,20,5
+zip-lock-food-storage-bags-medium-50,"Zip-Lock Food Storage Bags (Medium, 50)",,"Resealable bags for snacks, spices and leftovers.",kitchen-and-food-storage/food-storage-bags,new,no,yes,GEN-ZPB,50 bags,2500,,20,5
+freezer-bags-large-30,"Freezer Bags (Large, 30)",,"Thick bags for freezing meat, fish and soups.",kitchen-and-food-storage/food-storage-bags,,no,yes,GEN-FZB,30 bags,2800,,20,5
+ice-block-bags-100,Ice Block Bags (100),,Small bags for making ice blocks and portioning liquids.,kitchen-and-food-storage/food-storage-bags,,no,yes,GEN-ICB,100 bags,1200,,20,5
+paper-serviettes,Paper Serviettes,,"Soft, absorbent napkins for the dining table and events.",everyday-disposables|kitchen-and-food-storage/kitchen-towels,,no,yes,RSE-SRV-100,100 sheets,1200,,20,5
+microfibre-kitchen-cloths-pack-of-3,Microfibre Kitchen Cloths (Pack of 3),,Washable cloths for wiping counters and drying dishes.,kitchen-and-food-storage/kitchen-towels,,no,yes,GEN-MFC,Pack of 3,2000,,20,5
+nivea-body-lotion,Nivea Nourishing Body Lotion,Nivea,"Deep moisture for dry skin, with a light, non-greasy feel.",skincare-and-body-care/body-lotions,bestseller,no,yes,NIV-LTN-250,250ml,4200,,20,5
+nivea-body-lotion,Nivea Nourishing Body Lotion,Nivea,"Deep moisture for dry skin, with a light, non-greasy feel.",skincare-and-body-care/body-lotions,bestseller,no,yes,NIV-LTN-400,400ml,6500,7200,20,5
+vaseline-intensive-care-cocoa-glow-lotion,Vaseline Intensive Care Cocoa Glow Lotion,Vaseline,"Body lotion with cocoa butter for soft, glowing skin.",skincare-and-body-care/body-lotions,bestseller,no,yes,VSL-CGL-400,400ml,5500,,20,5
+jergens-original-scent-moisturiser,Jergens Original Scent Moisturiser,Jergens,Classic cherry-almond scented lotion for dry skin.,skincare-and-body-care/body-lotions,,no,yes,JRG-ORG-496,496ml,7500,,20,5
+nivea-creme,Nivea Creme,Nivea,"Rich all-purpose cream for face, hands and body.",skincare-and-body-care/body-creams,,no,yes,NIV-CRM-150,150ml tin,3800,,20,5
+nivea-creme,Nivea Creme,Nivea,"Rich all-purpose cream for face, hands and body.",skincare-and-body-care/body-creams,,no,yes,NIV-CRM-400,400ml tin,7900,,20,5
+unrefined-shea-butter,Unrefined Shea Butter,,"Pure shea butter for dry skin, elbows and hair ends.",skincare-and-body-care/body-creams,new,no,yes,GEN-SHB-250,250g,2500,,20,5
+unrefined-shea-butter,Unrefined Shea Butter,,"Pure shea butter for dry skin, elbows and hair ends.",skincare-and-body-care/body-creams,new,no,yes,GEN-SHB-500,500g,4500,,20,5
+palmer-s-cocoa-butter-formula-cream,Palmer's Cocoa Butter Formula Cream,Palmer's,"Concentrated cocoa butter cream for rough, dry areas.",skincare-and-body-care/body-creams,,no,yes,PLM-CCB-270,270g jar,8500,,20,5
+palmer-s-cocoa-butter-moisturising-body-oil,Palmer's Cocoa Butter Moisturising Body Oil,Palmer's,Body oil with cocoa butter and vitamin E for soft skin.,skincare-and-body-care/body-oils,,no,yes,PLM-OIL-250,250ml,9500,,20,5
+vaseline-cocoa-radiant-body-gel-oil,Vaseline Cocoa Radiant Body Gel Oil,Vaseline,Light gel oil that absorbs fast for a healthy glow.,skincare-and-body-care/body-oils,,no,yes,VSL-GOL-200,200ml,5800,,20,5
+johnson-s-baby-oil,Johnson's Baby Oil,Johnson's,Gentle mineral oil for baby massage and dry skin.,skincare-and-body-care/body-oils|baby-care/baby-oils,,no,yes,JNS-BOL-200,200ml,3800,,20,5
+johnson-s-baby-oil,Johnson's Baby Oil,Johnson's,Gentle mineral oil for baby massage and dry skin.,skincare-and-body-care/body-oils|baby-care/baby-oils,,no,yes,JNS-BOL-500,500ml,7500,,20,5
+vaseline-petroleum-jelly,Vaseline Original Petroleum Jelly,Vaseline,Pure jelly that locks in moisture and protects dry skin.,skincare-and-body-care/body-petroleum-jelly,bestseller,no,yes,VSL-JLY-100,100ml,1500,,20,5
+vaseline-petroleum-jelly,Vaseline Original Petroleum Jelly,Vaseline,Pure jelly that locks in moisture and protects dry skin.,skincare-and-body-care/body-petroleum-jelly,bestseller,no,yes,VSL-JLY-250,250ml,3200,,20,5
+vaseline-blueseal-cocoa-butter-jelly,Vaseline Blueseal Cocoa Butter Jelly,Vaseline,Petroleum jelly with cocoa butter for very dry skin.,skincare-and-body-care/body-petroleum-jelly,,no,yes,VSL-CBJ-250,250ml,3500,,20,5
+arimis-milking-jelly,Arimis Milking Jelly,Arimis,Milky petroleum jelly that softens and protects skin.,skincare-and-body-care/body-petroleum-jelly,,no,yes,ARM-JLY-250,250ml,2200,,20,5
+dove-deeply-nourishing-body-wash,Dove Deeply Nourishing Body Wash,Dove,Creamy body wash that cleans without drying skin.,skincare-and-body-care/body-body-washes,bestseller,no,yes,DOV-BWS-500,500ml,6500,,20,5
+nivea-creme-soft-shower-gel,Nivea Creme Soft Shower Gel,Nivea,Mild shower gel with almond oil.,skincare-and-body-care/body-body-washes,,no,yes,NIV-SHW-500,500ml,5200,,20,5
+imperial-leather-shower-gel,Imperial Leather Shower Gel,Imperial Leather,Fragrant shower gel for a refreshing wash.,skincare-and-body-care/body-body-washes,,no,yes,IML-SHG-500,500ml,4500,,20,5
+dudu-osun-black-soap,Dudu Osun Black Soap,Dudu Osun,"African black soap with shea butter, honey and natural extracts.",skincare-and-body-care/body-bath-soaps,bestseller,no,yes,DUD-OSN-150,150g,1200,,20,5
+dudu-osun-black-soap,Dudu Osun Black Soap,Dudu Osun,"African black soap with shea butter, honey and natural extracts.",skincare-and-body-care/body-bath-soaps,bestseller,no,yes,DUD-OSN-3PK,Pack of 3,3400,,20,5
+imperial-leather-bath-soap,Imperial Leather Bath Soap,Imperial Leather,Classic fragrant bath bar with a rich lather.,skincare-and-body-care/body-bath-soaps,,no,yes,IML-SOP-150,150g,1100,,20,5
+joy-beauty-soap,Joy Beauty Soap,Joy,Mild beauty soap that leaves skin smooth and fresh.,skincare-and-body-care/body-bath-soaps,,no,yes,JOY-SOP-150,150g,900,,20,5
+premier-cool-soap,Premier Cool Soap,Premier,Refreshing bath soap with a cooling feel.,skincare-and-body-care/body-bath-soaps,,no,yes,PRM-SOP-150,150g,800,,20,5
+dettol-original-bath-soap,Dettol Original Bath Soap,Dettol,Antibacterial bath soap for everyday hygiene.,skincare-and-body-care/body-bath-soaps,,no,yes,DTL-SOP-175,175g,1300,,20,5
+dove-exfoliating-body-polish,Dove Exfoliating Body Polish,Dove,Creamy body scrub that smooths and nourishes.,skincare-and-body-care/body-scrubs,,no,yes,DOV-POL-225,225ml,9000,,20,5
+coconut-sugar-body-scrub,Coconut Sugar Body Scrub,,"Sugar scrub with coconut oil for soft, polished skin.",skincare-and-body-care/body-scrubs,,no,yes,GEN-SCS-300,300g,4500,,20,5
+coffee-body-scrub,Coffee Body Scrub,,Ground-coffee scrub that buffs away dry skin.,skincare-and-body-care/body-scrubs,,no,yes,GEN-CFS-300,300g,4500,,20,5
+nivea-sun-protect-and-moisture-spf-50,Nivea Sun Protect & Moisture SPF 50,Nivea,Water-resistant body sunscreen lotion.,skincare-and-body-care/body-sunscreens,,no,yes,NIV-SUN-200,200ml,11500,,20,5
+banana-boat-sport-ultra-spf-50,Banana Boat Sport Ultra SPF 50,Banana Boat,Sweat- and water-resistant sunscreen for outdoor days.,skincare-and-body-care/body-sunscreens,,no,yes,BNB-SPF-236,236ml,14000,,20,5
+neutrogena-beach-defense-spf-50,Neutrogena Beach Defense SPF 50,Neutrogena,Broad-spectrum body sunscreen lotion.,skincare-and-body-care/body-sunscreens,,no,yes,NTG-BDF-198,198ml,15500,,20,5
+cerave-hydrating-facial-cleanser,CeraVe Hydrating Facial Cleanser,CeraVe,Non-foaming cleanser with ceramides for normal to dry skin.,skincare-and-body-care/face-cleansers,new,no,yes,CRV-HFC-236,236ml,18000,,20,5
+simple-refreshing-facial-wash,Simple Refreshing Facial Wash,Simple,Soap-free gel wash for sensitive skin.,skincare-and-body-care/face-cleansers,,no,yes,SMP-WSH-150,150ml,6500,,20,5
+neutrogena-oil-free-acne-wash,Neutrogena Oil-Free Acne Wash,Neutrogena,Salicylic acid face wash for breakout-prone skin.,skincare-and-body-care/face-cleansers,,no,yes,NTG-ACN-177,177ml,12500,,20,5
+simple-hydrating-light-moisturiser,Simple Hydrating Light Moisturiser,Simple,Lightweight daily moisturiser for sensitive skin.,skincare-and-body-care/face-moisturizers,,no,yes,SMP-MST-125,125ml,7500,,20,5
+cerave-moisturising-cream,CeraVe Moisturising Cream,CeraVe,Rich cream with ceramides and hyaluronic acid for face and body.,skincare-and-body-care/face-moisturizers,,no,yes,CRV-MCR-340,340g,22000,,20,5
+nivea-soft-moisturising-cream,Nivea Soft Moisturising Cream,Nivea,"Light cream for face, hands and body.",skincare-and-body-care/face-moisturizers,,no,yes,NIV-SFT-100,100ml,3500,,20,5
+nivea-soft-moisturising-cream,Nivea Soft Moisturising Cream,Nivea,"Light cream for face, hands and body.",skincare-and-body-care/face-moisturizers,,no,yes,NIV-SFT-200,200ml,6000,,20,5
+neutrogena-ultra-sheer-dry-touch-spf-50,Neutrogena Ultra Sheer Dry-Touch SPF 50,Neutrogena,"Light, non-greasy sunscreen for face and body.",skincare-and-body-care/face-sunscreens,,no,yes,NTG-USS-88,88ml,14500,,20,5
+nivea-sun-uv-face-shine-control-spf-50,Nivea Sun UV Face Shine Control SPF 50,Nivea,Mattifying daily face sunscreen.,skincare-and-body-care/face-sunscreens,,no,yes,NIV-SFC-50,50ml,10500,,20,5
+la-roche-posay-anthelios-uvmune-400-spf-50,La Roche-Posay Anthelios UVMune 400 SPF 50+,La Roche-Posay,High-protection fluid sunscreen for sensitive skin.,skincare-and-body-care/face-sunscreens,,no,yes,LRP-ANT-50,50ml,32000,,20,5
+simple-soothing-facial-toner,Simple Soothing Facial Toner,Simple,Alcohol-free toner with witch hazel.,skincare-and-body-care/face-toners,,no,yes,SMP-TNR-200,200ml,6500,,20,5
+thayers-witch-hazel-facial-toner,Thayers Witch Hazel Facial Toner,Thayers,Alcohol-free witch hazel toner with aloe vera.,skincare-and-body-care/face-toners,,no,yes,THY-TNR-355,355ml,16500,,20,5
+neutrogena-alcohol-free-toner,Neutrogena Alcohol-Free Toner,Neutrogena,Gentle toner that removes leftover dirt and oil.,skincare-and-body-care/face-toners,,no,yes,NTG-TNR-236,236ml,11000,,20,5
+garnier-micellar-water,Garnier Micellar Cleansing Water,Garnier,Removes make-up and cleanses without rinsing or rubbing.,skincare-and-body-care/face-micellar-water,new,no,yes,GRN-MCL-400,400ml,7800,,20,5
+simple-micellar-cleansing-water,Simple Micellar Cleansing Water,Simple,Gentle micellar water for sensitive skin.,skincare-and-body-care/face-micellar-water,,no,yes,SMP-MCL-400,400ml,8000,,20,5
+bioderma-sensibio-h2o-micellar-water,Bioderma Sensibio H2O Micellar Water,Bioderma,Micellar water for sensitive skin and eye make-up removal.,skincare-and-body-care/face-micellar-water,,no,yes,BDM-H2O-250,250ml,15000,,20,5
+nivea-lip-balm,Nivea Original Lip Balm,Nivea,Everyday lip care that keeps lips soft and smooth.,skincare-and-body-care/face-lip-balms,,no,yes,NIV-LIP-48,4.8g,1800,,20,5
+vaseline-lip-therapy-rosy-lips,Vaseline Lip Therapy Rosy Lips,Vaseline,Petroleum jelly lip balm with a hint of colour.,skincare-and-body-care/face-lip-balms,,no,yes,VSL-LIP-20,20g tin,2500,,20,5
+carmex-classic-lip-balm,Carmex Classic Lip Balm,Carmex,Medicated balm for dry and chapped lips.,skincare-and-body-care/face-lip-balms,,no,yes,CMX-LIP-75,7.5g jar,3000,,20,5
+the-ordinary-niacinamide-10-zinc-1,The Ordinary Niacinamide 10% + Zinc 1%,The Ordinary,Serum for the look of blemishes and oiliness.,skincare-and-body-care/face-serums,new,no,yes,ORD-NIA-30,30ml,14000,,20,5
+the-ordinary-hyaluronic-acid-2-b5,The Ordinary Hyaluronic Acid 2% + B5,The Ordinary,Hydrating serum for plumper-looking skin.,skincare-and-body-care/face-serums,,no,yes,ORD-HYA-30,30ml,15000,,20,5
+garnier-bright-complete-vitamin-c-serum,Garnier Bright Complete Vitamin C Serum,Garnier,"Vitamin C serum for dull, uneven-looking skin.",skincare-and-body-care/face-serums,,no,yes,GRN-VTC-30,30ml,9500,,20,5
+rexona-men-antiperspirant-spray,Rexona Men Antiperspirant Spray,Rexona,48-hour antiperspirant spray with a fresh scent.,personal-care-and-hygiene/deodorants,,no,yes,RXN-SPR-150,150ml,3500,,20,5
+nivea-pearl-and-beauty-deodorant-spray,Nivea Pearl & Beauty Deodorant Spray,Nivea,Antiperspirant spray with pearl extracts for smooth underarms.,personal-care-and-hygiene/deodorants,,no,yes,NIV-PBS-150,150ml,3800,,20,5
+old-spice-original-deodorant-stick,Old Spice Original Deodorant Stick,Old Spice,Long-lasting deodorant stick with the classic Old Spice scent.,personal-care-and-hygiene/deodorants|grooming,,no,yes,OSP-STK-85,85g,6500,,20,5
+rexona-roll-on,Rexona Women Roll-On,Rexona,"48-hour protection with a fresh, clean scent.",personal-care-and-hygiene/roll-ons,bestseller,no,yes,RXN-ROL-50,50ml,2400,,20,5
+nivea-men-roll-on,Nivea Men Deep Roll-On,Nivea,"48-hour antiperspirant with a dry, woody scent.",grooming|personal-care-and-hygiene/roll-ons,,no,yes,NIV-MRL-50,50ml,2600,,20,5
+dove-original-roll-on,Dove Original Roll-On,Dove,Gentle antiperspirant with moisturising cream.,personal-care-and-hygiene/roll-ons,,no,yes,DOV-ROL-50,50ml,2800,,20,5
+always-ultra-sanitary-pads,Always Ultra Sanitary Pads,Always,"Thin, absorbent pads with wings for all-day comfort.",personal-care-and-hygiene/sanitary-pads|feminine-care,bestseller,no,yes,ALW-PAD-8,8 pads,1500,,20,5
+always-ultra-sanitary-pads,Always Ultra Sanitary Pads,Always,"Thin, absorbent pads with wings for all-day comfort.",personal-care-and-hygiene/sanitary-pads|feminine-care,bestseller,no,yes,ALW-PAD-16,16 pads,2800,,20,5
+molped-sanitary-pads,Molped Ultra Thin Sanitary Pads,Molped,Ultra-thin pads with wings and a soft cotton-feel cover.,feminine-care|personal-care-and-hygiene/sanitary-pads,bestseller,no,yes,MLP-PAD-8,8 pads,1200,,20,5
+molped-sanitary-pads,Molped Ultra Thin Sanitary Pads,Molped,Ultra-thin pads with wings and a soft cotton-feel cover.,feminine-care|personal-care-and-hygiene/sanitary-pads,bestseller,no,yes,MLP-PAD-16,16 pads,2300,,20,5
+lady-care-sanitary-pads,Lady Care Sanitary Pads,Lady Care,"Soft, absorbent pads with wings.",feminine-care|personal-care-and-hygiene/sanitary-pads,,no,yes,LDC-PAD-8,8 pads,1000,,20,5
+cotton-wool-roll,Cotton Wool Roll,,"Absorbent cotton wool for first aid, baby care and make-up.",personal-care-and-hygiene/cotton-wool,,no,yes,GEN-CWR-100,100g,900,,20,5
+cotton-wool-roll,Cotton Wool Roll,,"Absorbent cotton wool for first aid, baby care and make-up.",personal-care-and-hygiene/cotton-wool,,no,yes,GEN-CWR-400,400g,3000,,20,5
+cotton-wool-balls-100,Cotton Wool Balls (100),,Soft cotton balls for cleansing and applying toner.,personal-care-and-hygiene/cotton-wool,,no,yes,GEN-CWB,100 balls,1200,,20,5
+cotton-pads-80,Cotton Pads (80),,Round cotton pads for make-up removal and skincare.,personal-care-and-hygiene/cotton-wool,,no,yes,GEN-CPD,80 pads,1500,,20,5
+cotton-buds,Johnson's Cotton Buds,Johnson's,Soft-tipped buds for everyday hygiene and beauty.,personal-care-and-hygiene/cotton-buds,new,no,yes,SFC-BUD-200,200 pack,950,,20,5
+q-tips-cotton-swabs,Q-tips Cotton Swabs,Q-tips,Cotton swabs with paper sticks.,personal-care-and-hygiene/cotton-buds,,no,yes,QTP-SWB-300,300 swabs,3500,,20,5
+baby-safety-cotton-buds-56,Baby Safety Cotton Buds (56),,Cotton buds with a wide safety tip for babies.,personal-care-and-hygiene/cotton-buds|baby-care/baby-wipes,,no,yes,GEN-BBD,56 buds,1500,,20,5
+dettol-hand-sanitizer,Dettol Hand Sanitizer,Dettol,Alcohol-based gel that kills germs without water.,personal-care-and-hygiene/hand-sanitizers,bestseller,no,yes,DTL-SAN-50,50ml,1500,,20,5
+dettol-hand-sanitizer,Dettol Hand Sanitizer,Dettol,Alcohol-based gel that kills germs without water.,personal-care-and-hygiene/hand-sanitizers,bestseller,no,yes,DTL-SAN-200,200ml,3500,,20,5
+carex-hand-sanitizer-gel,Carex Hand Sanitizer Gel,Carex,Pocket-size sanitising gel for hands on the go.,personal-care-and-hygiene/hand-sanitizers,,no,yes,CRX-GEL-50,50ml,1400,,20,5
+hand-sanitizer-spray-70-alcohol,Hand Sanitizer Spray (70% Alcohol),,Quick-drying sanitizer spray for hands and small surfaces.,personal-care-and-hygiene/hand-sanitizers,,no,yes,GEN-SNS-100,100ml,1500,,20,5
+dettol-antibacterial-wipes-40,Dettol Antibacterial Wipes (40),Dettol,Wipes for hands and surfaces that kill 99.9% of germs.,personal-care-and-hygiene/wet-wipes,,no,yes,DTL-WPS,40 wipes,3000,,20,5
+pocket-wet-wipes-10-packs,Pocket Wet Wipes (10 Packs),,Small packs of wet wipes for bags and cars.,personal-care-and-hygiene/wet-wipes|everyday-disposables,,no,yes,GEN-PWW,10 packs of 10,2500,,20,5
+feminine-wipes,Femfresh Intimate Wipes,Femfresh,Soft wipes for freshness on the go.,feminine-care|personal-care-and-hygiene/wet-wipes,,no,yes,SFC-FWP-20,20 wipes,2500,,20,5
+molfix-baby-diapers,Molfix Baby Diapers,Molfix,"Soft, breathable diapers with up to 12-hour dryness.",baby-care/diapers,bestseller,no,yes,MLF-DPR-M,"Medium, 34 pack",7800,,20,5
+molfix-baby-diapers,Molfix Baby Diapers,Molfix,"Soft, breathable diapers with up to 12-hour dryness.",baby-care/diapers,bestseller,no,yes,MLF-DPR-L,"Large, 28 pack",8200,,20,5
+pampers-baby-dry-diapers,Pampers Baby-Dry Diapers,Pampers,Diapers with up to 12 hours of dryness.,baby-care/diapers,bestseller,no,yes,PMP-BDR-S3,"Size 3, 38 pack",9500,,20,5
+pampers-baby-dry-diapers,Pampers Baby-Dry Diapers,Pampers,Diapers with up to 12 hours of dryness.,baby-care/diapers,bestseller,no,yes,PMP-BDR-S4,"Size 4, 34 pack",9800,,20,5
+pampers-baby-dry-diapers,Pampers Baby-Dry Diapers,Pampers,Diapers with up to 12 hours of dryness.,baby-care/diapers,bestseller,no,yes,PMP-BDR-S5,"Size 5, 30 pack",10200,,20,5
+huggies-dry-comfort-diapers,Huggies Dry Comfort Diapers,Huggies,Soft diapers with a snug fit and quick absorption.,baby-care/diapers,,no,yes,HGS-DRY-S3,"Size 3, 40 pack",9000,,20,5
+huggies-dry-comfort-diapers,Huggies Dry Comfort Diapers,Huggies,Soft diapers with a snug fit and quick absorption.,baby-care/diapers,,no,yes,HGS-DRY-S4,"Size 4, 36 pack",9400,,20,5
+pampers-baby-wipes,Pampers Fresh Clean Baby Wipes,Pampers,"Gentle, lightly scented wipes for delicate skin.",baby-care/baby-wipes,new,no,yes,PMP-WPS-52,52 wipes,2100,,20,5
+johnson-s-baby-wipes,Johnson's Baby Wipes,Johnson's,Soft wipes for nappy changes and sticky hands.,baby-care/baby-wipes,,no,yes,JNS-WPS-56,56 wipes,2300,,20,5
+molfix-baby-wipes,Molfix Baby Wipes,Molfix,Pure-water wipes for gentle cleaning.,baby-care/baby-wipes,,no,yes,MLF-WPS-60,60 wipes,1900,,20,5
+cussons-baby-mild-and-gentle-soap,Cussons Baby Mild & Gentle Soap,Cussons Baby,Mild soap for baby's delicate skin.,baby-care/baby-soaps,bestseller,no,yes,CSB-SOP-100,100g,900,,20,5
+cussons-baby-mild-and-gentle-soap,Cussons Baby Mild & Gentle Soap,Cussons Baby,Mild soap for baby's delicate skin.,baby-care/baby-soaps,bestseller,no,yes,CSB-SOP-3PK,Pack of 3,2500,,20,5
+johnson-s-baby-soap,Johnson's Baby Soap,Johnson's,Gentle baby bar soap.,baby-care/baby-soaps,,no,yes,JNS-SOP-100,100g,1100,,20,5
+dove-baby-rich-moisture-wash,Dove Baby Rich Moisture Wash,Dove,Tear-free head-to-toe wash for babies.,baby-care/baby-soaps,,no,yes,DOV-BBW-400,400ml,7000,,20,5
+johnson-s-baby-lotion,Johnson's Baby Lotion,Johnson's,Light lotion that keeps baby's skin soft.,baby-care/baby-lotions,,no,yes,JNS-LTN-200,200ml,3500,,20,5
+johnson-s-baby-lotion,Johnson's Baby Lotion,Johnson's,Light lotion that keeps baby's skin soft.,baby-care/baby-lotions,,no,yes,JNS-LTN-500,500ml,6800,,20,5
+cussons-baby-lotion,Cussons Baby Lotion,Cussons Baby,Mild moisturising lotion for babies.,baby-care/baby-lotions,,no,yes,CSB-LTN-200,200ml,3000,,20,5
+nivea-baby-lotion,Nivea Baby Lotion,Nivea,Caring lotion with calendula for daily use.,baby-care/baby-lotions,,no,yes,NIV-BBY-200,200ml,3800,,20,5
+cussons-baby-oil,Cussons Baby Oil,Cussons Baby,Gentle oil for baby massage and dry patches.,baby-care/baby-oils,,no,yes,CSB-OIL-200,200ml,3200,,20,5
+pigeon-baby-oil,Pigeon Baby Oil,Pigeon,Light baby oil for moisturising after bath time.,baby-care/baby-oils,,no,yes,PGN-OIL-200,200ml,4000,,20,5
+xpression-braiding-attachment,X-Pression Braiding Attachment,X-Pression,"Soft, tangle-free attachment for braids and twists.",hair-care-and-accessories/attachments,new,no,yes,XPR-ATT-1B,Colour 1B,1800,,20,5
+darling-braiding-hair,Darling Braiding Hair,Darling,Pre-stretched braiding hair in natural shades.,hair-care-and-accessories/attachments,,no,yes,DRL-BRD-1,Colour 1,2000,,20,5
+darling-braiding-hair,Darling Braiding Hair,Darling,Pre-stretched braiding hair in natural shades.,hair-care-and-accessories/attachments,,no,yes,DRL-BRD-1B,Colour 1B,2000,,20,5
+kanekalon-jumbo-braid,Kanekalon Jumbo Braid,,Long jumbo braid for box braids and cornrows.,hair-care-and-accessories/attachments,,no,yes,GEN-KNK-1B,Colour 1B,1500,,20,5
+brazilian-wool,Brazilian Wool,,Soft wool for threading and wool braids.,hair-care-and-accessories/wools,bestseller,no,yes,GEN-BRW-BLK,Black,1000,,20,5
+brazilian-wool,Brazilian Wool,,Soft wool for threading and wool braids.,hair-care-and-accessories/wools,bestseller,no,yes,GEN-BRW-30,Brown #30,1000,,20,5
+afro-kinky-bulk-hair,Afro Kinky Bulk Hair,,Kinky bulk hair for natural-looking twists.,hair-care-and-accessories/wools,,no,yes,GEN-AKW-1B,Colour 1B,2500,,20,5
+threading-wool,Threading Wool,,Strong black wool for African threading.,hair-care-and-accessories/wools,,no,yes,GEN-TWL-BLK,Black,600,,20,5
+dark-and-lovely-hair-cream,Dark and Lovely Moisture Hair Cream,Dark and Lovely,"Daily moisturising cream for soft, manageable hair.",hair-care-and-accessories/hair-creams,new,no,yes,DNL-CRM-250,250ml,3600,,20,5
+ors-olive-oil-moisturizing-hair-lotion,ORS Olive Oil Moisturizing Hair Lotion,ORS,Leave-in lotion that moisturises and softens hair.,hair-care-and-accessories/hair-creams,,no,yes,ORS-LTN-251,251ml,6500,,20,5
+cantu-shea-butter-leave-in-conditioning-repair-cream,Cantu Shea Butter Leave-In Conditioning Repair Cream,Cantu,"Leave-in cream for dry, damaged or curly hair.",hair-care-and-accessories/hair-creams,,no,yes,CNT-LVN-340,340g,9000,,20,5
+ampro-protein-styling-gel,Ampro Protein Styling Gel,Ampro,"Styling gel for edges, waves and sleek styles.",hair-care-and-accessories/hair-creams,,no,yes,AMP-GEL-250,250g,1800,,20,5
+ors-olive-oil-sheen-spray,ORS Olive Oil Sheen Spray,ORS,Light spray that adds shine and fights frizz.,hair-care-and-accessories/sprays,,no,yes,ORS-SHN-472,472ml,7500,,20,5
+cantu-shea-butter-coil-calm-detangler,Cantu Shea Butter Coil Calm Detangler,Cantu,Detangling spray for curls and coils.,hair-care-and-accessories/sprays,,no,yes,CNT-DTL-237,237ml,8500,,20,5
+sta-sof-fro-moisturizing-hair-and-scalp-spray,Sta-Sof-Fro Moisturizing Hair & Scalp Spray,Sta-Sof-Fro,Moisture spray for hair and scalp.,hair-care-and-accessories/sprays,,no,yes,STS-SPR-150,150ml,5500,,20,5
+dabur-vatika-coconut-hair-oil,Dabur Vatika Coconut Hair Oil,Dabur Vatika,Coconut hair oil enriched with herbs.,hair-care-and-accessories/oils,,no,yes,VTK-OIL-150,150ml,3000,,20,5
+dabur-vatika-coconut-hair-oil,Dabur Vatika Coconut Hair Oil,Dabur Vatika,Coconut hair oil enriched with herbs.,hair-care-and-accessories/oils,,no,yes,VTK-OIL-300,300ml,5500,,20,5
+sunny-isle-jamaican-black-castor-oil,Sunny Isle Jamaican Black Castor Oil,Sunny Isle,"Thick castor oil for scalp, edges and brows.",hair-care-and-accessories/oils,,no,yes,SNY-JBC-118,118ml,9500,,20,5
+cold-pressed-coconut-oil,Cold-Pressed Coconut Oil,,Pure coconut oil for hair and skin.,hair-care-and-accessories/oils,,no,yes,GEN-CCO-250,250ml,3000,,20,5
+satin-hair-bonnet,Satin Hair Bonnet,,Satin-lined bonnet that protects hair while you sleep.,hair-care-and-accessories/accessories,new,no,yes,GEN-BNT,1 piece,1800,,20,5
+edge-control-brush-and-comb,Edge Control Brush and Comb,,Dual-ended brush for laying edges.,hair-care-and-accessories/accessories,,no,yes,GEN-EDB,1 piece,800,,20,5
+wide-tooth-comb,Wide-Tooth Comb,,Wide-tooth comb for detangling wet or natural hair.,hair-care-and-accessories/accessories,,no,yes,GEN-WTC,1 piece,600,,20,5
+hair-net-pack-of-3,Hair Net (Pack of 3),,Stretchy hair nets for setting styles and under wigs.,hair-care-and-accessories/accessories,,no,yes,GEN-HNT,Pack of 3,800,,20,5
+bobby-pins-pack-of-100,Bobby Pins (Pack of 100),,"Black bobby pins for buns, braids and wigs.",hair-care-and-accessories/accessories,,no,yes,GEN-BPN,100 pins,1000,,20,5
+lattafa-khamrah-edp,Lattafa Khamrah Eau de Parfum,Lattafa,"Warm, spicy gourmand with notes of cinnamon, dates and praline. Long-lasting.",fragrances/perfumes,bestseller,no,yes,LTF-KHM-30,30ml,18500,,20,5
+lattafa-khamrah-edp,Lattafa Khamrah Eau de Parfum,Lattafa,"Warm, spicy gourmand with notes of cinnamon, dates and praline. Long-lasting.",fragrances/perfumes,bestseller,no,yes,LTF-KHM-100,100ml,38000,,20,5
+lattafa-asad-edp,Lattafa Asad Eau de Parfum,Lattafa,"Bold, smoky scent with black pepper, vanilla and amber.",fragrances/perfumes,bestseller,no,yes,LTF-ASD-100,100ml,32000,,20,5
+armaf-club-de-nuit-intense-man,Armaf Club de Nuit Intense Man EDT,Armaf,"Fresh, smoky citrus and birch scent with strong projection.",fragrances/perfumes,bestseller,no,yes,ARM-CDN-105,105ml,45000,50000,20,5
+rasasi-hawas-for-him,Rasasi Hawas for Him EDP,Rasasi,"Aquatic, fruity fragrance with apple, cinnamon and ambergris.",fragrances/perfumes,new,no,yes,RSS-HWS-100,100ml,55000,,20,5
+al-rehab-choco-musk,Al Rehab Choco Musk Perfume Oil,Al Rehab,"Alcohol-free roll-on oil with a sweet chocolate, vanilla and musk scent.",fragrances/perfume-oils,bestseller,no,yes,ALR-CHM-6,6ml,2500,,20,5
+al-rehab-choco-musk,Al Rehab Choco Musk Perfume Oil,Al Rehab,"Alcohol-free roll-on oil with a sweet chocolate, vanilla and musk scent.",fragrances/perfume-oils,bestseller,no,yes,ALR-CHM-6X3,"6ml, pack of 3",7000,,20,5
+al-rehab-soft,Al Rehab Soft Perfume Oil,Al Rehab,"Clean, powdery musk roll-on oil. Alcohol-free and pocket-sized.",fragrances/perfume-oils,,no,yes,ALR-SFT-6,6ml,2500,,20,5
+al-rehab-dakar-perfume-oil,Al Rehab Dakar Perfume Oil,Al Rehab,"Fresh, woody roll-on perfume oil.",fragrances/perfume-oils,,no,yes,ALR-DKR-6,6ml,2500,,20,5
+warm-vanilla-body-mist,Vanilla Body Mist,,"Light, sweet vanilla mist for an all-over everyday scent.",fragrances/body-mists-and-sprays,new,no,yes,SCS-VAN-250,250ml,9500,,20,5
+fogg-fresh-body-spray,Fogg Fresh Body Spray,Fogg,"Gas-free body spray with a crisp, fresh scent that lasts all day.",fragrances/body-mists-and-sprays|grooming,,no,yes,FOG-FRS-150,150ml,4500,,20,5
+axe-body-spray,Axe Body Spray,Axe,Deodorant body spray with a bold scent.,fragrances/body-mists-and-sprays|grooming,,no,yes,AXE-SPR-150,150ml,3800,,20,5
+lattafa-gift-set,Lattafa Gift Set (EDP + Body Mist),Lattafa,Eau de parfum and matching body mist in a gift box. Ready to give.,fragrances/gift-sets,new,no,yes,LTF-GFT-SET,Gift set,48000,55000,20,5
+al-rehab-perfume-oil-gift-set-6,Al Rehab Perfume Oil Gift Set (6),Al Rehab,Six roll-on perfume oils in a gift box.,fragrances/gift-sets,,no,yes,ALR-GFT-6PK,6 x 6ml,14000,,20,5
+nivea-men-gift-set,Nivea Men Gift Set,Nivea,"Shower gel, roll-on and face cream for men in a gift box.",fragrances/gift-sets|grooming,,no,yes,NIV-MGS-SET,Gift set,15000,,20,5
+reed-diffuser,Reed Diffuser Room Fragrance,,Flame-free diffuser with rattan reeds that scents a room for weeks.,fragrances/home-fragrance|cleaning-and-household/air-fresheners,new,no,yes,HBS-RDF-100,100ml,7000,,20,5
+reed-diffuser,Reed Diffuser Room Fragrance,,Flame-free diffuser with rattan reeds that scents a room for weeks.,fragrances/home-fragrance|cleaning-and-household/air-fresheners,new,no,yes,HBS-RDF-200,200ml,12000,,20,5
+glade-scented-candle,Glade Scented Candle,Glade,Scented jar candle for living rooms and bedrooms.,fragrances/home-fragrance,,no,yes,GLD-CND-96,96g,4500,,20,5
+gillette-blue-ii-razors,Gillette Blue II Disposable Razors,Gillette,"Twin-blade disposable razors for a close, comfortable shave.",grooming,bestseller,no,yes,GIL-BL2-5,5 pack,2200,,20,5
+gillette-mach3-razor,Gillette Mach3 Razor,Gillette,Three-blade razor handle with one cartridge.,grooming,,no,yes,GIL-MC3-1,1 razor,6500,,20,5
+bic-comfort-3-disposable-razors,BIC Comfort 3 Disposable Razors,BIC,Three-blade disposable razors with a moisture strip.,grooming,,no,yes,BIC-CF3-4,4 pack,3500,,20,5
+nivea-men-shaving-foam,Nivea Men Protect & Care Shaving Foam,Nivea,Rich foam with aloe vera that protects against razor burn.,grooming,new,no,yes,NIV-SHV-200,200ml,4800,,20,5
+gillette-foamy-shaving-cream,Gillette Foamy Shaving Cream,Gillette,Classic shaving foam for a smooth glide.,grooming,,no,yes,GIL-FMY-311,311g,5500,,20,5
+nivea-men-sensitive-post-shave-balm,Nivea Men Sensitive Post Shave Balm,Nivea,Alcohol-free after-shave balm that soothes skin.,grooming,,no,yes,NIV-ASB-100,100ml,7500,,20,5
+beard-oil,Beard & Moustache Oil,,"Softens and conditions facial hair, with argan and jojoba oils.",grooming,,no,yes,GRW-BRD-30,30ml,4500,,20,5
+nail-clipper-set,Stainless Steel Nail Clipper Set,,"Finger and toe clippers with a file, in a compact case.",grooming,,no,yes,SFC-NCL-SET,3 piece,1800,,20,5
+kemei-rechargeable-hair-clipper,Kemei Rechargeable Hair Clipper,Kemei,Cordless clipper with guide combs for home haircuts.,grooming,,no,yes,KMI-CLP,1 clipper,15000,,20,5
+dax-wave-and-groom-pomade,Dax Wave & Groom Pomade,Dax,Pomade for brushing waves and grooming short hair.,grooming,,no,yes,DAX-WVG-99,99g,3500,,20,5
+always-dailies-pantyliners,Always Dailies Pantyliners (40 pack),Always,"Thin, flexible liners for everyday freshness.",feminine-care,,no,yes,ALW-LNR-40,40 pack,1900,,20,5
+always-maxi-thick-pads,Always Maxi Thick Pads,Always,Thick pads for heavy flow days.,feminine-care,,no,yes,ALW-MXT-10,10 pads,1800,,20,5
+always-ultra-night-pads,Always Ultra Night Pads,Always,Longer pads with extra coverage for overnight protection.,feminine-care,,no,yes,ALW-NGT-7,7 pads,2000,,20,5
+carefree-pantyliners,Carefree Pantyliners,Carefree,Breathable everyday liners.,feminine-care,,no,yes,CFR-LNR-20,20 pack,1500,,20,5
+femfresh-intimate-wash,Femfresh Daily Intimate Wash,Femfresh,"pH-balanced, gentle wash for daily intimate hygiene.",feminine-care,new,no,yes,FMF-WSH-250,250ml,4500,,20,5
+gillette-venus-razors,Gillette Venus Disposable Razors,Gillette,Three-blade razors with a moisture strip for smooth skin.,feminine-care|grooming,,no,yes,GIL-VNS-3,3 pack,3800,,20,5
+veet-hair-removal-cream,Veet Hair Removal Cream,Veet,Cream that removes body hair in minutes.,feminine-care,,no,yes,VET-CRM-100,100ml,5000,,20,5
+menstrual-cup,Menstrual Cup,,Reusable medical-grade silicone cup. Choose your size.,feminine-care,,no,yes,GEN-MCP-S,Small,6000,,20,5
+menstrual-cup,Menstrual Cup,,Reusable medical-grade silicone cup. Choose your size.,feminine-care,,no,yes,GEN-MCP-L,Large,6000,,20,5
+disposable-plates,Disposable Paper Plates,,"Sturdy 9-inch plates for parties, events and quick meals.",everyday-disposables,,no,yes,HBS-PLT-25,25 plates,2000,,20,5
+plastic-cups,Disposable Plastic Cups,,Clear 250ml cups for drinks at home or at events.,everyday-disposables,bestseller,no,yes,HBS-CUP-50,50 cups,1500,,20,5
+plastic-cups,Disposable Plastic Cups,,Clear 250ml cups for drinks at home or at events.,everyday-disposables,bestseller,no,yes,HBS-CUP-100,100 cups,2800,3000,20,5
+plastic-cutlery-set,Plastic Cutlery Set,,"Spoons, forks and knives for takeaway, picnics and parties.",everyday-disposables,,no,yes,HBS-CTL-50,50 pieces,1800,,20,5
+takeaway-food-packs,Takeaway Food Packs,,Leak-resistant packs with lids for food and leftovers.,everyday-disposables,new,no,yes,HBS-TKA-50,50 packs,4500,,20,5
+drinking-straws-100,Drinking Straws (100),,Bendy drinking straws for parties and everyday use.,everyday-disposables,,no,yes,GEN-STR,100 straws,1000,,20,5
+disposable-face-masks-50,Disposable Face Masks (50),,Three-layer face masks with ear loops.,everyday-disposables,,no,yes,GEN-FMK,50 masks,2500,,20,5
+wooden-toothpicks-pack-of-500,Wooden Toothpicks (Pack of 500),,"Toothpicks for snacks, small chops and cleaning.",everyday-disposables,,no,yes,GEN-TPK,500 toothpicks,600,,20,5
+paper-cups-for-hot-drinks-50,Paper Cups for Hot Drinks (50),,"Insulated paper cups for tea, coffee and pap.",everyday-disposables,,no,yes,GEN-PCP,50 cups,2500,,20,5
+softcare-toilet-tissue,Softcare Toilet Tissue,Softcare,Soft two-ply toilet rolls for everyday use.,bathroom-and-toilet/toilet-paper,,no,yes,SFT-TP-4,4 rolls,1700,,20,5
+softcare-toilet-tissue,Softcare Toilet Tissue,Softcare,Soft two-ply toilet rolls for everyday use.,bathroom-and-toilet/toilet-paper,,no,yes,SFT-TP-12,12 rolls,4600,,20,5
+softcare-baby-diapers,Softcare Baby Diapers,Softcare,"Breathable baby diapers with a soft, absorbent core.",baby-care/diapers,,no,yes,SFT-DPR-M,"Medium, 40 pack",7000,,20,5
+softcare-baby-diapers,Softcare Baby Diapers,Softcare,"Breathable baby diapers with a soft, absorbent core.",baby-care/diapers,,no,yes,SFT-DPR-L,"Large, 36 pack",7400,,20,5
+softcare-baby-diapers,Softcare Baby Diapers,Softcare,"Breathable baby diapers with a soft, absorbent core.",baby-care/diapers,,no,yes,SFT-DPR-XL,"XL, 32 pack",7800,,20,5
+softcare-baby-wipes,Softcare Baby Wipes,Softcare,"Gentle, alcohol-free wipes for nappy changes and hands.",baby-care/baby-wipes,,no,yes,SFT-WPS-80,80 wipes,1800,,20,5
+softcare-sanitary-pads,Softcare Sanitary Pads,Softcare,"Soft, absorbent pads with wings.",feminine-care|personal-care-and-hygiene/sanitary-pads,,no,yes,SFT-PAD-8,8 pads,1000,,20,5

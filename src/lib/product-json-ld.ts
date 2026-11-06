@@ -8,7 +8,8 @@ export function productJsonLd(product: Product) {
     "@type": "Product",
     name: product.name,
     description: product.description,
-    brand: { "@type": "Brand", name: product.brand },
+    // Generic products have no brand; an empty one is invalid structured data.
+    ...(product.brand && { brand: { "@type": "Brand", name: product.brand } }),
     sku: product.variants[0].sku,
     ...(product.images.length > 0 && {
       image: product.images.map((image) => new URL(image.url, siteConfig.url).toString()),

@@ -1,5 +1,5 @@
 /**
- * SAMPLE DATA: the category tree from CLAUDE.md §4, loaded by prisma/seed.ts.
+ * The category tree from CLAUDE.md §4, created by prisma/seed.ts if missing.
  * The storefront reads categories from the database, not from this file.
  */
 import { slugify, type Category, type Subcategory } from "../../src/lib/catalog-types";

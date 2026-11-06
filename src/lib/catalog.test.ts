@@ -1,8 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { products as sampleProducts } from "../../prisma/sample-data/products";
 import {
-  allSubcategorySlugs,
   bestSellers,
   findSubcategoryPath,
   getCategory as findCategory,
@@ -14,9 +12,9 @@ import {
 } from "@/lib/catalog";
 import { buildCatalog } from "@/lib/catalog-build";
 import type { Category, Product, Subcategory } from "@/lib/catalog-types";
-import { sampleCatalog, sampleRows } from "@/test/sample-catalog";
+import { catalogueCatalog, catalogueRows } from "@/test/catalogue";
 
-const catalog = sampleCatalog();
+const catalog = catalogueCatalog();
 const { categories, products } = catalog;
 const getCategory = (slug: string) => findCategory(categories, slug);
 const productsInCategory = (category: Category, sub?: Subcategory) =>
@@ -24,45 +22,6 @@ const productsInCategory = (category: Category, sub?: Subcategory) =>
 const relatedProducts = (product: Product) => relatedIn(products, product);
 const searchProducts = (query: string) => find(catalog, query);
 const searchCategories = (query: string) => findCategories(categories, query);
-
-describe("sample data", () => {
-  it("only references categories and subcategories that exist", () => {
-    for (const product of sampleProducts) {
-      for (const ref of product.categories) {
-        const category = getCategory(ref.category);
-        expect(category, `${product.slug} -> ${ref.category}`).toBeDefined();
-        if (ref.subcategory) {
-          expect(allSubcategorySlugs(category!), product.slug).toContain(ref.subcategory);
-        }
-      }
-    }
-  });
-
-  it("stores whole-kobo prices and unique identifiers", () => {
-    const variants = sampleProducts.flatMap((product) => product.variants);
-    expect(variants.every((variant) => Number.isSafeInteger(variant.priceKobo))).toBe(true);
-    expect(new Set(variants.map((variant) => variant.sku)).size).toBe(variants.length);
-    expect(new Set(sampleProducts.map((product) => product.slug)).size).toBe(sampleProducts.length);
-  });
-
-  it("keeps every sample product through buildCatalog", () => {
-    expect(products).toHaveLength(sampleProducts.filter((product) => product.active).length);
-    expect(products.every((product) => product.categories.length > 0)).toBe(true);
-  });
-
-  it("has at least one product in every top-level category", () => {
-    for (const category of categories) {
-      expect(productsInCategory(category).length, category.slug).toBeGreaterThan(0);
-    }
-  });
-
-  it("has unique subcategory slugs within each category", () => {
-    for (const category of categories) {
-      const slugs = allSubcategorySlugs(category);
-      expect(new Set(slugs).size, category.slug).toBe(slugs.length);
-    }
-  });
-});
 
 describe("category lookups", () => {
   const skincare = getCategory("skincare-and-body-care")!;
@@ -106,7 +65,7 @@ describe("relatedProducts", () => {
 
 describe("buildCatalog", () => {
   it("hides an inactive category, its subtree and the links to it", () => {
-    const { categoryRows, productRows } = sampleRows();
+    const { categoryRows, productRows } = catalogueRows();
     const rows = categoryRows.map((row) =>
       row.id.startsWith("fragrances") ? { ...row, active: false } : row,
     );
@@ -120,7 +79,7 @@ describe("buildCatalog", () => {
   });
 
   it("orders categories by sortOrder and drops products with no variants", () => {
-    const { categoryRows, productRows } = sampleRows();
+    const { categoryRows, productRows } = catalogueRows();
     const rows = categoryRows.map((row) => (row.id === "laundry" ? { ...row, sortOrder: -1 } : row));
     const withEmpty = [...productRows, { ...productRows[0], slug: "empty", variants: [] }];
     const built = buildCatalog(rows, withEmpty);
@@ -129,7 +88,7 @@ describe("buildCatalog", () => {
   });
 
   it("falls back to the product name for missing alt text and to a default icon", () => {
-    const { productRows } = sampleRows();
+    const { productRows } = catalogueRows();
     const row = { ...productRows[0], categories: [], images: [{ url: "https://x/a.webp", alt: "" }] };
     const [product] = buildCatalog([], [row]).products;
     expect(product.images[0].alt).toBe(row.name);
@@ -156,7 +115,7 @@ describe("homepage rows", () => {
 
 describe("search", () => {
   it("is case-insensitive and needs every word", () => {
-    expect(searchProducts("NIVEA lotion").map((product) => product.slug)).toEqual([
+    expect(searchProducts("NIVEA nourishing LOTION").map((product) => product.slug)).toEqual([
       "nivea-body-lotion",
     ]);
   });

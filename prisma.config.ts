@@ -10,7 +10,8 @@ export default defineConfig({
   schema: "prisma/schema.prisma",
   migrations: {
     path: "prisma/migrations",
-    seed: "tsx prisma/seed.ts",
+    // `npx prisma db seed` loads the starting catalogue (safe to re-run).
+    seed: "tsx scripts/load-catalogue.ts",
   },
   // Migrations use the session pooler (DIRECT_URL). `prisma generate` needs no URL,
   // so a Vercel build without DIRECT_URL still works.
