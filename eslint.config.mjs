@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated: Prisma client, and onnxruntime-web copied on install.
+    "src/generated/**",
+    "public/ort/**",
   ]),
 ]);
 

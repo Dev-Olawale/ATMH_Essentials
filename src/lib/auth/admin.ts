@@ -75,7 +75,7 @@ async function checkAdmin(role?: "OWNER"): Promise<AdminCheck> {
 
 /**
  * The guard for every admin Server Action and Route Handler. Call it first, before reading input
- * or touching data. Pass "OWNER" for team, settings and sample-data actions.
+ * or touching data. Pass "OWNER" for team and settings actions.
  */
 export async function requireAdmin(role?: "OWNER"): Promise<AdminUser> {
   const result = await checkAdmin(role);

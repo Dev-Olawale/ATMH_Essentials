@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 
 import { AdminLoading, PageHeader } from "@/components/admin/page-header";
-import { Badge, inputClass, SampleBadge } from "@/components/admin/ui";
+import { Badge, inputClass } from "@/components/admin/ui";
 import { buttonVariants } from "@/components/ui/button";
 import type { Prisma } from "@/generated/prisma/client";
 import { getCategoryTree } from "@/lib/admin/category-tree";
@@ -26,14 +26,14 @@ async function ProductList({ searchParams }: { searchParams: PageProps<"/admin/p
   const q = one(params.q).slice(0, 100);
   const status = one(params.status) || "active";
   const category = one(params.category);
-  const sample = one(params.sample);
+  const review = one(params.review);
   const page = Math.max(1, Number.parseInt(one(params.page), 10) || 1);
 
   const where: Prisma.ProductWhereInput = {
     ...(status === "active" && { active: true }),
     ...(status === "archived" && { active: false }),
-    ...(sample === "yes" && { isSample: true }),
-    ...(sample === "no" && { isSample: false }),
+    // Needs review: price and stock not yet checked by the owner, or no photo yet.
+    ...(review === "needs" && { AND: [{ OR: [{ reviewed: false }, { images: { none: {} } }] }] }),
     ...(category && { categories: { some: { categoryId: category } } }),
     ...(q && {
       OR: [
@@ -61,7 +61,7 @@ async function ProductList({ searchParams }: { searchParams: PageProps<"/admin/p
   ]);
   const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
   const pageHref = (target: number) => {
-    const query = new URLSearchParams({ q, status, category, sample, page: String(target) });
+    const query = new URLSearchParams({ q, status, category, review, page: String(target) });
     return `/admin/products?${query}`;
   };
 
@@ -83,10 +83,9 @@ async function ProductList({ searchParams }: { searchParams: PageProps<"/admin/p
             </option>
           ))}
         </select>
-        <select name="sample" defaultValue={sample} aria-label="Sample data" className={inputClass}>
-          <option value="">Sample and own</option>
-          <option value="no">Own products only</option>
-          <option value="yes">Sample only</option>
+        <select name="review" defaultValue={review} aria-label="Review" className={inputClass}>
+          <option value="">All products</option>
+          <option value="needs">Needs review</option>
         </select>
         <button type="submit" className={buttonVariants({ size: "lg" })}>
           Filter
@@ -121,7 +120,9 @@ async function ProductList({ searchParams }: { searchParams: PageProps<"/admin/p
                       {product.variants.length} option{product.variants.length === 1 ? "" : "s"}
                     </p>
                     <div className="mt-1 flex flex-wrap gap-1">
-                      {product.isSample && <SampleBadge />}
+                      {!product.reviewed && <Badge tone="gold">Price to confirm</Badge>}
+                      {!product.reviewed && <Badge tone="gold">Stock to confirm</Badge>}
+                      {product.images.length === 0 && <Badge>No photo</Badge>}
                       {!product.active && <Badge>Archived</Badge>}
                       {product.featured && <Badge tone="rose">Featured</Badge>}
                     </div>
@@ -151,9 +152,14 @@ export default function ProductsPage(props: PageProps<"/admin/products">) {
       <PageHeader
         title="Products"
         actions={
-          <Link href="/admin/products/new" className={buttonVariants({ variant: "rose" })}>
-            Add product
-          </Link>
+          <>
+            <Link href="/admin/products/photos" className={buttonVariants({ variant: "outline" })}>
+              Bulk photo upload
+            </Link>
+            <Link href="/admin/products/new" className={buttonVariants({ variant: "rose" })}>
+              Add product
+            </Link>
+          </>
         }
       />
       <Suspense fallback={<AdminLoading />}>

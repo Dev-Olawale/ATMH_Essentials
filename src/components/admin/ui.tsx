@@ -100,7 +100,3 @@ export function Badge({ tone = "muted", children }: { tone?: "muted" | "gold" | 
     </span>
   );
 }
-
-export function SampleBadge() {
-  return <Badge tone="gold">Sample</Badge>;
-}

@@ -1,13 +1,15 @@
 import { describe, expect, it } from "vitest";
 
 import { productJsonLd, serializeJsonLd } from "@/lib/product-json-ld";
-import { sampleCatalog } from "@/test/sample-catalog";
+import { catalogueCatalog } from "@/test/catalogue";
 
-const { products } = sampleCatalog();
+const { products } = catalogueCatalog();
 
 describe("productJsonLd", () => {
   it("describes every variant in naira with availability", () => {
-    const product = products.find((item) => item.slug === "nivea-body-lotion")!;
+    const listed = products.find((item) => item.slug === "nivea-body-lotion")!;
+    // Second size sold out, to check availability.
+    const product = { ...listed, variants: [listed.variants[0], { ...listed.variants[1], stockQty: 0 }] };
     const data = productJsonLd(product);
     expect(data.offers).toHaveLength(2);
     expect(data.offers[0]).toMatchObject({
@@ -17,6 +19,10 @@ describe("productJsonLd", () => {
     });
     expect(data.offers[1].availability).toBe("https://schema.org/OutOfStock");
     expect(data).not.toHaveProperty("image");
+  });
+
+  it("leaves out the brand for generic products", () => {
+    expect(productJsonLd({ ...products[0], brand: "" })).not.toHaveProperty("brand");
   });
 
   it("lists photos as absolute URLs", () => {

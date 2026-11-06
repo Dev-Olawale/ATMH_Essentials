@@ -30,7 +30,7 @@ export async function POST(request: NextRequest, { params }: RouteContext<"/admi
   }
 
   const { id } = await params;
-  const product = await prisma.product.findUnique({ where: { id }, select: { id: true, name: true, isSample: true } });
+  const product = await prisma.product.findUnique({ where: { id }, select: { id: true, name: true } });
   if (!product) return NextResponse.json({ error: "Product not found." }, { status: 404 });
 
   const form = await request.formData().catch(() => null);
@@ -77,7 +77,6 @@ export async function POST(request: NextRequest, { params }: RouteContext<"/admi
       width: output.info.width,
       height: output.info.height,
       sortOrder: (last?.sortOrder ?? -1) + 1,
-      isSample: product.isSample,
     },
   });
 
