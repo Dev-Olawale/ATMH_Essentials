@@ -11,7 +11,6 @@ export type CategoryNode = {
   sortOrder: number;
   active: boolean;
   needsConfirmation: boolean;
-  isSample: boolean;
   depth: number;
   /** "root" or "root/subcategory": the format used in the CSV. */
   path: string;
@@ -49,7 +48,6 @@ export async function getCategoryTree(): Promise<CategoryNode[]> {
         sortOrder: row.sortOrder,
         active: row.active,
         needsConfirmation: row.needsConfirmation,
-        isSample: row.isSample,
         depth,
         path: rootSlug ? `${root}/${row.slug}` : row.slug,
         productCount: 0,

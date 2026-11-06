@@ -55,7 +55,6 @@ const actionModules = {
   images: await import("@/app/admin/actions/images"),
   categories: await import("@/app/admin/actions/categories"),
   import: await import("@/app/admin/actions/import"),
-  "sample-data": await import("@/app/admin/actions/sample-data"),
   orders: await import("@/app/admin/actions/orders"),
   settings: await import("@/app/admin/actions/settings"),
   team: await import("@/app/admin/actions/team"),
@@ -63,6 +62,7 @@ const actionModules = {
 const imagesRoute = await import("@/app/admin/api/products/[id]/images/route");
 const exportRoute = await import("@/app/admin/api/products/export/route");
 const proofRoute = await import("@/app/admin/api/orders/[id]/proofs/[proofId]/route");
+const checklistRoute = await import("@/app/admin/api/products/photo-checklist/route");
 
 function formData(fields: Record<string, string>) {
   const form = new FormData();
@@ -97,7 +97,6 @@ const argsFor: Record<string, () => unknown[]> = {
   setCategoryFlag: () => ["c1", "active", false],
   previewProductImport: () => ["product_slug\nx"],
   applyProductImport: () => ["product_slug\nx"],
-  removeSampleData: () => [{ status: "idle" }, anyForm()],
   setDeliveryFee: () => ["o1", "2500"],
   markPaid: () => ["o1"],
   markPacked: () => ["o1"],
@@ -110,8 +109,8 @@ const argsFor: Record<string, () => unknown[]> = {
   removeAdmin: () => ["a2"],
 };
 
-/** Owner only: team, settings and sample data. Everything else is open to staff. */
-const OWNER_ONLY = new Set(["saveSettings", "inviteAdmin", "changeAdminRole", "removeAdmin", "removeSampleData"]);
+/** Owner only: team and settings. Everything else is open to staff. */
+const OWNER_ONLY = new Set(["saveSettings", "inviteAdmin", "changeAdminRole", "removeAdmin"]);
 
 const actions = Object.entries(actionModules).flatMap(([file, module]) =>
   Object.entries(module)
@@ -131,6 +130,10 @@ const routes = [
     },
   },
   { label: "CSV export", call: () => exportRoute.GET() },
+  {
+    label: "photo checklist CSV",
+    call: () => checklistRoute.GET(Object.assign(new Request("http://x/"), { nextUrl: new URL("http://x/") }) as never),
+  },
   {
     label: "payment proof viewer",
     call: () => proofRoute.GET(new Request("http://x"), { params: Promise.resolve({ id: "o1", proofId: "f1" }) }),

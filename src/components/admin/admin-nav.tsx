@@ -14,7 +14,6 @@ const links: { href: string; label: string; ownerOnly?: boolean }[] = [
   { href: "/admin/import-export", label: "Import / export" },
   { href: "/admin/team", label: "Team", ownerOnly: true },
   { href: "/admin/settings", label: "Settings", ownerOnly: true },
-  { href: "/admin/sample-data", label: "Sample data", ownerOnly: true },
 ];
 
 /** The current page is highlighted once the URL is known (pathname is null in the static shell). */

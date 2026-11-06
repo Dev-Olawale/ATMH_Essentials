@@ -34,26 +34,30 @@ model Category {
 }
 
 model Product {
-  id          String            @id @default(cuid())
-  slug        String            @unique
-  name        String
-  brand       String            @default("")
-  description String            @default("")
+  id             String            @id @default(cuid())
+  slug           String            @unique
+  name           String
+  brand          String            @default("")
+  description    String            @default("")
   /// Pinned to the front of the homepage Best Sellers row.
-  featured    Boolean           @default(false)
+  featured       Boolean           @default(false)
   /// False = archived: hidden from the store but kept for order history.
-  active      Boolean           @default(true)
+  active         Boolean           @default(true)
   /// Higher sells more; drives the "popular" sort until real sales data exists.
-  popularity  Int               @default(0)
-  isSample    Boolean           @default(false)
-  variants    ProductVariant[]
-  images      ProductImage[]
-  categories  ProductCategory[]
-  tags        ProductTag[]
-  createdAt   DateTime          @default(now())
-  updatedAt   DateTime          @updatedAt
+  popularity     Int               @default(0)
+  /// The owner has checked price and stock. Unreviewed products show in "Needs review".
+  reviewed       Boolean           @default(false)
+  /// No longer used by the app (the sample-data feature was removed). Kept for history.
+  isSample       Boolean           @default(false)
+  variants       ProductVariant[]
+  images         ProductImage[]
+  categories     ProductCategory[]
+  tags           ProductTag[]
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
 
   @@index([active])
+  @@index([reviewed])
   @@map("products")
 }
 
@@ -166,15 +170,15 @@ enum OrderActor {
 
 /// Who may use /admin. Customers never get a row here. ADMIN_EMAILS are kept as OWNER on sign-in.
 model AdminUser {
-  id          String    @id @default(cuid())
+  id         String    @id @default(cuid())
   /// Lowercase.
-  email       String    @unique
+  email      String    @unique
   /// Supabase Auth user id, once known.
-  authUserId  String?   @unique
-  role        AdminRole @default(STAFF)
-  invitedBy   String?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  authUserId String?   @unique
+  role       AdminRole @default(STAFF)
+  invitedBy  String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 
   @@map("admin_users")
 }
@@ -234,14 +238,14 @@ model StoreSettings {
 
 /// Step 4: placed through /checkout.
 model Order {
-  id                String               @id @default(cuid())
+  id                String             @id @default(cuid())
   /// Shown as ATMH-<number>. The sequence starts at 10001.
-  number            Int                  @unique @default(autoincrement())
-  status            OrderStatus          @default(AWAITING_DELIVERY_QUOTE)
+  number            Int                @unique @default(autoincrement())
+  status            OrderStatus        @default(AWAITING_DELIVERY_QUOTE)
   paymentMethod     PaymentMethod
   /// Signed-in shopper; null for guest checkout.
   customerId        String?
-  customer          Customer?            @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  customer          Customer?          @relation(fields: [customerId], references: [id], onDelete: SetNull)
   customerName      String
   email             String
   /// As typed.
@@ -251,16 +255,16 @@ model Order {
   state             String
   city              String
   street            String
-  landmark          String               @default("")
+  landmark          String             @default("")
   notes             String?
   subtotalKobo      Int
   /// Null until the admin confirms the rider's quote.
   deliveryFeeKobo   Int?
   totalKobo         Int?
   /// For a future online provider (e.g. Paystack). Unique so a webhook can never mark two orders paid.
-  providerReference String?              @unique
+  providerReference String?            @unique
   /// Secret in the order link (/order/ATMH-10001?key=…) so guests can view their order.
-  accessKey         String               @unique
+  accessKey         String             @unique
   riderName         String?
   riderPhone        String?
   dispatchNote      String?
@@ -270,8 +274,8 @@ model Order {
   items             OrderItem[]
   events            OrderStatusEvent[]
   paymentProofs     PaymentProof[]
-  createdAt         DateTime             @default(now())
-  updatedAt         DateTime             @updatedAt
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
 
   @@index([status, createdAt])
   @@index([customerId, createdAt])

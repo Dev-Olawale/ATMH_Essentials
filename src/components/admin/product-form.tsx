@@ -17,7 +17,8 @@ export type ProductFormValues = {
   description: string;
   featured: boolean;
   active: boolean;
-  isSample: boolean;
+  /** The owner has checked the price against the market and counted the stock. */
+  reviewed: boolean;
   categoryIds: string[];
   tags: string[];
   variants: VariantValues[];
@@ -47,6 +48,15 @@ export function ProductForm({
   // New products get a web address from the name until the owner edits it.
   const [slugTouched, setSlugTouched] = useState(Boolean(initial.id));
   const [variants, setVariants] = useState<VariantValues[]>(initial.variants);
+  const [reviewed, setReviewed] = useState(initial.reviewed);
+
+  // Editing a price or stock count is the moment to confirm it, so offer to tick the box.
+  const priceOrStockChanged = variants.some((variant) => {
+    const before = initial.variants.find((original) => original.key === variant.key);
+    return !before
+      ? variant.price.trim() !== ""
+      : before.price !== variant.price || before.compareAt !== variant.compareAt || before.stock !== variant.stock;
+  });
 
   const update = (key: string, field: keyof VariantValues, value: string) =>
     setVariants((current) => current.map((v) => (v.key === key ? { ...v, [field]: value } : v)));
@@ -202,6 +212,22 @@ export function ProductForm({
         >
           <Plus /> Add another option
         </Button>
+        <label className="flex min-h-11 items-start gap-3 rounded-lg border border-gold bg-blush p-3">
+          <input
+            type="checkbox"
+            name="reviewed"
+            checked={reviewed}
+            onChange={(event) => setReviewed(event.target.checked)}
+            className="mt-0.5 size-5 accent-ink"
+          />
+          <span className="flex flex-col">
+            <span className="text-sm font-medium text-ink">Reviewed: price and stock checked</span>
+            <span className="text-xs text-muted">
+              Tick once these prices match the market and the stock counts match your shelf. Unticked products
+              appear under &ldquo;Needs review&rdquo;.
+            </span>
+          </span>
+        </label>
       </section>
 
       <section className="flex flex-col gap-3 rounded-xl bg-white p-4">
@@ -262,15 +288,17 @@ export function ProductForm({
           hint="Untick to archive: hidden from shoppers but kept here"
           defaultChecked={initial.active}
         />
-        <Toggle
-          name="isSample"
-          label="Sample product"
-          hint="Sample products are deleted by “Remove all sample data”. Untick to keep this one."
-          defaultChecked={initial.isSample}
-        />
       </section>
 
       <div className="sticky bottom-0 -mx-4 border-t border-blush-deep bg-blush/95 px-4 py-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))]">
+        {priceOrStockChanged && !reviewed && (
+          <div role="status" className="mb-3 flex flex-wrap items-center justify-between gap-2 rounded-lg bg-white p-3 text-sm text-ink">
+            <span>You changed a price or stock count. Are price and stock right now?</span>
+            <Button type="button" size="sm" variant="outline" onClick={() => setReviewed(true)}>
+              Yes, mark as reviewed
+            </Button>
+          </div>
+        )}
         <SubmitButton pending={pending}>{initial.id ? "Save changes" : "Create product"}</SubmitButton>
       </div>
     </form>

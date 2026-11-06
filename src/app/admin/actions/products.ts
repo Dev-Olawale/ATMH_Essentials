@@ -32,7 +32,7 @@ const productInput = z.object({
   description: z.string().trim().max(4000),
   featured: z.boolean(),
   active: z.boolean(),
-  isSample: z.boolean(),
+  reviewed: z.boolean(),
   categoryIds: z.array(z.string()).max(20),
   tags: z.array(z.string().trim().toLowerCase().min(1).max(40)).max(20),
   variants: z.array(variantInput).min(1, "Add at least one option with a price").max(50),
@@ -57,7 +57,7 @@ function readForm(formData: FormData) {
     description: String(formData.get("description") ?? ""),
     featured: formData.get("featured") === "on",
     active: formData.get("active") === "on",
-    isSample: formData.get("isSample") === "on",
+    reviewed: formData.get("reviewed") === "on",
     categoryIds: formData.getAll("categoryIds").map(String),
     tags: [...new Set([...formData.getAll("tags").map(String), ...extraTags])],
     variants,
@@ -146,7 +146,7 @@ export async function saveProduct(_state: FormState, formData: FormData): Promis
     description: input.description,
     featured: input.featured,
     active: input.active,
-    isSample: input.isSample,
+    reviewed: input.reviewed,
   };
 
   const productId = await prisma.$transaction(async (tx) => {
@@ -162,9 +162,9 @@ export async function saveProduct(_state: FormState, formData: FormData): Promis
     }
     for (const { id, ...data } of variants) {
       if (id) {
-        await tx.productVariant.update({ where: { id }, data: { ...data, isSample: input.isSample } });
+        await tx.productVariant.update({ where: { id }, data });
       } else {
-        await tx.productVariant.create({ data: { ...data, productId: product.id, isSample: input.isSample } });
+        await tx.productVariant.create({ data: { ...data, productId: product.id } });
       }
     }
 

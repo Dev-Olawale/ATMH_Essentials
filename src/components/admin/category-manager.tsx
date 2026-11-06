@@ -11,7 +11,7 @@ import {
   type CategoryFormState,
 } from "@/app/admin/actions/categories";
 import { CategoryIcon, categoryIconNames, type CategoryIconName } from "@/components/category-icon";
-import { Field, FormErrors, inputClass, SampleBadge, SubmitButton, Toggle, useFormAction } from "@/components/admin/ui";
+import { Field, FormErrors, inputClass, SubmitButton, Toggle, useFormAction } from "@/components/admin/ui";
 import { Button } from "@/components/ui/button";
 
 export type CategoryRow = {
@@ -22,7 +22,6 @@ export type CategoryRow = {
   parentId: string | null;
   active: boolean;
   needsConfirmation: boolean;
-  isSample: boolean;
   depth: number;
   productCount: number;
 };
@@ -90,12 +89,6 @@ function CategoryForm({
         hint="A reminder that this category isn't confirmed for launch yet. Shoppers still see it if it's shown."
         defaultChecked={category?.needsConfirmation ?? false}
       />
-      <Toggle
-        name="isSample"
-        label="Sample category"
-        hint="Can be removed with the sample data. Untick to keep it."
-        defaultChecked={category?.isSample ?? false}
-      />
       <div className="flex gap-2">
         <SubmitButton pending={pending}>{category ? "Save" : "Add category"}</SubmitButton>
         <Button type="button" variant="ghost" size="lg" onClick={onDone}>
@@ -146,7 +139,6 @@ export function CategoryManager({ categories }: { categories: CategoryRow[] }) {
                   </p>
                 </div>
                 <div className="flex flex-wrap items-center gap-1">
-                  {row.isSample && <SampleBadge />}
                   <label className="flex h-10 items-center gap-1.5 px-1 text-xs text-ink">
                     <input
                       type="checkbox"

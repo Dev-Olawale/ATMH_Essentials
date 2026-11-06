@@ -22,7 +22,6 @@ const categoryInput = z.object({
   icon: z.enum(categoryIconNames as [string, ...string[]]),
   active: z.boolean(),
   needsConfirmation: z.boolean(),
-  isSample: z.boolean(),
 });
 
 export async function saveCategory(
@@ -40,7 +39,6 @@ export async function saveCategory(
     icon: String(formData.get("icon") ?? "PackageOpen"),
     active: formData.get("active") === "on",
     needsConfirmation: formData.get("needsConfirmation") === "on",
-    isSample: formData.get("isSample") === "on",
   });
   if (!parsed.success) {
     return { status: "error", errors: [...new Set(parsed.error.issues.map((issue) => issue.message))] };

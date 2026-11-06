@@ -26,7 +26,7 @@ async function NewProduct() {
           description: "",
           featured: false,
           active: true,
-          isSample: false,
+          reviewed: false,
           categoryIds: [],
           tags: [],
           variants: [emptyVariant("first")],

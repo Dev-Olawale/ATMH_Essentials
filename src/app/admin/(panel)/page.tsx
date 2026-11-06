@@ -12,7 +12,7 @@ export const metadata: Metadata = { title: "Overview" };
 async function Overview({ searchParams }: { searchParams: PageProps<"/admin">["searchParams"] }) {
   const admin = await requireAdminPage();
   const { error } = await searchParams;
-  const [awaitingQuote, proofsToReview, toPack, bankMissing, active, archived, lowStock, outOfStock, sample] = await Promise.all([
+  const [awaitingQuote, proofsToReview, toPack, bankMissing, active, archived, lowStock, outOfStock, needsReview] = await Promise.all([
     prisma.order.count({ where: { status: "AWAITING_DELIVERY_QUOTE" } }),
     prisma.order.count({ where: { status: "AWAITING_PAYMENT", paymentProofs: { some: { reviewedAt: null } } } }),
     prisma.order.count({ where: { status: { in: ["PAID", "CONFIRMED"] } } }),
@@ -26,7 +26,7 @@ async function Overview({ searchParams }: { searchParams: PageProps<"/admin">["s
       },
     }),
     prisma.productVariant.count({ where: { product: { active: true }, stockQty: 0 } }),
-    prisma.product.count({ where: { isSample: true } }),
+    prisma.product.count({ where: { active: true, OR: [{ reviewed: false }, { images: { none: {} } }] } }),
   ]);
 
   const orderStats = [
@@ -39,6 +39,7 @@ async function Overview({ searchParams }: { searchParams: PageProps<"/admin">["s
     { label: "Archived products", value: archived, href: "/admin/products?status=archived" },
     { label: "Options running low", value: lowStock, href: "/admin/low-stock" },
     { label: "Options out of stock", value: outOfStock, href: "/admin/low-stock" },
+    { label: "Products needing review (price, stock or photo)", value: needsReview, href: "/admin/products?review=needs" },
   ];
 
   return (
@@ -78,7 +79,7 @@ async function Overview({ searchParams }: { searchParams: PageProps<"/admin">["s
         ))}
       </ul>
       <h2 className="mb-2 font-sans text-sm font-medium tracking-widest uppercase">Products</h2>
-      <ul className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      <ul className="grid grid-cols-2 gap-3 lg:grid-cols-5">
         {stats.map((stat) => (
           <li key={stat.label}>
             <Link href={stat.href} className="flex h-full flex-col gap-1 rounded-xl bg-white p-4 hover:ring-2 hover:ring-blush-deep">
@@ -88,15 +89,6 @@ async function Overview({ searchParams }: { searchParams: PageProps<"/admin">["s
           </li>
         ))}
       </ul>
-      {sample > 0 && admin.role === "OWNER" && (
-        <p className="mt-6 rounded-xl bg-white p-4 text-sm text-ink">
-          {sample} sample products are still in the store.{" "}
-          <Link href="/admin/sample-data" className="underline">
-            Remove sample data
-          </Link>{" "}
-          once your own products are in.
-        </p>
-      )}
     </>
   );
 }

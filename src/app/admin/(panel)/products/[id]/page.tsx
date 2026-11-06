@@ -7,7 +7,7 @@ import { ArchiveButton } from "@/components/admin/archive-button";
 import { AdminLoading, PageHeader } from "@/components/admin/page-header";
 import { ProductForm } from "@/components/admin/product-form";
 import { ProductImages } from "@/components/admin/product-images";
-import { Badge, SampleBadge } from "@/components/admin/ui";
+import { Badge } from "@/components/admin/ui";
 import { getCategoryTree } from "@/lib/admin/category-tree";
 import { requireAdminPage } from "@/lib/auth/admin";
 import { prisma } from "@/lib/db";
@@ -48,7 +48,9 @@ async function EditProduct({ params, searchParams }: PageProps<"/admin/products/
         }
       />
       <div className="mb-4 flex flex-wrap gap-1">
-        {product.isSample && <SampleBadge />}
+        {!product.reviewed && <Badge tone="gold">Price to confirm</Badge>}
+        {!product.reviewed && <Badge tone="gold">Stock to confirm</Badge>}
+        {product.images.length === 0 && <Badge>No photo</Badge>}
         {!product.active && <Badge>Archived</Badge>}
         {product.featured && <Badge tone="rose">Featured</Badge>}
       </div>
@@ -75,7 +77,7 @@ async function EditProduct({ params, searchParams }: PageProps<"/admin/products/
             description: product.description,
             featured: product.featured,
             active: product.active,
-            isSample: product.isSample,
+            reviewed: product.reviewed,
             categoryIds: product.categories.map((link) => link.categoryId),
             tags: product.tags.map((link) => link.tag.name),
             variants: product.variants.map((variant) => ({
