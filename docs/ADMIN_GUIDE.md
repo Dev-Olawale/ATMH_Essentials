@@ -18,7 +18,7 @@ There is no password. You sign in with a link sent to your email.
 Good to know:
 
 - Only email addresses that have been given admin access can sign in. If your email isn't set up, no link is sent. Ask the shop owner to add you (see **Team** below).
-- There are two roles. **Owners** can do everything. **Staff** can manage products, categories and orders, but not the team, settings or sample data.
+- There are two roles. **Owners** can do everything. **Staff** can manage products, categories and orders, but not the team or settings.
 - Each link works once and expires after a short time. If it doesn't work, request a new one.
 - To sign out, tap **Sign out** at the top of any admin page.
 
@@ -173,24 +173,51 @@ Tap **Categories** to manage the menu.
 
 ---
 
-## 8. Removing the sample data
+## 8. Reviewing the starting catalogue
 
-The shop started with **sample products** so it didn't look empty. They have a gold **Sample** badge in the admin.
+The shop starts with about 250 products that are commonly sold in Nigeria. Their **prices are estimates**, every option starts with **20 in stock**, and they have **no photos yet**. Please check each one before you rely on it.
 
-When your own products are in:
+**Find what needs checking:** tap **Products**, choose **Needs review** in the filter and tap **Filter**. You'll see every product you haven't reviewed yet, or that has no photo. Each one carries badges:
 
-1. Tap **Sample data**.
-2. Tap **Remove all sample data…**
-3. Decide about categories: leave **Also delete sample categories** **unticked** if you are using the starter categories (most shops will). Tick it only if you have built your own category list.
-4. Type `REMOVE` in capitals and tap **Delete sample data**.
+- **Price to confirm** and **Stock to confirm**: check the price against the market and count what you actually have.
+- **No photo**: add a photo (see below).
 
-This deletes only items marked Sample, with their photos. Your own products are never touched. **It cannot be undone.**
+The **Overview** page shows how many products still need review.
 
-To keep a sample product (for example, you sell it and have updated its price), open it, untick **Sample product**, and save before removing the sample data.
+**To review a product:**
+
+1. Open it and correct the prices and the **In stock** counts.
+2. Tick **Reviewed: price and stock checked** (under the prices) and tap **Save changes**.
+
+If you change a price or stock count and haven't ticked the box, a reminder appears above **Save changes** with a button to tick it for you.
+
+Products you don't sell: open them and untick **Show in the store** (archive). Nothing is ever deleted.
+
+Shoppers never see these badges. They only see the product, its price and photos.
 
 ---
 
-## 9. Settings (owners only)
+## 9. Adding lots of photos at once
+
+**1. Get the photo checklist.** Tap **Products → Bulk photo upload**, then **photo checklist**. It lists every product with the exact file name to use. You can print it or download it as a spreadsheet. Tap **Only products without photos** to see what's left.
+
+**2. Take and name the photos.** Name each photo with the file name from the checklist, for example `ARL-PWD-900.jpg`. For extra photos of the same product, add `-1`, `-2`: `ARL-PWD-900-1.jpg`.
+
+**3. Upload them.** In **Bulk photo upload**, tap **Choose photos or a .zip** and pick many photos at once (or one .zip file). Then:
+
+- Each photo is matched to its product by its name. Photos that don't match a product are listed separately; rename them and add them again.
+- Each photo is cleaned up on your phone or computer: the background is removed, the product is centred on a square with even space around it, on **White** or **Light blush** (you choose).
+- Check the **Before / After** previews. If the background removal cut off part of a product, untick **Remove background** for that photo. It is then just squared and centred.
+- Untick **Upload this photo** to leave one out.
+- Tap **Upload**. Nothing is saved until you do.
+
+The first time, the background remover takes a moment to download (about 20MB). After that it's quick.
+
+Tips: square photo, plain light background, good lighting, and the whole product in the frame.
+
+---
+
+## 10. Settings (owners only)
 
 Tap **Settings**. Changes show in the shop straight away.
 
@@ -204,7 +231,7 @@ Tap **Settings**. Changes show in the shop straight away.
 
 ---
 
-## 10. Team (owners only)
+## 11. Team (owners only)
 
 Tap **Team** to see who can use the admin.
 
