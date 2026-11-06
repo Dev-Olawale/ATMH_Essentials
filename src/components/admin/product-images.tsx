@@ -37,7 +37,8 @@ async function shrink(file: File): Promise<Blob> {
   return jpeg;
 }
 
-function send(url: string, body: FormData, onProgress: (percent: number) => void) {
+/** POSTs a photo with upload progress (fetch can't report it). Shared with the bulk upload. */
+export function uploadWithProgress(url: string, body: FormData, onProgress: (percent: number) => void) {
   return new Promise<void>((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.open("POST", url);
@@ -105,7 +106,7 @@ export function ProductImages({
         const body = new FormData();
         body.append("file", blob, file.name.replace(/\.[^.]+$/, "") + (blob.type === "image/webp" ? ".webp" : ".jpg"));
         body.append("alt", productName);
-        await send(`/admin/api/products/${productId}/images`, body, (progress) => patch(key, { progress }));
+        await uploadWithProgress(`/admin/api/products/${productId}/images`, body, (progress) => patch(key, { progress }));
         patch(key, { progress: 100, done: true });
       } catch (uploadError) {
         patch(key, { error: (uploadError as Error).message });
